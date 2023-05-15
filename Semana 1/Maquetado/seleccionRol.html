@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seleeción del rol</title>
+</head>
+<body>
+<form id="seleccionRol">
+    <select id="role" name="role">
+        <option value="Rol">Selecciona una rol</option>
+        <option value="Estudiante">Estudiante</option>
+        <option value="Moderador">Moderador</option>
+        <option value="Admin">Administrador</option>
+    </select>
+    <input type="submit" value="Iniciar sesión">
+</form>
+<script>
+    document.getElementById('role').addEventListener('change', function() {
+        var form = document.getElementById('seleccionRol');
+        if (this.value === 'Estudiante') form.action = 'registroAlumno.html';
+        else if (this.value === 'Moderador') form.action = 'registroModerador.html';
+        else if (this.value === 'Admin') form.action = 'registroAdmin.html';
+    });
+</script>
+</body>
+</html>
