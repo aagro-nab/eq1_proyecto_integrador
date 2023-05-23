@@ -18,6 +18,8 @@
         {
             echo'
             <form action="./registro_exitoso.php" method="post" enctype="multipart/form-data" target="_self">
+                <label for="nombre"><b> Nombre de usuario </b></label><br><br>
+                    <input name="usuario" type="text" required> <br><br>
                 <label for="nombre"><b> Nombre completo </b></label><br><br>
                     <input name="nombre" type="text" required> <br><br>
                 <label for="num_cuenta"><b> Número de cuenta </b></label><br><br>
@@ -38,7 +40,7 @@
 
         if($rol == "alumno")
         {   
-            echo '<p> Usuari@, porfavor ingresa tus datos. </p>';
+            echo '<p> Alumn@, porfavor ingresa tus datos. </p>';
             formulario();
 
         }

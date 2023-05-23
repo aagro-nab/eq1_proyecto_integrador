@@ -19,17 +19,21 @@
             return $input;
         }
 
+        $usuario = asignar("usuario");
         $nombre = asignar("nombre");
         $num_cuenta = asignar("num_cuenta");
         $correo = asignar("correo");
         $contraseña = asignar("contraseña");
         $grupo = asignar("grupo");
+        $recuerdame = (isset($_POST["recuerdame"]) && $_POST["recuerdame"] != "")? true : false;
         
+        echo $usuario.'<br>';
         echo $nombre.'<br>';
         echo $num_cuenta.'<br>';
         echo $correo.'<br>';
         echo $contraseña.'<br>';
         echo $grupo.'<br>';
+        echo $recuerdame.'<br>';
 
     ?>
 </body>
