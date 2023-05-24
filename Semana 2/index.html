@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesion</title>
+</head>
+<body>
+    <table align="center">
+        <thead >
+            <tr>
+                <th><h1>Iniciar Sesion</h1></th>
+            </tr>
+        </thead>
+    </table>
+    <form align="center" action="./dynamics/formulario.php" method="post" target="blank">
+        <fieldset>
+                <label>Nombre de usuario:<br><input type="text" name="NombreDeUsuario" required placeholder="user.name.123"></label>
+                <br><br>
+                <label>Correo electronico:<br><input type="email" name="email" required placeholder="usuario@alumno.enp.unam.mx"></label>
+                <br><br>
+                <label>Codigo de seguridad:<br><input type="password" name="Contra" maxlength="16" required placeholder="Password"></label>
+                <br><br>
+                <button type="submit">Iniciar sesion</button>
+                <button type="reset">Borrar</button>
+                <button type="button">No tengo sesion, registarme</button>
+        </fieldset>
+    </form>
+</body>
+</html>
