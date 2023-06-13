@@ -1,3 +1,8 @@
-# eq1_proyecto_integrador
-proyecto integrador del equipo 1 para el curso web 👺
-semana 1 - wireframes basicos + maquetado básico
+# PROYECTO INTEGRADOR CURSO WEB
+## Equipo 1 
+### semana 1 
+- Wireframes basicos
+- Maquetado básico
+### semana 2
+- Bases de datos 
+- Wireframes de otras vistas
