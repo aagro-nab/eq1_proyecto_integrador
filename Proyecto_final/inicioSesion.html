@@ -5,20 +5,25 @@
     <title>Inicia sesión</title>
     <link rel="stylesheet" href="statics/Style.css">
 </head>
-<body>
+<body style="background-image: url('./statics/img/Login.png'); background-position: center; background-size: 100% 100%;">
     <main class="Registros">
         <article class="iniciosesion">
             <form>
-                <label for="login-username">Nombre de usuario / e-mail / número de cuenta:</label><br>
-                <input type="text" id="login-username" name="login-username"><br>
+                <p class="titulo-s" id="titulo-iniciosesion">Iniciar sesión</p>
+              
+                <p class="texto-m">Nombre de usuario / e-mail / número de cuenta:</p>
+                <input type="text" class="input-datos" id="login-username" name="login-username">
 
-                <label for="login-password">Contraseña:</label><br>
-                <input type="password" id="login-password" name="login-password"><br>
+                <p class="texto-m" for="login-password">Contraseña:</p>
+                <input type="password" class="input-datos" id="login-password" name="login-password">
+                <div class="row">
+                  <input type="checkbox" id="remember-me" name="remember-me">
+                  <p class="texto-m">Recordar usuario</p>
+                </div>
 
-                <input type="checkbox" id="remember-me" name="remember-me">
-                <label for="remember-me">Recordar usuario</label><br>
-
-                <input type="submit" value="Iniciar sesión"><br>
+                <div class="row-center">
+                  <button type="submit" class="boton-submit" value="Iniciar sesión">¡Vamos!</button><br>
+                </div>
 
                 <a href="#">¿Olvidaste tu contraseña?</a>
             </form>
