@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Seleeción del rol</title>
-    <link rel="stylesheet" href="statics/Style.css">
+    <link rel="stylesheet" href="./statics/styles/seleccionRol.css">
 </head>
 <body>
     <main class="Registros">
 
         <article class="Recordatorio">
             
-            <p>Bienvenid@ al sistema multiproposito de prepa 6</p>
+            <p class="titulo-xs">Bienvenid@ al sistema multiproposito de la Prepa 6</p>
+            <hr>
             <p>Por favor selecciona tu rol para ser dirigido al registro correspondiente</p>
 
         </article>
@@ -18,13 +19,13 @@
         <article class="Formulario">
 
             <form id="seleccionRol">
-                <select id="role" name="role">
-                    <option value="Rol">Selecciona una rol</option>
+                <select class="seleccion" id="role" name="role">
+                    <option value="Rol">Selecciona un rol</option>
                     <option value="Estudiante">Estudiante</option>
                     <option value="Moderador">Moderador</option>
                     <option value="Admin">Administrador</option>
-                </select> <br>
-                <input type="submit" value="Iniciar sesión">
+                </select>
+                <button class="boton-submit" type="submit">Listo</button>
             </form>
 
         </article>

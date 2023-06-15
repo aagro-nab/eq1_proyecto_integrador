@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Administrador</title>
-  <link rel="stylesheet" href="statics/Style.css">
+  <link rel="stylesheet" href="statics/styles/registro.css">
 </head>
 <body>
   <main class="Registros">
@@ -11,6 +11,7 @@
     <article class="Recordatorio">
 
       <p>Estimado Administrador@, por favor ingresa los datos correspondientes, recuerda que tu número de cuenta debe de estar vigente, por lo que si eres de generaciones pasadas, no podrás entrar.</p>
+      <hr>
       <p>Recuerda que en contraseña debes poner la clave proporcionada por tu organización.</p>
 
     </article>
@@ -18,35 +19,39 @@
 
       <form action="inicioSesion.html">
 
-        <label for="nombre">Nombre:</label><br>
-        <input class="Botexto" type="text" id="nombre" name="nombre"><br>
+        <p class="texto-m">Nombre:</p>
+        <input class="input-datos" type="text" id="nombre" name="nombre">
 
-        <label for="username">Nombre de usuario:</label><br>
-        <input class="Botexto" type="text" id="username" name="username"><br>
+        <p class="texto-m">Nombre de usuario:</p>
+        <input class="input-datos" type="text" id="username" name="username">
 
-        <label for="nCuenta">Número de cuenta:</label><br>
-        <input class="Botexto" type="text" id="nCuenta" name="nCuenta"><br>
+        <p class="texto-m">Número de cuenta:</p>
+        <input class="input-datos" type="text" id="nCuenta" name="nCuenta">
 
-        <label for="email">Email:</label><br>
-        <input class="Botexto" type="email" id="email" name="email"><br>
+        <p class="texto-m">Email:</p>
+        <input class="input-datos" type="email" id="email" name="email">
 
-        <label for="contraseña">Contraseña:</label><br>
-        <input class="Botexto" type="password" id="contraseña" name="contraseña"><br>
+        <p class="texto-m">Contraseña:</p>
+        <input class="input-datos" type="text" id="contraseña" name="contraseña">
 
-        <label for="grupo">Grupo:</label><br>
-        <input class="Botexto" type="text" id="grupo" name="grupo"><br>
+        <p class="texto-m">Grupo:</p>
+        <input class="input-datos" type="text" id="grupo" name="grupo">
 
-        <input class="Botexto" type="checkbox" id="recordar" name="recordar">
-        <label for="recordar">Recordar usuario</label><br><br>
+        <!-- <div class="row">
+          <input class="remember-me" type="checkbox" id="recordar" name="recordar">
+          <p >Recordar usuario</p>
+        </div> -->
 
-        <input type="submit" value="Registrarse"><br><br>
+        <div class="row-center">
+          <button type="submit" class="boton-submit" value="Registrarse">Registrarse</button>
+        </div>
 
-        <a href="#">¿Olvidaste tu contraseña?</a><br>
+        <!-- <a href="#">¿Olvidaste tu contraseña?</a><br> -->
         <a href="#">¿Tienes duda en alguno de los campos?</a><br><br>
 
       </form>
 
-      <button class="Roles" onclick="window.location.href='seleccionRol.html';">Seleccionar Rol de Nuevo</button>
+      <a href="./seleccionRol.html" class="Roles">Seleccionar Rol de Nuevo</a>
       
     </article>
 
