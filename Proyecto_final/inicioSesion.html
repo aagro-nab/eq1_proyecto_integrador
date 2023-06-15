@@ -5,30 +5,31 @@
   <meta charset="UTF-8">
   <title>Inicia sesión</title>
   <link rel="stylesheet" href="./statics/styles/inicioSesion.css">
+  <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Escudo_enp_6.svg/927px-Escudo_enp_6.svg.png" type="image/x-icon">
 </head>
 
 <body>
   <main class="Registros">
     <article class="iniciosesion" >
       <form >
-        <p class="titulo-s" id="titulo-iniciosesion" tabindex="0">Iniciar sesión</p>
+        <p class="titulo-s" id="titulo-iniciosesion" tabindex="1">Iniciar sesión</p>
 
         <p class="texto-m">Nombre de usuario / e-mail / número de cuenta:</p>
-        <input tabindex="1" type="text" class="input-datos" id="login-username" name="login-username" >
+        <input tabindex="2" type="text" class="input-datos" id="login-username" name="login-username" >
 
         <p class="texto-m" for="login-password">Contraseña:</p>
-        <input tabindex="2" type="password" class="input-datos" id="login-password" name="login-password">
+        <input tabindex="3" type="password" class="input-datos" id="login-password" name="login-password">
         
-        <div class="row" tabindex="3">
-          <input type="checkbox" id="remember-me" name="remember-me">
+        <div class="row" >
+          <input type="checkbox" id="remember-me" name="remember-me"tabindex="4">
           <p class="texto-m">Recordar usuario</p>
         </div>
 
         <div class="row-center">
-          <button type="submit" class="boton-submit" value="Iniciar sesión" tabindex="4">¡Vamos!</button><br>
+          <button type="submit" class="boton-submit" value="Iniciar sesión" tabindex="5">¡Vamos!</button><br>
         </div>
 
-        <a href="#" tabindex="5">¿Olvidaste tu contraseña?</a>
+        <a href="#" tabindex="6">¿Olvidaste tu contraseña?</a>
       </form>
     </article>
   </main>
