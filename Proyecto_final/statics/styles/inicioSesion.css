@@ -39,6 +39,10 @@
 body
 {
     background-color: #3d3e61;
+    background-image: url(../img/Login.png);
+    
+    background-position: center; 
+    background-size: 100% 100%;
     font-family: "Inter Medium";
 
     /* font-family: Arial, Helvetica, sans-serif; */
