@@ -1,0 +1,231 @@
+/* -------------------- Fuentes -------------------- */
+
+/* Cuerpo */
+@font-face {
+    font-family: "Inter Regular";
+    src: url("../fonts/Inter-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Inter Medium";
+    src: url("../fonts/Inter-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Inter Bold";
+    src: url("../fonts/Inter-SemiBold.ttf");
+}
+
+/* Titulos */
+@font-face {
+    font-family: "Tommy Regular";
+    src: url("../fonts/Tommy-Soft-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Tommy Medium";
+    src: url("../fonts/Tommy-Soft-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Tommy Bold";
+    src: url("../fonts/Tommy-Soft-Bold.ttf");
+}
+
+
+
+/* -------------------- Body -------------------- */
+
+body
+{
+    background-color: #3d3e61;    
+    background-position: center; 
+    background-size: 100% 100%;
+    font-family: "Inter Medium";
+
+    /* font-family: Arial, Helvetica, sans-serif; */
+
+    margin: 0%;
+}
+
+/* -------------------- Main -------------------- */
+
+main.Registros
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    height: 40rem;
+}
+
+main{
+    color: white;
+}
+
+/* ---------- Cuadros de registros ---------- */
+
+/* si */
+article.Recordatorio
+{
+    background-color: #888787;
+
+    align-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
+    display: flex;
+
+    border-radius: 5%;
+    padding: 2rem;
+    margin: 3rem;
+    margin-top: 1rem;
+    height: 30rem;
+    width: 24rem;
+}
+
+article.Formulario
+{
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+    display: flex;
+
+    border-radius: 5%;
+    padding: 1rem;
+    margin: 3rem;
+    margin-top: 0px;
+    height: 30rem;
+    width: 27rem;
+}
+
+/* ---------- Botones ---------- */
+
+    /* Estos dos elementos necesitan revision */
+    /* button.Botexto
+    {
+        background-color: #ffffff;
+
+        width: 15rem;
+    }
+
+    button.Botexto:active
+    {
+        background-color: #EED995;
+
+        width: 15rem;
+    } */
+    /*---------------------------------------- */
+
+button.boton-submit{
+    font-family: "Tommy Bold";
+    font-size: 22px;
+    color: #4042a5;
+    background-color: #D9D9D9;
+    border-radius: 30px;
+    border-width: 0px;
+    height: 2rem;
+    width: 15rem;
+    margin: 20px;
+    margin-top: 40px;
+}
+
+
+/* -------------------- Footer --------------------- */
+
+footer.Registros
+{
+    background-color: #bdbdbd;
+
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: nowrap;
+    display: flex;
+
+    height: 5rem;
+}
+
+article.Avisolegal
+{
+    width: 100%;
+    font-size: 12px;
+}
+
+/* -------------------- Texto --------------------- */
+
+.texto-m{
+    margin-bottom: 5px;
+    margin-top: 20px;
+    opacity: 80%;
+    border-width: 0px;
+}
+
+/* -------------------- Organizadores de texto --------------------- */
+
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.row-center{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---------- Inputs ----------- */
+
+.input-datos{
+    border-radius: 30px;
+    border-width: 0px;
+    width: 22rem;
+    height: 30px;
+    background-color: #D9D9D9;
+    display: block
+
+}
+
+.remember-me{
+    width: 25px;
+    height: 25px;
+}
+
+a{
+    color: #6566c0;
+}
+
+/* ---------- Elementos ----------- */
+
+hr{
+    width: 30rem;
+    height: 4px;
+    background-color: #3d3e61;
+    /* color: #4042a5; */
+    border-width: 0px;
+}
+
+
+/* ---------- Pantalla Reactiva ----------- */
+
+    /* Elemento a revision 
+    
+    @media and (max-width: 1200px)
+    {
+        main.Registros
+        {
+        
+            flex-direction: column;
+            height: auto;
+
+        }   
+
+        article.Recordatorio
+        {
+            height: 10rem;
+        }    
+    }
+    --------------------------------------*/
+    

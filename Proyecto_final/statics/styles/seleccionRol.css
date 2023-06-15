@@ -38,8 +38,8 @@
 
 body
 {
-    background-color: #3d3e61;
-    background-image: url(../img/Login.png);
+    background-color: #364073;
+    /* background-image: url(../img/Login.png); */
     
     background-position: center; 
     background-size: 100% 100%;
@@ -60,40 +60,27 @@ main.Registros
     align-content: center;
     flex-wrap: wrap;
     height: 40rem;
+    color: white;
 }
 
 /* ---------- Cuadros de registros ---------- */
-
-article.iniciosesion
-{
-    background-color: #888787;
-    color: white;
-
-    justify-content: center;
-    /* align-content: center; */
-    flex-wrap: wrap;
-    display: flex;
-
-    border-radius: 30px;
-    padding: 1rem;
-    height: 28rem;
-    width: 40rem;
-}
 
 article.Recordatorio
 {
     background-color: #888787;
 
-    align-content: space-around;
-    justify-content: center;
+    align-content:center;
+    gap: 3rem;
+    /* justify-content: center; */
     flex-wrap: wrap;
     display: flex;
 
     border-radius: 5%;
-    padding: 1rem;
+    padding: 2rem;
     margin: 3rem;
+    margin-top: 1rem;
     height: 30rem;
-    width: 30rem;
+    width: 24rem;
 }
 
 article.Formulario
@@ -105,9 +92,9 @@ article.Formulario
 
     border-radius: 5%;
     padding: 1rem;
-    margin: 3rem;
+    margin: 1rem;
     height: 30rem;
-    width: 30rem;
+    width: 25rem;
 }
 
 /* ---------- Botones ---------- */
@@ -132,7 +119,6 @@ button.Roles
 {
     height: 2rem;
     width: 15rem;
-
 }
 
 button.boton-submit{
@@ -143,8 +129,9 @@ button.boton-submit{
     border-radius: 30px;
     border-width: 0px;
     height: 2rem;
-    width: 15rem;
-    margin: 20px;
+    width: 20rem;
+    /* margin: 20px; */
+    margin-top: 40px;
 }
 
 
@@ -171,65 +158,40 @@ article.Avisolegal
 
 /* -------------------- Texto --------------------- */
 
-#titulo-iniciosesion{
+.titulo-xs{
     font-family: "Tommy Medium";
     text-align: center;
-    font-size: 52px;
+    font-size: 45px;
+    margin: 0px;
     color: rgb(255, 255, 255);
-    margin-top: 2rem;
-    margin-bottom: 3rem;
-}
-
-.titulo-s{
-    font-family: "Tommy Medium";
-    text-align: center;
-    font-size: 50px;
-    color: rgb(255, 255, 255);
-}
-
-.texto-m{
-    margin: 16px;
-    opacity: 80%;
-    border-width: 0px;
 }
 
 a{
-    color: #4042a5;
-}
-
-/* -------------------- Organizadores de texto --------------------- */
-
-.row{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-}
-
-.row-center{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    color: #6566c0;
 }
 
 /* ---------- Inputs ----------- */
 
-.input-datos{
+.seleccion{
+    font-family: "Inter Regular";
     border-radius: 30px;
-    border-width: 0px;
+    background-color: #4042a5;
+    color: white;
+    border-width: 3px;
+    border-color: white;
+    width: 20rem;
+    height: 45px;
+}
+
+/* ---------- Elementos ----------- */
+
+hr{
     width: 30rem;
-    height: 35px;
-    background-color: #D9D9D9;
-    display: block
-
+    height: 4px;
+    background-color: #4042a5;
+    /* color: #4042a5; */
+    border-width: 0px;
 }
-
-#remember-me{
-    width: 25px;
-    height: 25px;
-}
-
 
 /* ---------- Pantalla Reactiva ----------- */
 
