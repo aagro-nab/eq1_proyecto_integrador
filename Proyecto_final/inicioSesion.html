@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Inicia sesión</title>
-    <link rel="stylesheet" href="./statics/styles/inicioSesion.css">
+  <meta charset="UTF-8">
+  <title>Inicia sesión</title>
+  <link rel="stylesheet" href="./statics/styles/inicioSesion.css">
 </head>
-<body >
-    <main class="Registros">
-        <article class="iniciosesion">
-            <form>
-                <p class="titulo-s" id="titulo-iniciosesion">Iniciar sesión</p>
-              
-                <p class="texto-m">Nombre de usuario / e-mail / número de cuenta:</p>
-                <input type="text" class="input-datos" id="login-username" name="login-username">
 
-                <p class="texto-m" for="login-password">Contraseña:</p>
-                <input type="password" class="input-datos" id="login-password" name="login-password">
-                <div class="row">
-                  <input type="checkbox" id="remember-me" name="remember-me">
-                  <p class="texto-m">Recordar usuario</p>
-                </div>
+<body>
+  <main class="Registros">
+    <article class="iniciosesion" >
+      <form >
+        <p class="titulo-s" id="titulo-iniciosesion" tabindex="0">Iniciar sesión</p>
 
-                <div class="row-center">
-                  <button type="submit" class="boton-submit" value="Iniciar sesión">¡Vamos!</button><br>
-                </div>
+        <p class="texto-m">Nombre de usuario / e-mail / número de cuenta:</p>
+        <input tabindex="1" type="text" class="input-datos" id="login-username" name="login-username" >
 
-                <a href="#">¿Olvidaste tu contraseña?</a>
-            </form>
-        </article>
-    </main>
-    
+        <p class="texto-m" for="login-password">Contraseña:</p>
+        <input tabindex="2" type="password" class="input-datos" id="login-password" name="login-password">
+        
+        <div class="row" tabindex="3">
+          <input type="checkbox" id="remember-me" name="remember-me">
+          <p class="texto-m">Recordar usuario</p>
+        </div>
+
+        <div class="row-center">
+          <button type="submit" class="boton-submit" value="Iniciar sesión" tabindex="4">¡Vamos!</button><br>
+        </div>
+
+        <a href="#" tabindex="5">¿Olvidaste tu contraseña?</a>
+      </form>
+    </article>
+  </main>
+
   <footer class="Registros">
 
     <article class="Avisolegal">
@@ -39,9 +42,12 @@
 
     <article class="Avisolegal">
       <h1>AVISO LEGAL</h1>
-      <p>Hecho en México, todos los derechos reservados 2014-2023. Esta página puede ser reproducida con fines no lucrativos, siempre y cuando no se mutile, se cite la fuente completa y su dirección electrónica, de otra forma requiere permiso por escrito de la Institución.</p>
+      <p>Hecho en México, todos los derechos reservados 2014-2023. Esta página puede ser reproducida con fines no
+        lucrativos, siempre y cuando no se mutile, se cite la fuente completa y su dirección electrónica, de otra forma
+        requiere permiso por escrito de la Institución.</p>
     </article>
 
   </footer>
 </body>
+
 </html>

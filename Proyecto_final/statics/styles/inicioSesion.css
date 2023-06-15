@@ -36,11 +36,10 @@
 
 /* -------------------- Body -------------------- */
 
-body
-{
+body {
     background-color: #3d3e61;
-    background-image: url(../img/Login.png); 
-    background-position: center; 
+    background-image: url(../img/Login.png);
+    background-position: center;
     background-size: 100% 100%;
     font-family: "Inter Medium";
 
@@ -51,8 +50,7 @@ body
 
 /* -------------------- Main -------------------- */
 
-main.Registros
-{
+main.Registros {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -63,8 +61,7 @@ main.Registros
 
 /* ---------- Cuadros de registros ---------- */
 
-article.iniciosesion
-{
+article.iniciosesion {
     background-color: #888787;
     color: white;
 
@@ -79,8 +76,7 @@ article.iniciosesion
     width: 40rem;
 }
 
-article.Recordatorio
-{
+article.Recordatorio {
     background-color: #888787;
 
     align-content: space-around;
@@ -95,8 +91,7 @@ article.Recordatorio
     width: 30rem;
 }
 
-article.Formulario
-{
+article.Formulario {
     justify-content: flex-start;
     align-content: center;
     flex-wrap: wrap;
@@ -111,30 +106,28 @@ article.Formulario
 
 /* ---------- Botones ---------- */
 
-    /* Estos dos elementos necesitan revision */
-    button.Botexto
-    {
-        background-color: #ffffff;
+/* Estos dos elementos necesitan revision */
+button.Botexto {
+    background-color: #ffffff;
 
-        width: 15rem;
-    }
+    width: 15rem;
+}
 
-    button.Botexto:active
-    {
-        background-color: #EED995;
+button.Botexto:active {
+    background-color: #EED995;
 
-        width: 15rem;
-    }
-    /*---------------------------------------- */
+    width: 15rem;
+}
 
-button.Roles
-{
+/*---------------------------------------- */
+
+button.Roles {
     height: 2rem;
     width: 15rem;
 
 }
 
-button.boton-submit{
+button.boton-submit {
     font-family: "Tommy Bold";
     font-size: 22px;
     color: #4042a5;
@@ -149,8 +142,7 @@ button.boton-submit{
 
 /* -------------------- Footer --------------------- */
 
-footer.Registros
-{
+footer.Registros {
     background-color: #bdbdbd;
 
     justify-content: space-around;
@@ -161,15 +153,14 @@ footer.Registros
     height: 10rem;
 }
 
-article.Avisolegal
-{
+article.Avisolegal {
     width: 70rem;
 
 }
 
 /* -------------------- Texto --------------------- */
 
-#titulo-iniciosesion{
+#titulo-iniciosesion {
     font-family: "Tommy Medium";
     text-align: center;
     font-size: 52px;
@@ -178,14 +169,14 @@ article.Avisolegal
     margin-bottom: 3rem;
 }
 
-.titulo-s{
+.titulo-s {
     font-family: "Tommy Medium";
     text-align: center;
     font-size: 50px;
     color: rgb(255, 255, 255);
 }
 
-.texto-m{
+.texto-m {
     margin: 16px;
     opacity: 80%;
     border-width: 0px;
@@ -193,14 +184,14 @@ article.Avisolegal
 
 /* -------------------- Organizadores de texto --------------------- */
 
-.row{
+.row {
     display: flex;
     flex-direction: row;
     align-items: center;
 
 }
 
-.row-center{
+.row-center {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -209,17 +200,16 @@ article.Avisolegal
 
 /* ---------- Inputs ----------- */
 
-.input-datos{
+.input-datos {
     border-radius: 30px;
     border-width: 0px;
     width: 30rem;
     height: 35px;
     background-color: #D9D9D9;
     display: block
-
 }
 
-#remember-me{
+#remember-me {
     width: 25px;
     height: 25px;
 }
@@ -227,7 +217,7 @@ article.Avisolegal
 
 /* ---------- Pantalla Reactiva ----------- */
 
-    /* Elemento a revision 
+/* Elemento a revision 
     
     @media and (max-width: 1200px)
     {
@@ -245,4 +235,3 @@ article.Avisolegal
         }    
     }
     --------------------------------------*/
-    
