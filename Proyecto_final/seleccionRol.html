@@ -18,9 +18,9 @@
 
         <article class="Formulario">
 
-            <form id="seleccionRol">
-                <select class="seleccion" id="role" name="role">
-                    <option value="Rol">Selecciona un rol</option>
+            <form id="seleccionRol" method="post" target="_self">
+                <select class="seleccion" id="role" name="role" >
+                    <option disabled selected>Selecciona un rol</option>
                     <option value="Estudiante">Estudiante</option>
                     <option value="Moderador">Moderador</option>
                     <option value="Admin">Administrador</option>
@@ -48,7 +48,7 @@
     <script>
         document.getElementById('role').addEventListener('change', function() {
             var form = document.getElementById('seleccionRol');
-            if (this.value === 'Estudiante') form.action = 'registroAlumno.html';
+            if (this.value === 'Estudiante') form.action = './dynamics/php/registroAlumno.php';
             else if (this.value === 'Moderador') form.action = 'registroModerador.html';
             else if (this.value === 'Admin') form.action = 'registroAdmin.html';
             });

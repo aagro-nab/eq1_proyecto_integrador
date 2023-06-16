@@ -42,7 +42,7 @@
 
         <article class="Formulario">
 
-        <form action="inicioSesion.php" method="post" target="_self">
+        <form action="paginaPrincipal.php" method="post" target="_self">
 
             <p class="texto-m">Nombre completo:</p>
             <input class="input-datos" type="text" id="nombre" name="nombre" required>
