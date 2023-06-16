@@ -20,7 +20,7 @@
 
     if (!isset ($rol))
     {
-        header ("location:../../seleccionRol.html");
+        header ("location:./seleccionRol.php");
     } else 
     {
         $_SESSION["Rol"] = $rol;
@@ -42,7 +42,7 @@
 
         <article class="Formulario">
 
-        <form action="paginaPrincipal.php" method="post" target="_self">
+        <form action="./paginaPrincipal.php" method="post" target="_self">
 
             <p class="texto-m">Nombre completo:</p>
             <input class="input-datos" type="text" id="nombre" name="nombre" required>
@@ -74,7 +74,7 @@
 
         </form>
 
-        <a href="./seleccionRol.html" class="Roles">Seleccionar Rol de Nuevo</a>
+        <a href="./seleccionRol.php" class="Roles">Seleccionar Rol de Nuevo</a>
 
         </article>
     </main>
