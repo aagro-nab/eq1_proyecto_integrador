@@ -4,8 +4,8 @@ include ("./config.php");
 $con = connect();
 session_start();
 
-// Funcion para verificar que si exista un valor dentro de el select que se recibio en el archivo seleccionRol.html
-//se supone que desde ahi se revisa que solo se introduzca alguno de los valores permitidos, pero por si las dudas
+// Funcion para verificar que si exista un valor dentro de el select que se recibio en el archivo seleccionRol.html 
+//se supone que desde ahi se revisa que solo se introduzca alguno de los valores permitidos, pero por si las dudas 
 //aqui tambien se verifica que no sea nulo
 function asignar($input) {
     $input = (isset($_POST[$input]) && $_POST[$input] != "")? $_POST[$input] : NULL;
