@@ -161,9 +161,12 @@ article.Formulario a {
     }
     article.Recordatorio, article.Formulario {
         font-size: 1.5rem; /* Aumenta el tamaño de fuente para resoluciones más grandes */
-        width: 100%; /* Restablece el ancho de los elementos 'article' a 100% para pantallas más pequeñas */
+        width: 90%; /* Restablece el ancho de los elementos 'article' a 100% para pantallas más pequeñas */
         margin-right: 0; /* Restablece los márgenes para pantallas más pequeñas */
         margin-left: 0;
-        margin-bottom: 30px; /* Mantiene el espacio en la parte inferior para separar cuando se pone en una columna */
+        margin-bottom: 50px; /* Separa cunado es una columna*/
+    }
+    footer.Registros {
+        text-align: justify;
     }
 }
