@@ -1,30 +1,24 @@
 <?php
-    //Conexion con la base de datos en este archivo no se usa pero ya se conecto correctamente
-    $include = include ("./config.php");
-    $con = connect();
-    session_start ();
+//Conexion con la base de datos en este archivo no se usa pero ya se conecto correctamente
+include ("./config.php");
+$con = connect();
+session_start();
 
-    // Funcion para verificar que si exista un valor dentro de el select que se recibio en el archivo seleccionRol.html 
-    //se supone que desde ahi se revisa que solo se introduzca alguno de los valores permitidos, pero por si las dudas 
-    //aqui tambien se verifica que no sea nulo
-        function asignar($input)
-        {
-            $input = (isset($_POST[$input]) && $_POST[$input] != "")? $_POST[$input] : NULL;
-            return $input;
-        }
+// Funcion para verificar que si exista un valor dentro de el select que se recibio en el archivo seleccionRol.html
+//se supone que desde ahi se revisa que solo se introduzca alguno de los valores permitidos, pero por si las dudas
+//aqui tambien se verifica que no sea nulo
+function asignar($input) {
+    $input = (isset($_POST[$input]) && $_POST[$input] != "")? $_POST[$input] : NULL;
+    return $input;
+}
 
-        $rol = asignar("role");
+$rol = asignar("role");
 
-    
-    //En caso de que no exista un valor en rol, te dirige siempre al html inicial, en caso de que si exista crea una sesion con el rol
-
-    if (!isset ($rol))
-    {
-        header ("location:./seleccionRol.php");
-    } else 
-    {
-        $_SESSION["Rol"] = $rol;
-
+//En caso de que no exista un valor en rol, te dirige siempre al html inicial, en caso de que si exista crea una sesion con el rol
+if (!isset($rol)) {
+    header("location:./seleccionRol.php");
+} else {
+    $_SESSION["Rol"] = $rol;
     echo'<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -95,7 +89,5 @@
     
     </body>
     </html>';
-    }
-
-
+}
 ?>

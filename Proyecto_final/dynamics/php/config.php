@@ -1,7 +1,7 @@
 <?php
     const DBHOST = "localhost";
-    const DBUSER = "root";
-    const PASSWORD = "karen"; //QUITAR PASSWORD
+    const DBUSER = "equipo01";
+    const PASSWORD = "equser01all"; //QUITAR PASSWORD
     const DB = "proyectoFinal"; 
     function connect ()
     {

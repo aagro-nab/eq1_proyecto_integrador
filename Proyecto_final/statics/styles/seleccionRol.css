@@ -51,7 +51,7 @@ main {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    padding: 20px;
+    padding: 30px;
     box-sizing: border-box;
 }
 
@@ -91,23 +91,7 @@ main {
 }
 
 /* ---------- Select y Botón ----------- */
-.registro-input {
-    display: block;
-    width: 100%;
-    padding: 10px 15px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 50px;
-    font-size: 15px;
-    background-color: #f0f0f0;
-    transition: background-color 0.3s ease;
-    box-sizing: border-box;
-}
-.registro-input:focus {
-    background-color: #e0e0f0;
-    outline: none;
-}
-.registro-btn {
+a.boton-submit {
     display: block;
     width: 100%;
     padding: 10px 15px;
@@ -116,12 +100,15 @@ main {
     border-radius: 50px;
     color: #fff;
     background-color: #4042a5;
+    text-decoration: none; /* quita el subrayado de los enlaces */
+    text-align: center; /* centra el texto dentro del enlace */
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-size: 1.2em;
     box-sizing: border-box;
 }
-.registro-btn:hover {
+
+a.boton-submit:hover {
     background-color: #5a6198;
 }
 
