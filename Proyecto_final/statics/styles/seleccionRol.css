@@ -41,7 +41,7 @@ body {
 }
 
 hr {
-    width: 90%;
+    width: 91%;
 }
 
 /* -------------------- Main -------------------- */
@@ -58,7 +58,7 @@ main {
 /* ---------- Registro Articles ---------- */
 .registro-article {
     background-color: rgba(255, 255, 255, 0.1);
-    display: flex;
+    display: block;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -91,8 +91,9 @@ main {
 }
 
 /* ---------- Select y Botón ----------- */
-a.boton-submit {
-    display: block;
+a.boton-submit, button.boton-submit {
+    display: flex;
+    align-items: center;
     width: 100%;
     padding: 10px 15px;
     margin-bottom: 20px;
@@ -100,17 +101,19 @@ a.boton-submit {
     border-radius: 50px;
     color: #fff;
     background-color: #4042a5;
+    justify-content: center;
     text-decoration: none; /* quita el subrayado de los enlaces */
-    text-align: center; /* centra el texto dentro del enlace */
+    text-align: justify; /* centra el texto dentro del enlace */
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-size: 1.2em;
     box-sizing: border-box;
 }
 
-a.boton-submit:hover {
+a.boton-submit:hover,button.boton-submit:hover {
     background-color: #5a6198;
 }
+
 
 /* -------------------- Footer -------------------- */
 footer {

@@ -15,9 +15,18 @@ echo '<!DOCTYPE html>
         <p id="registro-desc">Por favor selecciona tu rol para ser dirigido al registro correspondiente</p>
     </article>
     <article class="Formulario registro-article">
-        <a href="./registroAlumno.php" class="boton-submit registro-btn">Estudiante</a>
-        <a href="./registroModerador.php" class="boton-submit registro-btn">Moderador</a>
-        <a href="./registroAdmin.php" class="boton-submit registro-btn">Administrador</a>
+        <form action="./registroAlumno.php" method="post">
+            <input type="hidden" name="role" value="Estudiante">
+            <button type="submit" class="boton-submit registro-btn">Estudiante</button>
+        </form>
+        <form action="./registroModerador.php" method="post">
+            <input type="hidden" name="role" value="Moderador">
+            <button type="submit" class="boton-submit registro-btn">Moderador</button>
+        </form>
+        <form action="./registroAdmin.php" method="post">
+            <input type="hidden" name="role" value="Administrador">
+            <button type="submit" class="boton-submit registro-btn">Administrador</button>
+        </form>
     </article>
   </main>
   <footer class="Registros">
@@ -35,10 +44,8 @@ echo '<!DOCTYPE html>
     <h1>AVISO LEGAL</h1>
     <p>Este sitio web y su contenido son propiedad de los creadores de la página y están protegidos por las leyes de derechos de autor:</p>
     <ul>
-      <li>Todo el contenido y las imágenes en este sitio son propiedad de los creadores de la página y no pueden ser utilizados, copiados, reproducidos, distribuidos, transmitidos, difundidos, mostrados, vendidos, licenciados o explotados de ninguna manera sin el previo consentimiento por escrito.</li>
-      <li>El uso no autorizado de este sitio puede dar lugar a reclamaciones de daños y/o a una acción penal.</li>
-      <li>Los creadores del sitio no aceptan ninguna responsabilidad por el contenido de los enlaces externos. Los operadores de las páginas enlazadas son los únicos responsables de su contenido.</li>
-      <li>Si tienes alguna pregunta o preocupación, por favor ponte en contacto con nosotros a través del formulario de contacto en el sitio.</li>
+      <li>Todo el contenido y las imágenes en este sitio son propiedad de los creadores de la página y no pueden ser usados, distribuidos, modificados, reproducidos, publicados o transmitidos sin el previo consentimiento por escrito de los creadores de la página.</li>
+      <li>El acceso no autorizado, el uso o la alteración de este sitio web, su contenido o los sistemas de seguridad pueden resultar en enjuiciamiento civil y/o criminal.</li>
     </ul>
   </article>
   </footer>
