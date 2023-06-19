@@ -17,6 +17,7 @@
   } else 
   {
     $_SESSION["Rol"] = $rol;
+    echo $_SESSION["Rol"];
     echo '<!DOCTYPE html>
     <html lang="en">
       <head>

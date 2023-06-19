@@ -1,4 +1,4 @@
-<?php
+<?php 
 const HOST="localhost";
 const USER="equipo01";
 const PASS="equser01all";
