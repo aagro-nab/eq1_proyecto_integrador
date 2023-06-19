@@ -1,30 +1,24 @@
 <?php
-    //Conexion con la base de datos en este archivo no se usa pero ya se conecto correctamente
-    $include = include ("./config.php");
-    $con = connect();
-    session_start ();
+//Conexion con la base de datos en este archivo no se usa pero ya se conecto correctamente
+include ("./config.php");
+$con = connect();
+session_start();
 
-    // Funcion para verificar que si exista un valor dentro de el select que se recibio en el archivo seleccionRol.html 
-    //se supone que desde ahi se revisa que solo se introduzca alguno de los valores permitidos, pero por si las dudas 
-    //aqui tambien se verifica que no sea nulo
-        function asignar($input)
-        {
-            $input = (isset($_POST[$input]) && $_POST[$input] != "")? $_POST[$input] : NULL;
-            return $input;
-        }
+// Funcion para verificar que si exista un valor dentro de el select que se recibio en el archivo seleccionRol.html 
+//se supone que desde ahi se revisa que solo se introduzca alguno de los valores permitidos, pero por si las dudas 
+//aqui tambien se verifica que no sea nulo
+function asignar($input) {
+    $input = (isset($_POST[$input]) && $_POST[$input] != "")? $_POST[$input] : NULL;
+    return $input;
+}
 
-        $rol = asignar("role");
+$rol = asignar("role");
 
-    
-    //En caso de que no exista un valor en rol, te dirige siempre al html inicial, en caso de que si exista crea una sesion con el rol
-
-    if (!isset ($rol))
-    {
-        header ("location:./seleccionRol.php");
-    } else 
-    {
-        $_SESSION["Rol"] = $rol;
-
+//En caso de que no exista un valor en rol, te dirige siempre al html inicial, en caso de que si exista crea una sesion con el rol
+if (!isset($rol)) {
+    header("location:./seleccionRol.php");
+} else {
+    $_SESSION["Rol"] = $rol;
     echo'<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -82,20 +76,29 @@
     <footer class="Registros">
 
         <article class="Avisolegal">
-        <h1>CONDICIONES DE USO</h1>
-        <p>Pertenecer y ser alumno y/o autoridad activa de la preparatoria no.6 Antonio Caso</p>
+            <h1>CONDICIONES DE USO</h1>
+            <p>El acceso y uso de este sitio web está sujeto a las siguientes condiciones de uso:</p>
+            <ul>
+              <li>El usuario debe ser miembro activo de la Escuela Nacional Preparatoria Plantel 6 "Antonio Caso".</li>
+              <li>Los usuarios deben comprometerse a interactuar de manera respetuosa y considerada con todos los demás miembros de la comunidad.</li>
+              <li>El acoso, el lenguaje ofensivo, el contenido inapropiado y la violación de la privacidad de otros usuarios no será tolerado y puede resultar en la terminación de la cuenta del usuario.</li>
+              <li>El uso de la información y los recursos proporcionados en este sitio web es solo para uso personal y no comercial.</li>
+            </ul>
         </article>
-
         <article class="Avisolegal">
-        <h1>AVISO LEGAL</h1>
-        <p>Hecho en México, todos los derechos reservados 2014-2023. Esta página puede ser reproducida con fines no lucrativos, siempre y cuando no se mutile, se cite la fuente completa y su dirección electrónica, de otra forma requiere permiso por escrito de la Institución.</p>
+            <h1>AVISO LEGAL</h1>
+            <p>Este sitio web y su contenido son propiedad de los creadores de la página y están protegidos por las leyes de derechos de autor:</p>
+            <ul>
+              <li>Todo el contenido y las imágenes en este sitio son propiedad de los creadores de la página y no pueden ser utilizados, copiados, reproducidos, distribuidos, transmitidos, difundidos, mostrados, vendidos, licenciados o explotados de ninguna manera sin el previo consentimiento por escrito.</li>
+              <li>El uso no autorizado de este sitio puede dar lugar a reclamaciones de daños y/o a una acción penal.</li>
+              <li>Los creadores del sitio no aceptan ninguna responsabilidad por el contenido de los enlaces externos. Los operadores de las páginas enlazadas son los únicos responsables de su contenido.</li>
+              <li>Si tienes alguna pregunta o preocupación, por favor ponte en contacto con nosotros a través del formulario de contacto en el sitio.</li>
+            </ul>
         </article>
 
     </footer>
     
     </body>
     </html>';
-    }
-
-
+}
 ?>

@@ -52,7 +52,7 @@ main.Registros {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 30px;
     box-sizing: border-box;
 }
 
@@ -138,12 +138,13 @@ article.Recordatorio:hover, article.Formulario:hover {
 }
 
 /* -------------------- Footer -------------------- */
-footer.Registros {
+footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around; /* Se distribuye el espacio alrededor de los elementos */
     background-color: rgba(255, 255, 255, 0.1);
     color: #D9D9D9;
     padding: 1rem;
+    gap: 2rem; /* Espacio entre los elementos del contenedor */
 }
 
 /* ---------- Link de ayuda ---------- */
@@ -166,7 +167,10 @@ article.Formulario a {
         margin-left: 0;
         margin-bottom: 50px; /* Separa cunado es una columna*/
     }
-    footer.Registros {
-        text-align: justify;
+    footer {
+        flex-direction: column; /* Se muestra en columna en pantallas pequeñas */
+        align-items: center; /* Centra los elementos en pantallas pequeñas */
+        text-align: justify; /* Justifica el texto en pantallas pequeñas */
+        gap: 1rem; /* Espacio entre los elementos del contenedor en pantallas pequeñas */
     }
 }

@@ -5,7 +5,7 @@ body
 main
 {
     display: flex;
-    height: 100%;
+    height: auto;
     width: 100%;
     margin-top: 15rem;
     position: fixed;

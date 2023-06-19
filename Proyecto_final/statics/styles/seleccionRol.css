@@ -41,7 +41,7 @@ body {
 }
 
 hr {
-    width: 90%;
+    width: 91%;
 }
 
 /* -------------------- Main -------------------- */
@@ -51,14 +51,14 @@ main {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    padding: 20px;
+    padding: 30px;
     box-sizing: border-box;
 }
 
 /* ---------- Registro Articles ---------- */
 .registro-article {
     background-color: rgba(255, 255, 255, 0.1);
-    display: flex;
+    display: block;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -91,24 +91,9 @@ main {
 }
 
 /* ---------- Select y Botón ----------- */
-.registro-input {
-    display: block;
-    width: 100%;
-    padding: 10px 15px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 50px;
-    font-size: 15px;
-    background-color: #f0f0f0;
-    transition: background-color 0.3s ease;
-    box-sizing: border-box;
-}
-.registro-input:focus {
-    background-color: #e0e0f0;
-    outline: none;
-}
-.registro-btn {
-    display: block;
+a.boton-submit, button.boton-submit {
+    display: flex;
+    align-items: center;
     width: 100%;
     padding: 10px 15px;
     margin-bottom: 20px;
@@ -116,14 +101,19 @@ main {
     border-radius: 50px;
     color: #fff;
     background-color: #4042a5;
+    justify-content: center;
+    text-decoration: none; /* quita el subrayado de los enlaces */
+    text-align: justify; /* centra el texto dentro del enlace */
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-size: 1.2em;
     box-sizing: border-box;
 }
-.registro-btn:hover {
+
+a.boton-submit:hover,button.boton-submit:hover {
     background-color: #5a6198;
 }
+
 
 /* -------------------- Footer -------------------- */
 footer {
