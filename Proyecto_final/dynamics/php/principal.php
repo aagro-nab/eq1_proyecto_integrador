@@ -4,19 +4,18 @@
     <title>Sidebar Template</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../../statics/styles/principal.css">
-    <script src="../js/principal.js"></script>
 </head>
 <body>
 <header>
     <nav>
         <img src="../../statics/img/p6logoblanco.png" alt="Logo de Coyote6" width="80" height="80">
         <div>
-            <button><i class="fas fa-forumbee"></i><span class="button-text"> Foros</span></button>
-            <button><i class="fas fa-question-circle"></i><span class="button-text"> Preguntas</span></button>
-            <button><i class="fas fa-tags"></i><span class="button-text"> Ventas</span></button>
-            <button><i class="fas fa-search"></i><span class="button-text"> Extravíos</span></button>
-            <button><i class="fas fa-gamepad"></i><span class="button-text"> Gaming</span></button>
-            <button><i class="fas fa-shopping-cart"></i><span class="button-text"> Market</span></button>
+            <button id="forosButton"><i class="fas fa-people"></i><span class="button-text"> Foros</span></button>
+            <button id="preguntasButton"><i class="fas fa-question-circle"></i><span class="button-text"> Preguntas</span></button>
+            <button id="ventasButton"><i class="fas fa-tags"></i><span class="button-text"> Ventas</span></button>
+            <button id="extraviosButton"><i class="fas fa-search"></i><span class="button-text"> Extravíos</span></button>
+            <button id="gamingButton"><i class="fas fa-gamepad"></i><span class="button-text"> Gaming</span></button>
+            <button id="marketButton"><i class="fas fa-shopping-cart"></i><span class="button-text"> Market</span></button>
         </div>
     </nav>
 </header>
@@ -31,10 +30,13 @@
         <a href="#" class="btn"><i class="fas fa-calendar-alt"></i><span class="button-text"> Calendario</span></a>
         <a href="#" class="btn"><i class="fas fa-envelope"></i><span class="button-text"> Mensajes</span></a>
         <a href="#" class="btn"><i class="fas fa-map"></i><span class="button-text"> Mapa</span></a>
-        <hr>
-        <a href="#" class="btn2"><i class="fas fa-plus"></i><span class="button-text"> Crear nuevo</span></a>
-        <a href="#" class="btn2"><i class="fas fa-link"></i><span class="button-text"> Usar enlace de invitación</span></a>
+        <hr id="hrButton" style="display: none;">
+        <a href="#" id="crearNuevoButton" class="btn2" style="display: none;"><i class="fas fa-plus"></i><span class="button-text"></span></a>
+        <a href="#" id="crearNuevoButton2" class="btn2" style="display: none;"><i class="fas fa-link"></i><span class="button-text"></span></a>
+        <a href="#" id="crearNuevoButton3" class="btn2" style="display: none;"><i class="fas fa-link"></i><span class="button-text"></span></a>
+        <a href="#" id="crearNuevoButton4" class="btn2" style="display: none;"><i class="fas fa-link"></i><span class="button-text"></span></a>
     </div>
 </main>
+<script src="../js/principalAlumno.js"></script>
 </body>
 </html>
