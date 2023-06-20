@@ -16,16 +16,14 @@
 |DATABASES |  Karen y Jesús |
 |Seguridad | Fany y Ame |
 ****************
-<details>
-    <summary>
-         ## Índice 
-    </summary>
-    <ol>
-        <li>
-            <a href="#Descripción-del-proyecto">Descripción del proyecto</a>
-        </li>
-    </ol>   
-</details>
+## Índice 
+- [Descripción del proyecto](Descripción-del-proyecto)
+- [Para comenzar...](Para-comenzar...)
+    - [Registro](Registro)
+        - [Registro para Moderadores](Registro-para-Moderadores)
+    - [Iniciar Sesión](Iniciar-Sesión)
+- [Instalación del proyecto y la DATABASE](Instalación-del-proyecto-y-la-DATABASE)
+
 
 ## Descripción del proyecto
 > Nuestro objetivo es poder brindarle a la comunidad de Prepa 6 un espacio dónde se pueda expresar libremente y con respeto. NOSEOWEJKPR
