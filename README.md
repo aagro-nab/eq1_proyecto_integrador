@@ -35,3 +35,35 @@
     Se requieren los siguientes datos, si los cumples esté  registro es el ideal para ti (^_^)
 2. ### Iniciar Sesión 
 - Querido usuario, se te pedira que ingreses los siguientes datos para iniciar sesión :
+## Instalación del proyecto y la DATABASE
+1.   Clonar el repositorio de Github 
+```Aquí irian los comandos para clonarlo
+```
+2.  Instalar la base de datos en MariaDB
+```cmd
+-- el respaldo de la DB tiene que estar en -> /xampp/mysql/bin
+-- ahora entramos en MariaDB
+
+cd C:/xampp/mysql/bin
+mysql -u root --default-character-set=utf8
+
+-- ya en Maria DB ejecutamos los siguientes comandos
+
+SET names 'utf8';
+CREATE DATABASE PROYECTO CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+SHOW DATABASES;
+USE PROYECTO; -- esta es la DB vacía 
+SOURCE PROYECTO.sql; -- ponemos el respaldo de nuestra DB
+```
+### Avances durante el transcurso de las clases del Curso Web:
+1. #### semana 1 
+    - Wireframes basicos
+    - Maquetado básico
+2.  #### semana 2
+    - Bases de datos 
+    - Wireframes de otras vistas
+## Fonts
+tengo que checars
+## Licencia
+pues aquí 
+
