@@ -46,7 +46,7 @@
     Se requieren los siguientes datos, si los cumples esté  registro es el ideal para ti (^_^)
     - ### Registro para Administradores
     Se requieren los siguientes datos, si los cumples esté  registro es el ideal para ti (^_^)
-- [back to top](#equipo-1)
+- [back to top](#proyecto-integrador-curso-web)
 ### Iniciar sesión 
 - Querido usuario, se te pedira que ingreses los siguientes datos para iniciar sesión:
     1. Nombre de usuario
@@ -86,8 +86,5 @@ SOURCE PROYECTO.sql; //ponemos el respaldo de nuestra DB
 2.  #### semana 2
     - Bases de datos 
     - Wireframes de otras vistas
-## Fonts
-tengo que checars
 ## Licencia
-pues aquí 
-
+Distributed under the MIT License. See `LICENSE.txt` for more information.
