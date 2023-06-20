@@ -1,0 +1,104 @@
+/* -------------------- Fuentes -------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+/* -------------------- Body -------------------- */
+body {
+    background-color: #3d3e61;
+    background-position: center;
+    background-size: cover;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #4042a5;
+}
+
+header input[type="search"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 20px;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.botonesmain {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 0 20px;
+}
+
+.botonesmain button {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    color: #fff;
+    background-color: #4042a5;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+aside {
+    width: 20%;
+    margin-right: 20px;
+}
+
+aside figure {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+aside nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Botonesmenu {
+    background-color: #4042a5;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.Botonesmenu img {
+    margin-right: 10px;
+}
+
+.Publicacion {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+.Publicacion + .Publicacion {
+    margin-top: 20px;
+}
