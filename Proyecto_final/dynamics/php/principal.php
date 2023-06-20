@@ -38,5 +38,6 @@
     </div>
 </main>
 <script src="../js/principalAdmin.js"></script>
+<script src="../js/modales.js"></script>
 </body>
 </html>

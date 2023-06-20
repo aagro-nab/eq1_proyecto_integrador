@@ -35,6 +35,7 @@ function changeView(view) {
             crearNuevoButton4.style.display = 'block';
             crearNuevoButton5.style.display = 'none';
             crearNuevoButton6.style.display = 'none';
+            crearNuevoButton.addEventListener('click', crearForo);
             break;
         case 'Preguntas':
             crearNuevoButton.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Crear pregunta</span>";
