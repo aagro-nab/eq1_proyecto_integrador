@@ -140,8 +140,8 @@ footer {
 article.iniciosesion a {
     display: block;
     text-align: center;
-    color: #ffffff; /* Cambia el color de la fuente aquí si es necesario */
-    text-decoration: underline;
+    color: #ffffff;
+
 }
 
 /* ============================ Responsividad ============================= */
