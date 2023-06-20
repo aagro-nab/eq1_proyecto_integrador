@@ -1,0 +1,150 @@
+/* Estilos generales */
+body {
+    background-image: url(../img/background2.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Estilos de la barra lateral */
+.sidebar {
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    margin-left: 5%;
+}
+
+.sidebar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrar texto en botones */
+}
+
+.sidebar a i {
+    margin-right: 10px;
+}
+
+.sidebar hr {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.sidebar .btn, .btn2{
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.sidebar .btn{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.sidebar .btn:hover .btn2:hover {
+    background-color: #aaa;
+    color: #fff;
+}
+
+/* -------------------- Nav -------------------- */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    z-index: 1;
+}
+
+nav img {
+    margin-right: auto;
+}
+
+nav button {
+    background-color: #4042a5;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 5px;
+}
+
+nav button:hover {
+    background-color: #5a6198;
+}
+
+/* Responsividad */
+@media (max-width: 720px) {
+    .sidebar {
+        width: 70px;
+        padding: 10px;
+    }
+    .sidebar img {
+        width: 90%;
+        height: 90%;
+    }
+
+    .sidebar h3, .sidebar p, .sidebar hr, .sidebar a span {
+        display: none;
+    }
+
+    .sidebar .btn {
+        justify-content: center; /* Ícono centrado cuando el texto está oculto */
+    }
+    nav {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav button {
+        width: auto;
+        margin: 5px;
+    }
+
+    nav button span {
+        display: none;
+    }
+}

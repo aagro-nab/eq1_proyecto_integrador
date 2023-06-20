@@ -8,7 +8,6 @@
     $input = (isset($_POST[$input]) && $_POST[$input] != "")? $_POST[$input] : NULL;
     return $input;
   }
-
   $rol = asignar("role");
 
   if (!isset ($rol))
