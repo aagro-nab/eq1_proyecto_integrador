@@ -25,6 +25,7 @@ if (!isset($rol)) {
         <meta charset="UTF-8">
         <title>Alumno</title>
         <link rel="stylesheet" href="../../statics/styles/registro.css">
+        <script src="../js/registro.js"></script>
     </head>
     <body>
     <main class="Registros">
@@ -54,7 +55,9 @@ if (!isset($rol)) {
             <input class="input-datos" type="password" id="contraseña" name="contraseña" minlength="8"  maxlength="16" required>
 
             <p class="texto-m">Grupo:</p>
-            <input class="input-datos" type="text" id="grupo" name="grupo"  minlength="3"  maxlength="3" required>
+              <select id="grupo" name="grupo"></select> <br><br>';
+              // <input class="input-datos" type="text" id="grupo" name="grupo" minlength="3"  maxlength="3" required>
+            echo '
 
             <!-- <input class="Botexto" type="checkbox" id="recordar" name="recordar">
             <label for="recordar">Recordar usuario</label><br><br> -->
