@@ -31,13 +31,12 @@ if($include && $con){
         switch($r){
             case "estudiante":
                 header("location:./paginaPrincipal.php");
-                echo  "owo";
                 break;
             case "moderador":
-                header("location:[pagina para moderadores]");
+                header("location:[pagina para moderadores]");//cambiar a la pagina correcta
                 break;
             case "administrador":
-                header("location:[pagina para administradores]");
+                header("location:[pagina para administradores]");//cambiar a la pagina correcta
                 break;
         }
     }else{
