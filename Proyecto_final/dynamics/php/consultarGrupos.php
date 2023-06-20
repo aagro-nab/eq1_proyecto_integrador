@@ -9,6 +9,7 @@
     {
         echo "No se puedo conectar la base";
     }else{
+        //REVISAR/CAMBIAR nombres de tabla y/o datos (grupo_id, grupo_name)
         $sql =  "SELECT grupo_id, grupo_name FROM grupo"; //Seleccionar el Id de los grupos y el nombre de los grupos
         $res = mysqli_query($conexion, $sql);
         $respuesta = [];
