@@ -46,6 +46,7 @@
     Se requieren los siguientes datos, si los cumples esté  registro es el ideal para ti (^_^)
     - ### Registro para Administradores
     Se requieren los siguientes datos, si los cumples esté  registro es el ideal para ti (^_^)
+- [back to top](#equipo-1)
 ### Iniciar sesión 
 - Querido usuario, se te pedira que ingreses los siguientes datos para iniciar sesión:
     1. Nombre de usuario
