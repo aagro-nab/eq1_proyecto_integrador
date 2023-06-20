@@ -18,17 +18,10 @@
 |Seguridad | Fany y Ame |
 ****************
 ## Índice 
-- [Descripción del proyecto](Descripción-del-proyecto)
-- [Para comenzar...](Para-comenzar...)
-    - [Registro](Registro)
-        - [Registro para Moderadores](Registro-para-Moderadores)
-    - [Iniciar Sesión](Iniciar-Sesión)
-- [Instalación del proyecto y la DATABASE](Instalación-del-proyecto-y-la-DATABASE)
-
+- aaah aun no sale
 
 ## Descripción del proyecto
 > Nuestro objetivo es poder brindarle a la comunidad de Prepa 6 un espacio dónde se pueda expresar libremente y con respeto. NOSEOWEJKPR
-- [back to top](PROYECTO-INTEGRADOR-CURSO-WEB)
 ## Para comenzar...
 - El proyecto se encuentra en la carpeta **Proyecto_final**
 - Para comenzar con la experiencia abre el `index.html`
