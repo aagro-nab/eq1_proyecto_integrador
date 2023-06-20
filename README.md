@@ -30,6 +30,7 @@
 ## Descripción del proyecto 
 > Nuestro objetivo es poder brindarle a la comunidad de Prepa 6 un espacio dónde se pueda expresar libremente y con respeto.
 > En este espacio podemos destacar que te servira como herramienta para conversar sobre tus temas favoritos con más personas, publicar en el foro especifico de cosas perdidas para que tenga mayor visibilidad y sea encontrado lo mas pronto posible ademas de que si eres una persona que venda algun producto dentro de nuestra institución podras promocionarte y tener al tanto a tus clientes de tus nuevos productos así como de tus horarios disponibles para vender.
+- [back to top](#proyecto-integrador-curso-web)
 ## Para comenzar...
 - El proyecto se encuentra en la carpeta [Proyecto_final](Proyecto_final)
 - Para comenzar con la experiencia abre el `index.html`
@@ -85,6 +86,7 @@ SHOW DATABASES;
 USE PROYECTO; //esta es la DB vacía 
 SOURCE PROYECTO.sql; //ponemos el respaldo de nuestra DB
 ```
+- [back to top](#proyecto-integrador-curso-web)
 ### Seguimiento semanal:
 1. #### semana 1 
     - Wireframes basicos
@@ -94,3 +96,4 @@ SOURCE PROYECTO.sql; //ponemos el respaldo de nuestra DB
     - Wireframes de otras vistas
 ## Licencia
 Distributed under the MIT License. See `LICENSE.txt` for more information.
+- [back to top](#proyecto-integrador-curso-web)
