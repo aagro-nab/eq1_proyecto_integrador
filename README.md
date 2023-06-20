@@ -16,8 +16,17 @@
 |DATABASES |  Karen y Jesús |
 |Seguridad | Fany y Ame |
 ****************
-## Índice 
-- que rabia aun no se como se hacen pero tendremos índice 
+<details>
+    <summary>
+         ## Índice 
+    </summary>
+    <ol>
+        <li>
+            <a href="#Descripción-del-proyecto">Descripción del proyecto</a>
+        </li>
+    </ol>   
+</details>
+
 ## Descripción del proyecto
 > Nuestro objetivo es poder brindarle a la comunidad de Prepa 6 un espacio dónde se pueda expresar libremente y con respeto. NOSEOWEJKPR
 ## Para comenzar...
