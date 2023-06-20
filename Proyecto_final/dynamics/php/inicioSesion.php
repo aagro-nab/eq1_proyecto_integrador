@@ -4,7 +4,7 @@ $include = include("./config.php");
 $con = connect();
 session_start();
 
-//recibe los datos de index.html
+//recibe los datos de inicioSesion.html
 $username = (isset($_POST["login-username"] && $_POST["login-username"] != ""): NULL);
 $pswrd = (isset($_POST["login-password"] && $_POST["login-password"] != ""): NULL);
 $remember = (isset($_POST["remember-me"] && $_POST["remember-me"] != ""): NULL);
