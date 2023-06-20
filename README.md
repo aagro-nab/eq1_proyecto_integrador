@@ -1,4 +1,5 @@
 # PROYECTO INTEGRADOR CURSO WEB
+#readme-top
 ## Equipo 1 
 1. Aguilar Rojo Ameyalli **(Ame)**
 2. Morales Olivares Stephanie Guadalupe **(Fany)**
@@ -17,7 +18,8 @@
 |Seguridad | Fany y Ame |
 ****************
 ## Índice 
-- que rabia aun no se como se hacen pero tendremos índice 
+- aaah aun no sale
+
 ## Descripción del proyecto
 > Nuestro objetivo es poder brindarle a la comunidad de Prepa 6 un espacio dónde se pueda expresar libremente y con respeto. NOSEOWEJKPR
 ## Para comenzar...
