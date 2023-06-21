@@ -11,11 +11,14 @@
     }
 
     $rol = asignar("role");
+    //echo $rol;
 
   if (!isset ($rol))
   {
     header ("location:./seleccionRol.php");
-  } else 
+  } 
+  
+  else 
   {
     $_SESSION["Rol"] = $rol;
     echo '<!DOCTYPE html>
@@ -37,7 +40,7 @@
           </article>
           <article class="Formulario">
       
-            <form action="./paginaPrincipal.php" method="post" target="_self">
+            <form action="./revisionInsert.php" method="post" target="_self">
       
               <p class="texto-m">Nombre:</p>
               <input class="input-datos" type="text" id="nombre" name="nombre" required>
@@ -54,9 +57,16 @@
               <p class="texto-m">Contraseña:</p>
               <input class="input-datos" type="password" id="contraseña" name="contraseña" minlength="8"  maxlength="16" required>
       
+              <p class="texto-m">Grado:</p>
+              <label for="grado"></label>
+              <select id="grado" name="grado">
+                  <option class="input-datos" value="cuarto">Cuarto</option>
+                  <option class="input-datos" value="quinto">Quinto</option>
+                  <option class="input-datos" value="sexto">Sexto</option>
+              </select>
+  
               <p class="texto-m">Grupo:</p>
-              <input class="input-datos" type="text" id="grupo" name="grupo"   minlength="3"  maxlength="3" required>
-      
+
               <!-- <input type="checkbox" id="recordar" name="recordar">
               <label for="recordar">Recordar usuario</label><br><br> -->
       

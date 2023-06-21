@@ -17,7 +17,7 @@
   } else 
   {
     $_SESSION["Rol"] = $rol;
-    echo $_SESSION["Rol"];
+    //echo $_SESSION["Rol"];
     echo '<!DOCTYPE html>
     <html lang="en">
       <head>
@@ -37,7 +37,7 @@
           </article>
           <article class="Formulario">
       
-            <form action="./paginaPrincipal.php" method="post">
+          <form action="./revisionInsert.php" method="post" target="_self">
       
               <p class="texto-m">Nombre completo:</p>
               <input class="input-datos" type="text" id="nombre" name="nombre" required>
@@ -54,8 +54,15 @@
               <p class="texto-m">Contraseña:</p>
               <input class="input-datos" type="password" id="contraseña" name="contraseña" minlength="8"  maxlength="16" required>
       
+              <p class="texto-m">Grado:</p>
+              <label for="grado"></label>
+              <select id="grado" name="grado">
+                  <option class="input-datos" value="cuarto">Cuarto</option>
+                  <option class="input-datos" value="quinto">Quinto</option>
+                  <option class="input-datos" value="sexto">Sexto</option>
+              </select>
+  
               <p class="texto-m">Grupo:</p>
-              <input class="input-datos" type="text" id="grupo" name="grupo" minlength="3"  maxlength="3" required>
       
               <!-- <div class="row">
                 <input class="remember-me" type="checkbox" id="recordar" name="recordar">
