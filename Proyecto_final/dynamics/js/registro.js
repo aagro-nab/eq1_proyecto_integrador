@@ -4,7 +4,7 @@ window.addEventListener("load", ()=>{
     const formRegistro = document.getElementById("formRegistro");
 
     //fetch: asigna los grupos almacenados en la base de datos al select del formulario de registro
-    fetch("../php/consultarGrupos.php")
+    fetch("../php/desplegarGrupos.php")
     .then((respuesta)=>{
         return respuesta.json();
     }).then((datosJSON)=>{

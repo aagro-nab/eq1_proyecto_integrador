@@ -25,7 +25,6 @@ if (!isset($rol)) {
         <meta charset="UTF-8">
         <title>Alumno</title>
         <link rel="stylesheet" href="../../statics/styles/registro.css">
-        <script src="../js/registro.js"></script>
     </head>
     <body>
     <main class="Registros">
@@ -37,7 +36,7 @@ if (!isset($rol)) {
 
         <article class="Formulario">
 
-        <form action="./paginaPrincipal.php" method="post" target="_self">
+        <form action="./desplegarGrupos.php" method="post" target="_self">
 
             <p class="texto-m">Nombre completo:</p>
             <input class="input-datos" type="text" id="nombre" name="nombre" required>
@@ -54,10 +53,18 @@ if (!isset($rol)) {
             <p class="texto-m">Contraseña:</p>
             <input class="input-datos" type="password" id="contraseña" name="contraseña" minlength="8"  maxlength="16" required>
 
+            <p class="texto-m">Grado:</p>
+            <label for="grado"></label>
+            <select id="grado" name="grado">
+                <option class="input-datos" value="cuarto">Cuarto</option>
+                <option class="input-datos" value="quinto">Quinto</option>
+                <option class="input-datos" value="sexto">Sexto</option>
+            </select>
+
             <p class="texto-m">Grupo:</p>
-              <select id="grupo" name="grupo"></select> <br><br>';
-              // <input class="input-datos" type="text" id="grupo" name="grupo" minlength="3"  maxlength="3" required>
-            echo '
+            
+            
+
 
             <!-- <input class="Botexto" type="checkbox" id="recordar" name="recordar">
             <label for="recordar">Recordar usuario</label><br><br> -->
@@ -75,6 +82,32 @@ if (!isset($rol)) {
 
         </article>
     </main>
+
+    <footer class="Registros">
+
+        <article class="Avisolegal">
+            <h1>CONDICIONES DE USO</h1>
+            <p>El acceso y uso de este sitio web está sujeto a las siguientes condiciones de uso:</p>
+            <ul>
+              <li>El usuario debe ser miembro activo de la Escuela Nacional Preparatoria Plantel 6 "Antonio Caso".</li>
+              <li>Los usuarios deben comprometerse a interactuar de manera respetuosa y considerada con todos los demás miembros de la comunidad.</li>
+              <li>El acoso, el lenguaje ofensivo, el contenido inapropiado y la violación de la privacidad de otros usuarios no será tolerado y puede resultar en la terminación de la cuenta del usuario.</li>
+              <li>El uso de la información y los recursos proporcionados en este sitio web es solo para uso personal y no comercial.</li>
+            </ul>
+        </article>
+        <article class="Avisolegal">
+            <h1>AVISO LEGAL</h1>
+            <p>Este sitio web y su contenido son propiedad de los creadores de la página y están protegidos por las leyes de derechos de autor:</p>
+            <ul>
+              <li>Todo el contenido y las imágenes en este sitio son propiedad de los creadores de la página y no pueden ser utilizados, copiados, reproducidos, distribuidos, transmitidos, difundidos, mostrados, vendidos, licenciados o explotados de ninguna manera sin el previo consentimiento por escrito.</li>
+              <li>El uso no autorizado de este sitio puede dar lugar a reclamaciones de daños y/o a una acción penal.</li>
+              <li>Los creadores del sitio no aceptan ninguna responsabilidad por el contenido de los enlaces externos. Los operadores de las páginas enlazadas son los únicos responsables de su contenido.</li>
+              <li>Si tienes alguna pregunta o preocupación, por favor ponte en contacto con nosotros a través del formulario de contacto en el sitio.</li>
+            </ul>
+        </article>
+
+    </footer>
+    
     </body>
     </html>';
 }

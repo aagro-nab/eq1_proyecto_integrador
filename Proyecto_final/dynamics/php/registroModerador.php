@@ -1,45 +1,48 @@
 <?php
+
   $include = include ("./config.php");
   $con = connect();
   session_start ();
 
-  function asignar($input)
-  {
-    $input = (isset($_POST[$input]) && $_POST[$input] != "")? $_POST[$input] : NULL;
-    return $input;
-  }
+    function asignar($input)
+    {
+      $input = (isset($_POST[$input]) && $_POST[$input] != "")? $_POST[$input] : NULL;
+      return $input;
+    }
 
-  $rol = asignar("role");
+    $rol = asignar("role");
+    //echo $rol;
 
   if (!isset ($rol))
   {
     header ("location:./seleccionRol.php");
-  } else 
+  } 
+  
+  else 
   {
     $_SESSION["Rol"] = $rol;
-    //echo $_SESSION["Rol"];
     echo '<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8">
-        <title>Administrador</title>
+        <title>Moderador</title>
         <link rel="stylesheet" href="../../statics/styles/registro.css">
       </head>
       <body>
         <main class="Registros">
-      
+          
           <article class="Recordatorio">
       
-            <p>Estimado Administrador@, por favor ingresa los datos correspondientes, recuerda que tu número de cuenta debe de estar vigente, por lo que si eres de generaciones pasadas, no podrás entrar.</p>
+            <p>Estimado moderador@, por favor ingresa los datos correspondientes, recuerda que tu número de cuenta debe de estar vigente, por lo que si eres de generaciones pasadas, no podrás entrar.</p>
             <hr>
-            <p>Recuerda que en contraseña debes poner la clave proporcionada por tu organización.</p>
+            <p>Asimismo, tu número de cuenta debió de haber sido dado de alta previamente para que la plataforma te permita el acceso, de lo contrario, no podrás entrar.</p>
       
           </article>
           <article class="Formulario">
       
-          <form action="./revisionInsert.php" method="post" target="_self">
+            <form action="./revisionInsert.php" method="post" target="_self">
       
-              <p class="texto-m">Nombre completo:</p>
+              <p class="texto-m">Nombre:</p>
               <input class="input-datos" type="text" id="nombre" name="nombre" required>
       
               <p class="texto-m">Nombre de usuario:</p>
@@ -63,11 +66,9 @@
               </select>
   
               <p class="texto-m">Grupo:</p>
-      
-              <!-- <div class="row">
-                <input class="remember-me" type="checkbox" id="recordar" name="recordar">
-                <p >Recordar usuario</p>
-              </div> -->
+
+              <!-- <input type="checkbox" id="recordar" name="recordar">
+              <label for="recordar">Recordar usuario</label><br><br> -->
       
               <div class="row-center">
                 <button type="submit" class="boton-submit" value="Registrarse">Registrarse</button>
@@ -78,10 +79,9 @@
       
             </form>
       
-            <a href="./seleccionRol.html" class="Roles">Seleccionar Rol de Nuevo</a>
-            
-          </article>
+            <a href="./seleccionRol.php" class="Roles">Seleccionar Rol de Nuevo</a>
       
+          </article>
         </main>
         
         <footer class="Registros">
