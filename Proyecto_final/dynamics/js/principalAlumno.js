@@ -27,10 +27,11 @@ function changeView(view) {
         case 'Foros':
 
             crearNuevoButton.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Crear foro</span>";
-            crearNuevoButton2.innerHTML = "<i class='fas fa-sign-out-alt'></i><span class='button-text'> Salir de un foro</span>";
+            crearNuevoButton2.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Crear publicacion</span>";
+            crearNuevoButton3.innerHTML = "<i class='fas fa-sign-out-alt'></i><span class='button-text'> Salir de un foro</span>";
             crearNuevoButton.style.display = 'block';
             crearNuevoButton2.style.display = 'block';
-            crearNuevoButton3.style.display = 'none';
+            crearNuevoButton3.style.display = 'block';
             crearNuevoButton4.style.display = 'none';
             crearNuevoButton5.style.display = 'none';
             crearNuevoButton6.style.display = 'none';

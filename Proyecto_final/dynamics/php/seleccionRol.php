@@ -19,10 +19,6 @@ echo '<!DOCTYPE html>
             <input type="hidden" name="role" value="Estudiante">
             <button type="submit" class="boton-submit registro-btn">Estudiante</button>
         </form>
-        <form action="./registroModerador.php" method="post">
-            <input type="hidden" name="role" value="Moderador">
-            <button type="submit" class="boton-submit registro-btn">Moderador</button>
-        </form>
         <form action="./registroAdmin.php" method="post">
             <input type="hidden" name="role" value="Administrador">
             <button type="submit" class="boton-submit registro-btn">Administrador</button>

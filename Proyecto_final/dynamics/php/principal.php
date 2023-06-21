@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sidebar Template</title>
+    <title>Página Principal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../../statics/styles/principal.css">
 </head>
@@ -38,6 +38,10 @@
     </div>
 </main>
 <script src="../js/principalAdmin.js"></script>
-<script src="../js/modales.js"></script>
+<script src="../js/modalesGenerales.js"></script>
+<script src="../js/modalesForos.js"></script>
+<script src="../js/modalesPreguntas.js"></script>
+<script src="../js/modalesExtravios.js"></script>
+<script src="../js/modalesMarket.js"></script>
 </body>
 </html>
