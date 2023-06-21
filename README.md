@@ -33,8 +33,7 @@
 - [back to top](#proyecto-integrador-curso-web)
 ## Para comenzar...
 - El proyecto se encuentra en la carpeta [Proyecto_final](Proyecto_final)
-- Para comenzar con la experiencia abre el `index.html`
-- Para su comodidad como usuario abre nuestro landing page y comienza a navegar
+- Para su comodidad como usuario abre nuestro landing page uqe se encuentra en el archivo `index.html` y comienza a navegar
 ### Registro
 - Encuentra tú forma de registro correcto sí es la primera vez que nos visitas, si no es el caso ve a la sección _Iniciar Sesión_.
 - Se te pediran los siguientes datos en ambos casos, por favor tenlos a la mano.

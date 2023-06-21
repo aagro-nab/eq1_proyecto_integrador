@@ -1,63 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicia sesión</title>
-  <link rel="stylesheet" href="./statics/styles/inicioSesion.css">
-  <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Escudo_enp_6.svg/927px-Escudo_enp_6.svg.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coyote6</title>
+    <link rel="stylesheet" href="./statics/styles/index.css">
 </head>
 <body>
-<main class="Registros">
-  <article class="iniciosesion">
-    <form method="get" action="./dynamics/php/paginaPrincipal.php" target="_self">
-      <p class="titulo-s" id="titulo-iniciosesion" tabindex="1">Iniciar sesión</p>
+<nav>
+    <img src="./statics/img/p6logoblanco.png" alt="Logo de Coyote6" width="80" height="80">
+    <h1>Coyote6</h1>
+    <div>
+        <button id="botonRegistro">Registro</button>
+        <button id="botonInicioSesion">Iniciar Sesión</button>
+    </div>
+</nav>
 
-      <p class="texto-m">Nombre de usuario / Email :</p>
-      <input tabindex="2" type="text" class="input-datos" id="login-username" name="login-username">
-
-      <p class="texto-m" for="login-password">Contraseña:</p>
-      <input tabindex="3" type="password" class="input-datos" id="login-password" name="login-password">
-
-      <div class="row">
-        <input type="checkbox" id="remember-me" name="remember-me" tabindex="4">
-        <label for="remember-me" class="texto-m">Recordar usuario</label>
-      </div><br>
-
-      <div class="row-center">
-        <button type="submit" class="boton-submit" value="Iniciar sesión" tabindex="5">¡Vamos!</button>
-      </div>
-
-      <div class="row-center">
-        <a href="./dynamics/php/seleccionRol.php" class="boton-submit register-link" tabindex="6">Regístrate</a>
-      </div>
-
-      <a href="#" tabindex="6">¿Olvidaste tu contraseña?</a>
-    </form>
-  </article>
+<main>
+    <section>
+        <img src="./statics/img/conecta.png" alt="Imagen Conéctate" width="300" height="300">
+        <div>
+            <h2>Conéctate, Comparte y Juega en Tu Comunidad Estudiantil</h2><hr>
+            <p>¡Hola, Coyote! Bienvenido a Coyote6, la plataforma exclusiva para los estudiantes de la Preparatoria 6 de la UNAM. Aquí puedes conectar con tus compañeros, compartir tu amor por los videojuegos, discutir tus dudas académicas, encontrar tus cosas perdidas y mucho más.</p>
+        </div>
+    </section>
+    <section>
+        <img src="./statics/img/conversa.png" alt="Imagen Conversa" width="300" height="300">
+        <div>
+            <h2>Conversa Sobre Lo Que Te Apasiona</h2><hr>
+            <p>Desde las últimas tendencias en videojuegos, pasando por discusiones de tus materias favoritas, hasta recomendaciones de comida. Coyote6 es el lugar para compartir y descubrir todo lo que te interesa junto a tus compañeros.</p>
+        </div>
+    </section>
+    <section>
+        <img src="./statics/img/perdisteAlgo.png" alt="Imagen Perdidos" width="300" height="300">
+        <div>
+            <h2>¿Perdiste Algo? ¡Encuéntralo Aquí!</h2><hr>
+            <p>¿Olvidaste tus llaves, tu libro de texto, o tu sudadera favorita? No te preocupes. Publica en Coyote6 y permite que tu comunidad te ayude a encontrar tus pertenencias perdidas.</p>
+        </div>
+    </section>
+    <section>
+        <img src="./statics/img/descubre.png" alt="Imagen Juegos" width="300" height="300">
+        <div>
+            <h2>Descubre Nuevos Juegos y Compañeros de Equipo</h2><hr>
+            <p>Encuentra a tus futuros compañeros de equipo, descubre nuevos videojuegos y comparte tus mejores jugadas. ¡Forma parte de nuestro creciente ecosistema gamer y disfruta de las mejores partidas con tus compañeros Coyote!</p>
+        </div>
+    </section>
+    <section>
+        <img src="./statics/img/comida.png" alt="Imagen Comida" width="300" height="300">
+        <div>
+            <h2>Comparte y Descubre las Mejores Opciones para Comer</h2><hr>
+            <p>¿Buscas el mejor lugar para comer cerca de la prepa o quieres compartir tu nueva receta de snacks para las sesiones de estudio nocturnas? Coyote6 es el lugar ideal para compartir y descubrir las mejores opciones de comida entre la comunidad estudiantil.</p>
+        </div>
+    </section>
+    <section>
+        <img src="./statics/img/comunidad.png" alt="Imagen Comunidad" width="300" height="300">
+        <div>
+            <h2>Sé Parte de Nuestra Comunidad</h2><hr>
+            <p>Coyote6 no es sólo una red social, es tu espacio, tu voz, tu comunidad. Únete hoy y sé parte de esta experiencia única. Recuerda, juntos somos más fuertes, juntos somos Coyote6.</p>
+        </div>
+    </section>
 </main>
 
 <footer class="Registros">
-  <article class="Avisolegal">
-    <h1>CONDICIONES DE USO</h1>
-    <p>El acceso y uso de este sitio web está sujeto a las siguientes condiciones de uso:</p>
-    <ul>
-      <li>El usuario debe ser miembro activo de la Escuela Nacional Preparatoria Plantel 6 "Antonio Caso".</li>
-      <li>Los usuarios deben comprometerse a interactuar de manera respetuosa y considerada con todos los demás miembros de la comunidad.</li>
-      <li>El acoso, el lenguaje ofensivo, el contenido inapropiado y la violación de la privacidad de otros usuarios no será tolerado y puede resultar en la terminación de la cuenta del usuario.</li>
-      <li>El uso de la información y los recursos proporcionados en este sitio web es solo para uso personal y no comercial.</li>
-    </ul>
-  </article>
-  <article class="Avisolegal">
-    <h1>AVISO LEGAL</h1>
-    <p>Este sitio web y su contenido son propiedad de los creadores de la página y están protegidos por las leyes de derechos de autor:</p>
-    <ul>
-      <li>Todo el contenido y las imágenes en este sitio son propiedad de los creadores de la página y no pueden ser utilizados, copiados, reproducidos, distribuidos, transmitidos, difundidos, mostrados, vendidos, licenciados o explotados de ninguna manera sin el previo consentimiento por escrito.</li>
-      <li>El uso no autorizado de este sitio puede dar lugar a reclamaciones de daños y/o a una acción penal.</li>
-      <li>Los creadores del sitio no aceptan ninguna responsabilidad por el contenido de los enlaces externos. Los operadores de las páginas enlazadas son los únicos responsables de su contenido.</li>
-      <li>Si tienes alguna pregunta o preocupación, por favor ponte en contacto con nosotros a través del formulario de contacto en el sitio.</li>
-    </ul>
-  </article>
+    <article class="Avisolegal">
+        <h1>CONDICIONES DE USO</h1>
+        <p>El acceso y uso de este sitio web está sujeto a las siguientes condiciones de uso:</p>
+        <ul>
+            <li>El usuario debe ser miembro activo de la Escuela Nacional Preparatoria Plantel 6 "Antonio Caso".</li>
+            <li>Los usuarios deben comprometerse a interactuar de manera respetuosa y considerada con todos los demás miembros de la comunidad.</li>
+            <li>El acoso, el lenguaje ofensivo, el contenido inapropiado y la violación de la privacidad de otros usuarios no será tolerado y puede resultar en la terminación de la cuenta del usuario.</li>
+            <li>El uso de la información y los recursos proporcionados en este sitio web es solo para uso personal y no comercial.</li>
+        </ul>
+    </article>
+    <article class="Avisolegal">
+        <h1>AVISO LEGAL</h1>
+        <p>Este sitio web y su contenido son propiedad de los creadores de la página y están protegidos por las leyes de derechos de autor:</p>
+        <ul>
+            <li>Todo el contenido y las imágenes en este sitio son propiedad de los creadores de la página y no pueden ser utilizados, copiados, reproducidos, distribuidos, transmitidos, difundidos, mostrados, vendidos, licenciados o explotados de ninguna manera sin el previo consentimiento por escrito.</li>
+            <li>El uso no autorizado de este sitio puede dar lugar a reclamaciones de daños y/o a una acción penal.</li>
+            <li>Los creadores del sitio no aceptan ninguna responsabilidad por el contenido de los enlaces externos. Los operadores de las páginas enlazadas son los únicos responsables de su contenido.</li>
+            <li>Si tienes alguna pregunta o preocupación, por favor ponte en contacto con nosotros a través del formulario de contacto en el sitio.</li>
+        </ul>
+    </article>
 </footer>
 </body>
 </html>

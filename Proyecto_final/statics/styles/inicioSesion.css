@@ -27,7 +27,6 @@
 
 /* -------------------- Body -------------------- */
 body {
-    background-color: #3d3e61;
     background-image: url(../img/Login.png);
     background-position: center;
     background-size: cover;
@@ -140,8 +139,8 @@ footer {
 article.iniciosesion a {
     display: block;
     text-align: center;
-    color: #ffffff; /* Cambia el color de la fuente aquí si es necesario */
-    text-decoration: underline;
+    color: #ffffff;
+
 }
 
 /* ============================ Responsividad ============================= */
