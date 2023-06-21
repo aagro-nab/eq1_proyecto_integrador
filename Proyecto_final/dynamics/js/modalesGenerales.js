@@ -1,29 +1,14 @@
-function crearModal () {
+function crearModal() {
     let modal = document.createElement('div');
-    modal.style.display = 'block';
-    modal.style.position = 'fixed';
-    modal.style.zIndex = '1';
-    modal.style.left = '0';
-    modal.style.top = '0';
-    modal.style.width = '100%';
-    modal.style.height = '100%';
-    modal.style.overflow = 'auto';
-    modal.style.backgroundColor = 'rgba(0,0,0,0.4)';
+    modal.className = 'main-modal';
 
     // Crear el contenido del modal
-    let modalContent = document.createElement('div');
-    modalContent.style.backgroundColor = '#ff6c6c';
-    modalContent.style.margin = '15% auto';
-    modalContent.style.padding = '20px';
-    modalContent.style.border = '1px solid #888';
-    modalContent.style.width = '80%';
+    let modalContent = document.createElement('article');
+    modalContent.className = 'iniciosesion modal-content';
 
     // Agregar un botón de cerrar
-    let close = document.createElement('span');
-    close.style.color = '#aaa';
-    close.style.float = 'right';
-    close.style.fontSize = '28px';
-    close.style.fontWeight = 'bold';
+    let close = document.createElement('button');
+    close.className = 'modal-close';
     close.innerHTML = "&times;";
     close.onclick = function () {
         document.body.removeChild(modal);
@@ -31,6 +16,8 @@ function crearModal () {
     modalContent.appendChild(close);
     return { modal, modalContent };
 }
+
+
 
 function crearPublicacion() {
     let { modal, modalContent } = crearModal();
@@ -73,5 +60,65 @@ function crearPublicacion() {
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
 
+    document.body.appendChild(modal);
+}
+
+function asignarModerador() {
+    let { modal, modalContent } = crearModal();
+
+    let form = document.createElement('form');
+    form.setAttribute('method', 'post');
+
+    let usuarioInput = document.createElement('input');
+    usuarioInput.className = 'input-datos';
+    usuarioInput.setAttribute('type', 'text');
+    usuarioInput.setAttribute('name', 'nombreUsuario');
+    usuarioInput.setAttribute('placeholder', 'Nombre del Usuario');
+    form.appendChild(usuarioInput);
+
+    let submitButton = document.createElement('button');
+    submitButton.className = 'boton-submit';
+    submitButton.setAttribute('type', 'submit');
+    submitButton.innerHTML = 'Asignar como Moderador';
+    form.appendChild(submitButton);
+
+    modalContent.appendChild(form);
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+}
+
+function crearComentario() {
+    let { modal, modalContent } = crearModal();
+
+    let form = document.createElement('form');
+    form.setAttribute('method', 'post');
+
+    let comentarioInput = document.createElement('textarea');
+    comentarioInput.className = 'input-datos';
+    comentarioInput.setAttribute('name', 'contenidoComentario');
+    comentarioInput.setAttribute('placeholder', 'Escribe tu comentario aquí...');
+    form.appendChild(comentarioInput);
+
+    let imagenComentarioInput = document.createElement('input');
+    imagenComentarioInput.className = 'input-datos';
+    imagenComentarioInput.setAttribute('type', 'file');
+    imagenComentarioInput.setAttribute('name', 'imagenComentario');
+    form.appendChild(imagenComentarioInput);
+
+    let emojiComentarioInput = document.createElement('input');
+    emojiComentarioInput.className = 'input-datos';
+    emojiComentarioInput.setAttribute('type', 'text');
+    emojiComentarioInput.setAttribute('name', 'emojiComentario');
+    emojiComentarioInput.setAttribute('placeholder', 'Añade un emoji');
+    form.appendChild(emojiComentarioInput);
+
+    let submitButton = document.createElement('button');
+    submitButton.className = 'boton-submit';
+    submitButton.setAttribute('type', 'submit');
+    submitButton.innerHTML = 'Publicar Comentario';
+    form.appendChild(submitButton);
+
+    modalContent.appendChild(form);
+    modal.appendChild(modalContent);
     document.body.appendChild(modal);
 }

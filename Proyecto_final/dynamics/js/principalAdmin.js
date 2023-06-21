@@ -10,8 +10,10 @@ var crearNuevoButton6 = document.getElementById('crearNuevoButton6');
 
 // Asigna la función de cambio de vista a cada botón
 document.getElementById('forosButton').addEventListener('click', function() {
-    changeView('Foros');
+    localStorage.setItem('activeButton', this.dataset.text);
+    changeView(this.dataset.text);
 });
+
 document.getElementById('preguntasButton').addEventListener('click', function() {
     changeView('Preguntas');
 });
@@ -27,20 +29,22 @@ function changeView(view) {
         case 'Foros':
             crearNuevoButton.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Crear foro</span>";
             crearNuevoButton2.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Crear publicacion</span>";
-            crearNuevoButton3.innerHTML = "<i class='fas fa-edit'></i><span class='button-text'> Editar foro</span>";
-            crearNuevoButton4.innerHTML = "<i class='fas fa-sign-out-alt'></i><span class='button-text'> Salir de un foro</span>";
-            crearNuevoButton5.innerHTML = "<i class='fas fa-user-plus'></i><span class='button-text'> Asignar moderador</span>";
+            crearNuevoButton3.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Editar publicacion</span>";
+            crearNuevoButton4.innerHTML = "<i class='fas fa-edit'></i><span class='button-text'> Editar foro</span>";
+            crearNuevoButton5.innerHTML = "<i class='fas fa-sign-out-alt'></i><span class='button-text'> Salir de un foro</span>";
+            crearNuevoButton6.innerHTML = "<i class='fas fa-user-plus'></i><span class='button-text'> Asignar moderador</span>";
             crearNuevoButton.style.display = 'block';
             crearNuevoButton2.style.display = 'block';
             crearNuevoButton3.style.display = 'block';
             crearNuevoButton4.style.display = 'block';
             crearNuevoButton5.style.display = 'block';
-            crearNuevoButton6.style.display = 'none';
+            crearNuevoButton6.style.display = 'block';
             crearNuevoButton.addEventListener('click', crearForo);
             crearNuevoButton2.addEventListener('click', crearPublicacion);
-            crearNuevoButton3.addEventListener('click', editarForo);
-            crearNuevoButton4.addEventListener('click', salirForo);
-            crearNuevoButton5.addEventListener('click', asignarModerador);
+            crearNuevoButton3.addEventListener('click', editarPublicacion);
+            crearNuevoButton4.addEventListener('click', editarForo);
+            crearNuevoButton5.addEventListener('click', salirForo);
+            crearNuevoButton6.addEventListener('click', asignarModerador);
             break;
         case 'Preguntas':
             crearNuevoButton.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Crear pregunta</span>";

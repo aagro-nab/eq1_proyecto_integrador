@@ -10,10 +10,10 @@
     <nav>
         <img src="../../statics/img/p6logoblanco.png" alt="Logo de Coyote6" width="80" height="80">
         <div>
-            <button id="forosButton"><i class="fas fa-comments"></i><span class="button-text"> Foros</span></button>
-            <button id="preguntasButton"><i class="fas fa-question-circle"></i><span class="button-text"> Preguntas</span></button>
-            <button id="extraviosButton"><i class="fas fa-search"></i><span class="button-text"> Extravíos</span></button>
-            <button id="marketButton"><i class="fas fa-shopping-cart"></i><span class="button-text"> Market</span></button>
+            <button id="forosButton" data-text="Foros"><i class="fas fa-comments"></i><span class="button-text"> Foros</span></button>
+            <button id="preguntasButton" data-text="Preguntas"><i class="fas fa-question-circle"></i><span class="button-text"> Preguntas</span></button>
+            <button id="extraviosButton" data-text="Extravios"><i class="fas fa-search"></i><span class="button-text"> Extravíos</span></button>
+            <button id="marketButton" data-text="Market"><i class="fas fa-shopping-cart"></i><span class="button-text"> Market</span></button>
         </div>
     </nav>
 </header>

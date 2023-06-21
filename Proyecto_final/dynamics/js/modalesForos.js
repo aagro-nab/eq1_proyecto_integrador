@@ -109,4 +109,3 @@ function salirForo() {
     document.body.appendChild(modal);
 }
 
-
