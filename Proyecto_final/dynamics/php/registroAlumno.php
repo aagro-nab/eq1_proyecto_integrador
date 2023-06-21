@@ -25,6 +25,8 @@ if (!isset($rol)) {
         <meta charset="UTF-8">
         <title>Alumno</title>
         <link rel="stylesheet" href="../../statics/styles/registro.css">
+        <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Escudo_enp_6.svg/927px-Escudo_enp_6.svg.png" type="image/x-icon">
+
     </head>
     <body>
     <main class="Registros">
