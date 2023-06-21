@@ -10,8 +10,8 @@
         $input = (isset($_POST[$input]) && $_POST[$input] != "")? $_POST[$input] : NULL;
         return $input; 
     }
-
-     function verificar ($opcion)
+// verifica que si entro un dato
+    function verificar ($opcion)
     {
         if (!isset ($opcion))
         {
