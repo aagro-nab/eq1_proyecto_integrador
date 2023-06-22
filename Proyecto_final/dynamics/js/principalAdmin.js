@@ -105,6 +105,8 @@ function changeView(view) {
             crearNuevoButton9.addEventListener('click', crearNuevoButton9.currentHandler);
             crearNuevoButton10.currentHandler = modificarDatos;
             crearNuevoButton10.addEventListener('click', crearNuevoButton10.currentHandler);
+
+            obtenerPublicaciones(view);
             break;
         case 'Preguntas':
             crearNuevoButton.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Crear pregunta</span>";
@@ -152,6 +154,8 @@ function changeView(view) {
             crearNuevoButton7.addEventListener('click', crearNuevoButton7.currentHandler);
             crearNuevoButton8.currentHandler = modificarDatos;
             crearNuevoButton8.addEventListener('click', crearNuevoButton8.currentHandler);
+
+            obtenerPublicaciones(view);
             break;
         case 'Extravios':
             crearNuevoButton.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Reportar extravío</span>";
@@ -183,6 +187,8 @@ function changeView(view) {
             crearNuevoButton3.addEventListener('click', crearNuevoButton3.currentHandler);
             crearNuevoButton4.currentHandler = asignarModerador;
             crearNuevoButton4.addEventListener('click', crearNuevoButton4.currentHandler);
+
+            obtenerPublicaciones(view);
             break;
         case 'Market':
             crearNuevoButton.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Crear venta</span>";
@@ -214,6 +220,8 @@ function changeView(view) {
             crearNuevoButton3.addEventListener('click', crearNuevoButton3.currentHandler);
             crearNuevoButton4.currentHandler = asignarModerador;
             crearNuevoButton4.addEventListener('click', crearNuevoButton4.currentHandler);
+
+            obtenerPublicaciones(view);
             break;
     }
 

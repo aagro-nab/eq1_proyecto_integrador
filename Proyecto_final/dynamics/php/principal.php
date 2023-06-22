@@ -58,6 +58,20 @@ echo '<!DOCTYPE html>
         <a href="#" id="crearNuevoButton9" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
         <a href="#" id="crearNuevoButton10" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
     </div>
+
+    <!-- contenedor para todas las publicaciones -->
+    <div id="contenedorPublicaciones">
+        <article class="publicacion" style="display: none;">
+            <section class="contenido">
+            </section>
+            <div class="acciones">
+                <button class="comentar">Comentar</button>
+                <button class="editar">Editar</button>
+                <button class="eliminar">Eliminar</button>
+            </div>
+        </article>
+
+    </div>
 </main>
 <script src="../js/'.$rol.'"></script>
 <script src="../js/modalesGenerales.js"></script>

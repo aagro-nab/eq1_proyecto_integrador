@@ -9,6 +9,13 @@ if($cuki && $cuki_rol){
     $_SESSION['rol'] = $_COOKIE['rol'];
     header("location:./principal.php");
 }
+else {
+    header("location: ../../index.html");
+}
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 
 echo '
     <!DOCTYPE html>

@@ -14,6 +14,27 @@ function crearPregunta() {
     submitButton.innerHTML = "Crear Pregunta";
     form.appendChild(submitButton);
 
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        let datosFormulario = new FormData(form);
+        fetch('LIGA A PHP', {
+            method: 'POST',
+            body: datosFormulario
+        })
+            .then(response => response.text())
+            .then(resultado => {
+                if(resultado === '1') {
+                    // Operación exitosa
+                    console.log("La pregunta se ha creado con éxito.");
+                } else {
+                    // Operación fallida
+                    alert("No se pudo crear la pregunta. Inténtalo más tarde.");
+                }
+                document.body.removeChild(modal);
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
 
@@ -36,6 +57,27 @@ function editarPregunta() {
     submitButton.innerHTML = "Guardar Cambios";
     form.appendChild(submitButton);
 
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        let datosFormulario = new FormData(form);
+        fetch('LIGA A PHP', {
+            method: 'POST',
+            body: datosFormulario
+        })
+            .then(response => response.text())
+            .then(resultado => {
+                if(resultado === '1') {
+                    // Operación exitosa
+                    console.log("La pregunta se ha editado con éxito.");
+                } else {
+                    // Operación fallida
+                    alert("No se pudo editar la pregunta. Inténtalo más tarde.");
+                }
+                document.body.removeChild(modal);
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
 
@@ -52,8 +94,25 @@ function eliminarPregunta() {
     let confirmarEliminacionButton = document.createElement('button');
     confirmarEliminacionButton.innerHTML = "Confirmar";
     confirmarEliminacionButton.onclick = function() {
-        // Aquí la lógica para eliminar la pregunta
-        document.body.removeChild(modal);
+        fetch('LIGA A PHP', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({accion: 'eliminar'})
+        })
+            .then(response => response.text())
+            .then(resultado => {
+                if(resultado === '1') {
+                    // Operación exitosa
+                    console.log("La pregunta se ha eliminado con éxito.");
+                } else {
+                    // Operación fallida
+                    alert("No se pudo eliminar la pregunta. Inténtalo más tarde.");
+                }
+                document.body.removeChild(modal);
+            })
+            .catch(error => console.error('Error:', error));
     }
     modalContent.appendChild(confirmarEliminacionButton);
 
