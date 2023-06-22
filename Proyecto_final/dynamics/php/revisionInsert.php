@@ -62,7 +62,7 @@ $email = verificar ($emailtem);
 
 $contraseñatem = asignar ("contraseña");
 $contraseña = verificar ($contraseñatem);
-
+// nadamas para probar
 $grupo = "602";
 
 if (preg_match($name, $nombre) ==1) {
@@ -95,9 +95,15 @@ if (preg_match($pass, $contraseña) ==1) {
     echo("Ingresaste algo no valido con lo solicitado");
 }
 
+$sal = generarSal();
+$pimienta = generarPimienta();
+$contraHash = hashearContra($contraseña.$pimienta.$sal);
+echo $contraseña.$pimienta.$sal."<br>";
+echo "Contraseña: $contraHash <br>";
+
 
 // original, asi estba
-// asi estaba (funciona)y si lo de arriba funciona ya no es necesario-->
+// ya no es necesario
 // $nombretem = asignar("nombre");
 // $nombre = verificar ($nombretem);
 // var_dump ($nombre);
