@@ -1,4 +1,23 @@
 //ESTE JAVASCRIPT CONTIENE LAS FUNCIONES PARA CREAR LOS CAMPOS NECESARIOS QUE NECESITAN LOS FORMS
+function crearModal() {
+    let modal = document.createElement('div');
+    modal.className = 'main-modal';
+
+    // Crear el contenido del modal
+    let modalContent = document.createElement('article');
+    modalContent.className = 'iniciosesion modal-content';
+
+    // Agregar un botón de cerrar
+    let close = document.createElement('button');
+    close.className = 'modal-close';
+    close.innerHTML = "&times;";
+    close.onclick = function () {
+        document.body.removeChild(modal);
+    }
+    modalContent.appendChild(close);
+    return { modal, modalContent };
+}
+
 function crearLabel(texto, inputId) {
     let label = document.createElement('label');
     label.setAttribute('for', inputId);
