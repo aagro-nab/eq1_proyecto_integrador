@@ -63,6 +63,10 @@ function crearPublicacion() {
     document.body.appendChild(modal);
 }
 
+function editarPublicacion () {
+
+}
+
 function asignarModerador() {
     let { modal, modalContent } = crearModal();
 
@@ -121,4 +125,16 @@ function crearComentario() {
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
     document.body.appendChild(modal);
+}
+
+function editarComentario () {
+
+}
+
+function eliminarComentario() {
+
+}
+
+function modificarDatos () {
+
 }

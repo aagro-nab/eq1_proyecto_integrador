@@ -37,7 +37,7 @@ function crearVenta() {
     document.body.appendChild(modal);
 }
 
-function editarDetallesVenta() {
+function editarVenta() {
     let { modal, modalContent } = crearModal();
 
     let form = document.createElement('form');

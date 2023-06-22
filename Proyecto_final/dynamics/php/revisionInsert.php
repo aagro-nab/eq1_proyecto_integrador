@@ -4,7 +4,6 @@
     require "seguridad.php";
     session_start ();
     $rol = $_SESSION["Rol"];
-    echo $rol;
 
     // original, asi estba
     // function verificar ($opcion)
@@ -132,6 +131,7 @@ echo "Contraseña: $contraHash <br>";
 
 
 
+
     
     $buscarNombre = "SELECT * FROM usuario WHERE nombre='$nombre'";
     $query = mysqli_query ($con, $buscarNombre);
@@ -139,8 +139,6 @@ echo "Contraseña: $contraHash <br>";
     if ($arreglo != NULL)
     {
         $respuesta = array("ok" => false, "mensaje" => "Ese nombre ya existe, no se puede guardar");
-        // echo "Ese nombre si existe, no se puede guardar<br>"
-        //Lo mejor es que se mande un alert de que esas variables ya existen, pero si no, se puede redirigir a 'header ("location: ./seleccionRol.php");'
     } 
     else 
     {
@@ -151,8 +149,6 @@ echo "Contraseña: $contraHash <br>";
         if ($arreglo != NULL)
         {
             $respuesta = array("ok" => false, "mensaje" => "Ese usuario ya existe, no se puede guardar");
-            // echo "Ese usuario si existe, no se puede guardar<br>";
-            //header ("location: ./seleccionRol.php");
         } 
         else 
         {
@@ -163,8 +159,6 @@ echo "Contraseña: $contraHash <br>";
             if ($arreglo != NULL)
             {
                 $respuesta = array("ok" => false, "mensaje" => "Ese numero de cuenta ya está registrado, no se puede guardar");
-                // echo "Ese numero de cuenta si existe, no se puede guardar<br>";
-                //header ("location: ./seleccionRol.php");
             }
             else 
             {
@@ -175,28 +169,16 @@ echo "Contraseña: $contraHash <br>";
                 if ($arreglo != NULL)
                 {
                     $respuesta = array("ok" => false, "mensaje" => "Ese email ya es usado en otra cuenta, no se puede guardar");
-                    // echo "Ese email ya es usado en otra cuenta, no se puede guardar<br>";
-                    //header ("location: ./seleccionRol.php");
                 }
                 else
                 {
                     $_SESSION["email"] = $email;
                     $meterDB = "INSERT INTO usuario (nombre, nombreUsuario, numeroCuenta, email, contrasena, grupo, rol) VALUES ('$nombre', '$username', '$ncuenta', '$email', '$contraseña', '$grupo', '$rol')";
-                    var_dump ($meterDB);
-                    echo "<br><br>";
                     $query = mysqli_query ($con, $meterDB);
-                    var_dump ($query);
                     $respuesta = array("ok" => true, "mensaje" => "Se ha creado el usuario con éxito :)");
-                    echo "<br><br>";
-
                 }
-
             }          
         }
     }
-
-    echo json_encode($respuesta)
-    
-
-    
+    echo json_encode($respuesta);    
 ?>
