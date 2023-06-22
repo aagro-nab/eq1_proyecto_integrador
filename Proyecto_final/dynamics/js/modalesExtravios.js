@@ -4,6 +4,12 @@ function reportarExtravio() {
     let form = document.createElement('form');
     form.setAttribute('method', 'post');
 
+    let tituloExtravio = document.createElement('input');
+    tituloExtravio.setAttribute('type', 'text');
+    tituloExtravio.setAttribute('name', 'tituloExtravio');
+    tituloExtravio.setAttribute('placeholder', 'Título del extravío');
+    form.appendChild(tituloExtravio);
+
     let descripcionExtravio = document.createElement('textarea');
     descripcionExtravio.setAttribute('name', 'descripcionExtravio');
     descripcionExtravio.setAttribute('placeholder', 'Descripción del extravío');
@@ -25,13 +31,34 @@ function reportarExtravio() {
     submitButton.innerHTML = "Reportar Extravío";
     form.appendChild(submitButton);
 
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        let datosFormulario = new FormData(form);
+        fetch('LIGA A PHP', {
+            method: 'POST',
+            body: datosFormulario
+        })
+            .then(response => response.text())
+            .then(resultado => {
+                if(resultado === '1') {
+                    // Operación exitosa
+                    console.log("La operación se realizó con éxito.");
+                } else {
+                    // Operación fallida
+                    alert("No se pudo realizar la operación.");
+                }
+                document.body.removeChild(modal);
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
 
     document.body.appendChild(modal);
 }
 
-function editarPublicacion() {
+function editarReporte() {
     let { modal, modalContent } = crearModal();
 
     let form = document.createElement('form');
@@ -58,13 +85,35 @@ function editarPublicacion() {
     submitButton.innerHTML = "Guardar Cambios";
     form.appendChild(submitButton);
 
+    //Fetch para PHP
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        let datosFormulario = new FormData(form);
+        fetch('LIGA A PHP', {
+            method: 'POST',
+            body: datosFormulario
+        })
+            .then(response => response.text())
+            .then(resultado => {
+                if(resultado === '1') {
+                    // Operación exitosa
+                    console.log("La operación se realizó con éxito.");
+                } else {
+                    // Operación fallida
+                    alert("No se pudo realizar la operación.");
+                }
+                document.body.removeChild(modal);
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
 
     document.body.appendChild(modal);
 }
 
-function eliminarPublicacion() {
+function eliminarReporte() {
     let { modal, modalContent } = crearModal();
 
     let mensajeEliminacion = document.createElement('p');
@@ -84,6 +133,27 @@ function eliminarPublicacion() {
     cancelarButton.onclick = function() {
         document.body.removeChild(modal);
     }
+
+    confirmarEliminacionButton.addEventListener('click', function(){
+        fetch('LIGA A PHP', {
+            method: 'POST',
+            body: JSON.stringify({accion: 'eliminar'})
+        })
+            .then(response => response.text())
+            .then(resultado => {
+                if(resultado === '1') {
+                    // Operación exitosa
+                    console.log("La operación se realizó con éxito.");
+                } else {
+                    // Operación fallida
+                    alert("No se pudo realizar la operación.");
+                }
+                document.body.removeChild(modal);
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+    modalContent.appendChild(confirmarEliminacionButton);
     modalContent.appendChild(cancelarButton);
 
     modal.appendChild(modalContent);
