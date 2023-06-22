@@ -2,6 +2,7 @@
   $include = include ("./config.php");
   $con = connect();
   session_start ();
+  
 
   function asignar($input)
   {
@@ -17,13 +18,15 @@
   } else 
   {
     $_SESSION["Rol"] = $rol;
-    //echo $_SESSION["Rol"];
+
     echo '<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8">
         <title>Administrador</title>
         <link rel="stylesheet" href="../../statics/styles/registro.css">
+        <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Escudo_enp_6.svg/927px-Escudo_enp_6.svg.png" type="image/x-icon">
+
       </head>
       <body>
         <main class="Registros">
@@ -37,7 +40,7 @@
           </article>
           <article class="Formulario">
       
-          <form action="./revisionInsert.php" method="post" target="_self">
+          <form action="./.php" method="post" target="_self" id="formRegistro">
       
               <p class="texto-m">Nombre completo:</p>
               <input class="input-datos" type="text" id="nombre" name="nombre" required>
@@ -57,12 +60,14 @@
               <p class="texto-m">Grado:</p>
               <label for="grado"></label>
               <select id="grado" name="grado">
-                  <option class="input-datos" value="cuarto">Cuarto</option>
-                  <option class="input-datos" value="quinto">Quinto</option>
-                  <option class="input-datos" value="sexto">Sexto</option>
+                <option disabled selected> Seleccione el grado</option>
+                <option class="input-datos" value="cuarto">Cuarto</option>
+                <option class="input-datos" value="quinto">Quinto</option>
+                <option class="input-datos" value="sexto">Sexto</option>
               </select>
   
               <p class="texto-m">Grupo:</p>
+              <select id="grupos"></select>
       
               <!-- <div class="row">
                 <input class="remember-me" type="checkbox" id="recordar" name="recordar">
@@ -77,7 +82,6 @@
               <a href="#">¿Tienes duda en alguno de los campos?</a><br><br>
       
             </form>
-      
             <a href="./seleccionRol.html" class="Roles">Seleccionar Rol de Nuevo</a>
             
           </article>
@@ -108,8 +112,7 @@
         </article>
       
         </footer>
-        
+        <script src="../js/registro.js"></script>
       </body>
     </html>';
   }
-?>
