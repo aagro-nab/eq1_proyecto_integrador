@@ -2,6 +2,7 @@
   $include = include ("./config.php");
   $con = connect();
   session_start ();
+  
 
   function asignar($input)
   {

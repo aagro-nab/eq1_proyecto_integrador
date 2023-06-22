@@ -10,19 +10,21 @@ $pswrd = (isset($_POST["login-password"]) && $_POST["login-password"] != "")? $_
 $remember = (isset($_POST["remember-me"]) && $_POST["remember-me"] != "")? $_POST["remember-me"] : NULL;
 
 // validar el username con regex
-if (preg_match("/([A-z]|[0-9]){5,15}/i", $username)) {
+$user = "/([A-z]|[0-9]){5,15}/i";
+$pass = "/([A-z]|[0-9]){6,}/i";
+
+if (preg_match($user, $username) ==1) {
     echo("ingresaste un username valido");
 } else {
     echo("ingresaste un username invalido");
 }
-if (preg_match("/([A-z]|[0-9]){6,}/i", $pswrd)) {
+if (preg_match($pass, $pswrd) ==1) {
     echo("ingresaste una contraseña valida");
 } else {
     echo("ingresaste una contraseña invalida");
 }
-
 // estaba pensando en un
-// return $al inicio de sesion xd
+// return $al inicio de sesion tipo que ya te deje continuar normal si todo ok
 
 
 

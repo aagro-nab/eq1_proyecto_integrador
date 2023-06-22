@@ -1,50 +1,130 @@
 <?php
     $include = include ("./config.php");
     $con = connect();
+    require "seguridad.php";
     session_start ();
     $rol = $_SESSION["Rol"];
     echo $rol;
 
-    function asignar($input)
-    {
-        $input = (isset($_POST[$input]) && $_POST[$input] != "")? $_POST[$input] : NULL;
-        return $input; 
-    }
+    // original, asi estba
+    // function verificar ($opcion)
+    // {
+        //     if (!isset ($opcion))
+        //     {
+            //         //header ("location: ./seleccionRol.php");
+            //         //grupo
+            //         echo "ok<br>";
+            //     }
+            //     return $opcion;
+            // }
+function asignar($input)
+{
+    $input = (isset($_POST[$input]) && $_POST[$input] != "")? $_POST[$input] : NULL;
+    return $input; 
+}
 // verifica que si entro un dato
-    function verificar ($opcion)
+function verificar ($opcion)
+{
+    if (!isset ($opcion))
     {
-        if (!isset ($opcion))
-        {
-            //header ("location: ./seleccionRol.php");
-            //grupo
-            echo "ok<br>";
-        }
-        return $opcion;
+        //header ("location: ./seleccionRol.php");
+        //grupo
+        echo "ok<br>";
+    }else { //si todo ok, se pasa a este filtro de sanitizacion
+        $opcion = trim($opcion);
+        $opcion = stripslashes($opcion);
+        $opcion = htmlspecialchars($opcion);
     }
+    return $opcion;
+}
 
-    $nombretem = asignar("nombre");
-    $nombre = verificar ($nombretem);
+
+// verificar con regex
+$name = "/([A-Z][a-z]*\s|[A-Z][a-z]*){2,}/i";//verifica que sea la primera letra mayuscula para los nombres: Morales
+$user = "/([A-z]|[0-9]){5,15}/i";
+$no_cuenta = "/[3](20|21|22|23)\d{6}/i";
+$mail_all = "/([3](20|21|22|23)\d{6}?|\w+)@(alumno.enp.unam.mx|comunidad.unam.mx)/i";
+$pass = "/([A-z]|[0-9]){6,}/i";
+
+// intento de ponerle a lo de abajo ya el regex
+// se supone que ya te super verifca que sea un dato que pedimos sumando la funcion verificar
+$nombretem = asignar("nombre");
+$nombre = verificar ($nombretem);
+
+$usernametem = asignar("username");
+$username = verificar ($usernametem);
+
+$nCuentatem = asignar ("nCuenta");
+$ncuenta = verificar ($nCuentatem);
+
+$emailtem = asignar ("email");
+$email = verificar ($emailtem);
+
+$contraseñatem = asignar ("contraseña");
+$contraseña = verificar ($contraseñatem);
+
+$grupo = "602";
+
+if (preg_match($name, $nombre) ==1) {
     var_dump ($nombre);
+} else {
+    echo("Ingresaste algo no valido con lo solicitado");
+}
 
-    $usernametem = asignar("username");
-    $username = verificar ($usernametem);
+if (preg_match($user, $username) ==1) {
     var_dump ($username);
+} else {
+    echo("Ingresaste algo no valido con lo solicitado");
+}
 
-    $nCuentatem = asignar ("nCuenta");
-    $ncuenta = verificar ($nCuentatem);
+if (preg_match($no_cuenta, $ncuenta) ==1) {
     var_dump ($ncuenta);
+} else {
+    echo("Ingresaste algo no valido con lo solicitado");
+}
 
-    $emailtem = asignar ("email");
-    $email = verificar ($emailtem);
+if (preg_match($mail_all, $email) ==1) {
     var_dump ($email);
+} else {
+    echo("Ingresaste algo no valido con lo solicitado");
+}
 
-    $contraseñatem = asignar ("contraseña");
-    $contraseña = verificar ($contraseñatem);
+if (preg_match($pass, $contraseña) ==1) {
     var_dump ($contraseña);
+} else {
+    echo("Ingresaste algo no valido con lo solicitado");
+}
 
-    // $grupotem = asignar ("grupo");
-    // $grupo = verificar ($grupotem);
-    // var_dump ($grupo);
+
+// original, asi estba
+// asi estaba (funciona)y si lo de arriba funciona ya no es necesario-->
+// $nombretem = asignar("nombre");
+// $nombre = verificar ($nombretem);
+// var_dump ($nombre);
+
+// $usernametem = asignar("username");
+// $username = verificar ($usernametem);
+// var_dump ($username);
+
+// $nCuentatem = asignar ("nCuenta");
+// $ncuenta = verificar ($nCuentatem);
+// var_dump ($ncuenta);
+
+// $emailtem = asignar ("email");
+// $email = verificar ($emailtem);
+// var_dump ($email);
+
+// $contraseñatem = asignar ("contraseña");
+// $contraseña = verificar ($contraseñatem);
+// var_dump ($contraseña);
+
+// $grupotem = asignar ("grupo");
+// $grupo = verificar ($grupotem);
+// var_dump ($grupo);
+
+
+
+
 
     
     $buscarNombre = "SELECT * FROM usuario WHERE nombre='$nombre'";

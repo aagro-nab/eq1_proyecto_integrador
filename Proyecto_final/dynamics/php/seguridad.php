@@ -2,20 +2,20 @@
 define("ALGORITMO", "aes-256-cbc");
 define("PASS", uniqid());
 // para hashear la contraseña
-function hashearContra($contra)
+function hashearContra($pswrd)
 {
-    $pass_hasheada = hash("SHA256", $contra);
+    $pass_hasheada = hash("SHA256", $pswrd);
     return $pass_hasheada;
 }
 
 
-function verificar_contra($contra, $correct, $sal){
+function verificar_contra($pswrd, $correct, $sal){
     $coincide = false;
     $caracteres = str_split("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
     for ($i = 0; $i < count($caracteres); $i++) {
         for ($j = 0; $j < count($caracteres); $j++) {
             $pimienta = $caracteres[$i] .$caracteres[$j];
-            $contraseña = $contra.$pimienta.$sal;
+            $contraseña = $pswrd.$pimienta.$sal;
             if (hashearContra($contraseña) == $correct) {
                 $coincide = true;
                 break;
