@@ -7,13 +7,13 @@ $r = $_SESSION['rol'];
 //revisa el valor de $rol, y cuando encuentre una coincidencia es la direccion que va a tomar para el script
 switch($r){
     case "estudiante":
-        $rol = "principalAlumno.js";
+        $rol = "principalAlumno.js?v2143";
         break;
     case "moderador":
-        $rol = "principalModerador.js";
+        $rol = "principalModerador.js?v7634";
         break;
     case "administrador":
-        $rol = "principalAdmin.js";
+        $rol = "principalAdmin.js?v2395";
         break;
 }
 echo '<!DOCTYPE html>
