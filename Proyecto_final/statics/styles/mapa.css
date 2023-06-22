@@ -1,4 +1,74 @@
+/*---------------MAPA--------------*/
+
+#mapa{
+    height: 400px;
+    width: 500px;
+}
+
+#mapaImg{
+    height: 100%;
+}
+
+/*---------------PINES--------------*/
+
 .pin{
     /* background-color: aqua; */
-    fill:rgb(0, 0, 0);
+    fill:rgb(37, 26, 197);
+    /* fill:rgb(255, 210, 46); */
+    stroke: rgb(255, 255, 255);
+    stroke-width: 20px;
+    opacity: 80%;
+    height: 35px;
+    width: 35px;
+    position: relative;
+}
+
+#pulpo{
+    top: 18%; 
+    left: 16%;
+}
+
+#p-quintos{
+    top: 28%; 
+    left: 16%;
+}
+
+#p-cuartos{
+    top: 43%; 
+    left: 16%;
+}
+
+#p-sextos{
+    top: 56%; 
+    left: 15%;
+}
+
+#canchas{
+    top: 20%; 
+    left: 11%;
+}
+
+#multicanchas{
+    top: 27%; 
+    left: 28%;
+}
+
+#pimpos{
+    top: 48%; 
+    left: 18%;
+}
+
+#hs{
+    top: 52%; 
+    left: 15%;
+}
+
+#auditorio{
+    top: 70%; 
+    right: 20%;
+}
+
+#biblioteca{
+    top: 38%; 
+    right: 16%;
 }
