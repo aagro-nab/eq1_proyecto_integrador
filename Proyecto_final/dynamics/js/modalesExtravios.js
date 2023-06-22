@@ -1,66 +1,15 @@
-function crearInput(tipo, nombre, placeholder) {
-    let input = document.createElement('input');
-    input.setAttribute('type', tipo);
-    input.setAttribute('name', nombre);
-    input.setAttribute('placeholder', placeholder);
-    return input;
-}
-
-function crearButton(tipo, texto) {
-    let button = document.createElement('button');
-    button.setAttribute('type', tipo);
-    button.innerHTML = texto;
-    return button;
-}
-
-function crearFormulario(contenido) {
-    let form = document.createElement('form');
-    form.setAttribute('method', 'post');
-    for(let i=0; i < contenido.length; i++){
-        form.appendChild(contenido[i]);
-    }
-    return form;
-}
-
-function crearTextArea(nombre, placeholder) {
-    let textarea = document.createElement('textarea');
-    textarea.setAttribute('name', nombre);
-    textarea.setAttribute('placeholder', placeholder);
-    return textarea;
-}
-
-function realizarPeticionFetch(form, url) {
-    form.addEventListener('submit', function(e){
-        e.preventDefault();
-        let datosFormulario = new FormData(form);
-        fetch(url, {
-            method: 'POST',
-            body: datosFormulario
-        })
-            .then(response => response.text())
-            .then(resultado => {
-                if(resultado === '1') {
-                    console.log("La operación se realizó con éxito.");
-                    alert("La operación se realizó con éxito.");
-                } else {
-                    alert("No se pudo realizar la operación.");
-                }
-                document.body.removeChild(modal);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert("Ha ocurrido un error: ", error);
-            });
-    });
-}
-
+//ESTE JAVASCRIPT CONTIENE LAS FUNCIONES PARA CREAR LOS MODALES DE EXTRAVIOS
 function reportarExtravio() {
     let { modal, modalContent } = crearModal();
 
     let contenidoFormulario = [
+        crearLabel('Título del extravío:', 'tituloExtravio'),
         crearInput('text', 'tituloExtravio', 'Título del extravío'),
-        document.createElement('textarea'),
+        crearLabel('Descripción del extravío:', 'descripcionExtravio'),
+        crearTextArea('descripcionExtravio', 'Descripción del extravío'),
+        crearLabel('Imagen del Extravío:', 'imagenExtravio'),
         crearInput('file', 'imagenExtravio', ''),
+        crearLabel('Lugar del extravío:', 'lugarExtravio'),
         crearInput('text', 'lugarExtravio', 'Lugar del extravío'),
         crearButton('submit', 'Reportar Extravío')
     ];
@@ -79,8 +28,11 @@ function editarReporte() {
     let { modal, modalContent } = crearModal();
 
     let contenidoFormulario = [
+        crearLabel('Nuevo título de la publicación:', 'nuevoTituloPublicacion'),
         crearInput('text', 'nuevoTituloPublicacion', 'Nuevo título de la publicación'),
+        crearLabel('Nuevo texto de la publicación:', 'nuevoTextoPublicacion'),
         crearTextArea('nuevoTextoPublicacion', 'Nuevo texto de la publicación'),
+        crearLabel('Nueva Imagen:', 'nuevoImagenPublicacion'),
         crearInput('file', 'nuevoImagenPublicacion', ''),
         crearButton('submit', 'Guardar Cambios')
     ];
@@ -136,4 +88,3 @@ function eliminarReporte() {
 
     document.body.appendChild(modal);
 }
-

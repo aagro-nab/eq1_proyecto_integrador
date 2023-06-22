@@ -1,5 +1,5 @@
 <?php 
-const HOST="localhost";
+const HOST="127.0.0.1";
 const USER="equipo01";
 const PASS="equser01all";
 const DB="proyectoFinal";
