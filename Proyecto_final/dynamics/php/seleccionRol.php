@@ -5,7 +5,9 @@ echo '<!DOCTYPE html>
   <meta charset="UTF-8">
   <title>Selección del rol</title>
   <link rel="stylesheet" href="../../statics/styles/seleccionRol.css">
-</head>
+  <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Escudo_enp_6.svg/927px-Escudo_enp_6.svg.png" type="image/x-icon">
+
+  </head>
 <body>
 <body>
   <main class="Registros">
