@@ -80,8 +80,8 @@ function changeView(view) {
             crearNuevoButton3.addEventListener('click', editarPublicacion);
             crearNuevoButton4.addEventListener('click', crearComentario);
             crearNuevoButton5.addEventListener('click', () => entrarForo(2));
-            crearNuevoButton6.addEventListener('click', salirForo);
-            crearNuevoButton7.addEventListener('click', editarForo);
+            crearNuevoButton6.addEventListener('click', () => salirForo(2));
+            crearNuevoButton7.addEventListener('click', () => salirForo(2));
             crearNuevoButton8.addEventListener('click', eliminarForo);
             crearNuevoButton9.addEventListener('click', asignarModerador);
             crearNuevoButton10.addEventListener('click', modificarDatos);
