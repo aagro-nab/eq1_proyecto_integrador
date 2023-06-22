@@ -58,6 +58,38 @@ $username = (isset($_POST["login-username"]) && $_POST["login-username"] != "")?
 $pswrd = (isset($_POST["login-password"]) && $_POST["login-password"] != "")? $_POST["login-password"] : NULL;
 $remember = (isset($_POST["remember-me"]) && $_POST["remember-me"] != "")? $_POST["remember-me"] : FALSE;
 
+// para comprobar que solo sean cadenas las que nos llegen por las entradas de logIn
+$user_sano = filter_var($username, FILTER_SANITIZE_STRING);
+$username = $user_sano;
+$pswrd_sano= filter_var($pswrd, FILTER_SANITIZE_STRING);
+$pswrd = $pswrd_sano;
+// validar el username con regex
+$user = "/([A-z]|[0-9]){5,15}/i";
+$pass = "/([A-z]|[0-9]){6,}/i";
+
+if (preg_match($user, $username) ==1) {
+    echo("ingresaste un username valido");
+} else {
+    echo("ingresaste un username invalido");
+}
+if (preg_match($pass, $pswrd) ==1) {
+    echo("ingresaste una contraseña valida");
+} else {
+    echo("ingresaste una contraseña invalida");
+}
+// estaba pensando en un
+// return $al inicio de sesion tipo que ya te deje continuar normal si todo ok
+// aun asi, sin el return funciona bien
+
+// necesita del espacio para la sal en Maria DB
+// if (verificar_contra($pswrd, $correct_pass, $sal_origin)){
+//     echo "Contraseña correcta";
+// } else {
+//     echo "Contraseña incorrecta";
+// }
+
+
+
 //consultar datos
 if($include && $con){
     $sql = "SELECT * FROM usuario WHERE nombreUsuario='$username' AND contrasena='$pswrd'";
