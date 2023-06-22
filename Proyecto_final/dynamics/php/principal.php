@@ -1,4 +1,22 @@
-<!DOCTYPE html>
+<?php
+include ("./config.php");
+$con = connect();
+session_start();
+
+$r = $_SESSION['rol'];
+//revisa el valor de $rol, y cuando encuentre una coincidencia es la direccion que va a tomar para el script
+switch($r){
+    case "estudiante":
+        $rol = "principalAlumno.js?v2143";
+        break;
+    case "moderador":
+        $rol = "principalModerador.js?v7634";
+        break;
+    case "administrador":
+        $rol = "principalAdmin.js?v2395";
+        break;
+}
+echo '<!DOCTYPE html>
 <html>
 <head>
     <title>Página Principal</title>
@@ -41,11 +59,12 @@
         <a href="#" id="crearNuevoButton10" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
     </div>
 </main>
-<script src="../js/principalAdmin.js"></script>
+<script src="../js/'.$rol.'"></script>
 <script src="../js/modalesGenerales.js"></script>
 <script src="../js/modalesForos.js"></script>
 <script src="../js/modalesPreguntas.js"></script>
 <script src="../js/modalesExtravios.js"></script>
 <script src="../js/modalesMarket.js"></script>
 </body>
-</html>
+</html>'
+?>
