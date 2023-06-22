@@ -1,3 +1,22 @@
+function crearForo() {
+    let { modal, modalContent } = crearModal();
+
+    let nombreForo = crearInput('text', 'nombreForo', 'Nombre del Foro');
+    let descripcionForo = crearTextArea('descripcionForo', 'Descripción del Foro');
+    let imagenForo = crearInput('file', 'imagenForo');
+    let esPublico = crearInput('checkbox', 'esPublico');
+    let etiquetaPublico = crearLabel("Publico", 'esPublico');
+    let submitButton = crearButton('submit', "Crear Foro");
+
+    let form = crearFormulario([nombreForo, descripcionForo, imagenForo, esPublico, etiquetaPublico, submitButton]);
+
+    realizarPeticionFetch(form, 'LIGA A PHP');
+
+    modalContent.appendChild(form);
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+}
+
 function entrarForo(rol) {
     fetch('LIGA A PHP', {
         method: 'POST',
@@ -14,7 +33,7 @@ function entrarForo(rol) {
                 let foroDiv = document.createElement('div');
                 foroDiv.innerHTML = foro.nombreForo;
 
-                let unirseBoton = crearBoton('button', 'Unirse', function() {
+                let unirseBoton = crearButton('button', 'Unirse', function() {
                     fetch('LIGA A PHP', {
                         method: 'POST',
                         headers: {
@@ -79,7 +98,7 @@ function editarForo(rol) {
                 etiquetaPublico.innerHTML = "Publico";
                 form.appendChild(etiquetaPublico);
 
-                let submitButton = crearBoton('submit', 'Guardar Cambios', function(e){
+                let submitButton = crearButton('submit', 'Guardar Cambios', function(e){
                     e.preventDefault();
                     let datosFormulario = new FormData(form);
                     fetch('LIGA A PHP', {
@@ -128,7 +147,7 @@ function salirForo(nombreUsuario) {
                 let foroDiv = document.createElement('div');
                 foroDiv.innerHTML = foro.nombreForo;
 
-                let salirBoton = crearBoton('button', 'Salir', function() {
+                let salirBoton = crearButton('button', 'Salir', function() {
                     let confirmarSalida = confirm("¿Estás seguro de que quieres salir de este foro?");
                     if(confirmarSalida) {
                         fetch('LIGA A PHP', {
@@ -176,7 +195,7 @@ function eliminarForo() {
                 let foroDiv = document.createElement('div');
                 foroDiv.innerHTML = foro.nombreForo;
 
-                let eliminarBoton = crearBoton('button', 'Eliminar', function() {
+                let eliminarBoton = crearButton('button', 'Eliminar', function() {
                     let confirmarEliminacion = confirm("¿Estás seguro de que quieres eliminar este foro?");
                     if(confirmarEliminacion) {
                         fetch('LIGA A PHP', {
@@ -227,7 +246,7 @@ function reportarForo() {
                 let foroDiv = document.createElement('div');
                 foroDiv.innerHTML = foro.nombreForo;
 
-                let reportarBoton = crearBoton('button', 'Reportar', function() {
+                let reportarBoton = crearButton('button', 'Reportar', function() {
                     fetch('LIGA A PHP', {
                         method: 'POST',
                         headers: {

@@ -79,6 +79,8 @@ echo '<!DOCTYPE html>
 <script src="../js/modalesPreguntas.js"></script>
 <script src="../js/modalesExtravios.js"></script>
 <script src="../js/modalesMarket.js"></script>
+<script src="../js/funcionesCrear.js"></script>
+<script src="../js/modalesUsuario.js"></script>
 </body>
 </html>'
 ?>

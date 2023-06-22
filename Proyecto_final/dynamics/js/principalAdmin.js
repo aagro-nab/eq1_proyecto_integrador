@@ -1,6 +1,6 @@
 window.addEventListener("resize", checkResolution);
 // Selecciona los botones que se mostrarán u ocultarán
-var hrButton = document.getElementById('hrButton');
+var hr = document.getElementById('hr');
 var crearNuevoButton = document.getElementById('crearNuevoButton');
 var crearNuevoButton2 = document.getElementById('crearNuevoButton2');
 var crearNuevoButton3 = document.getElementById('crearNuevoButton3');
@@ -73,6 +73,7 @@ function changeView(view) {
             crearNuevoButton8.style.display = 'block';
             crearNuevoButton9.style.display = 'block';
             crearNuevoButton10.style.display = 'block';
+            hr.style.display = 'block';
 
             crearNuevoButton.addEventListener('click', crearForo);
             crearNuevoButton2.addEventListener('click', crearPublicacion);
@@ -128,6 +129,7 @@ function changeView(view) {
             crearNuevoButton8.style.display = 'block';
             crearNuevoButton9.style.display = 'none';
             crearNuevoButton10.style.display = 'none';
+            hr.style.display = 'block';
 
             crearNuevoButton.addEventListener('click', crearPregunta);
             crearNuevoButton2.addEventListener('click', editarPregunta);
@@ -173,6 +175,7 @@ function changeView(view) {
             crearNuevoButton8.style.display = 'none';
             crearNuevoButton9.style.display = 'none';
             crearNuevoButton10.style.display = 'none';
+            hr.style.display = 'block';
 
             crearNuevoButton.addEventListener('click', reportarExtravio);
             crearNuevoButton2.addEventListener('click', editarReporte);
@@ -206,6 +209,7 @@ function changeView(view) {
             crearNuevoButton8.style.display = 'none';
             crearNuevoButton9.style.display = 'none';
             crearNuevoButton10.style.display = 'none';
+            hr.style.display = 'block';
 
             crearNuevoButton.addEventListener('click', crearVenta);
             crearNuevoButton2.addEventListener('click', editarVenta);
@@ -224,10 +228,6 @@ function changeView(view) {
             obtenerPublicaciones(view);
             break;
     }
-
-    // Muestra los botones
-    hrButton.style.display = 'block';
-
     // Cambia la URL sin recargar la página
     history.pushState({}, '', '/' + view.toLowerCase());
 }
