@@ -1,6 +1,3 @@
-
-
-
 function entrarForo(rol) {
     fetch('LIGA A PHP', {
         method: 'POST',
@@ -17,9 +14,7 @@ function entrarForo(rol) {
                 let foroDiv = document.createElement('div');
                 foroDiv.innerHTML = foro.nombreForo;
 
-                let unirseBoton = document.createElement('button');
-                unirseBoton.innerHTML = "Unirse";
-                unirseBoton.addEventListener('click', function() {
+                let unirseBoton = crearBoton('button', 'Unirse', function() {
                     fetch('LIGA A PHP', {
                         method: 'POST',
                         headers: {
@@ -84,10 +79,7 @@ function editarForo(rol) {
                 etiquetaPublico.innerHTML = "Publico";
                 form.appendChild(etiquetaPublico);
 
-                let submitButton = crearBoton('submit', 'Guardar Cambios');
-                form.appendChild(submitButton);
-
-                form.addEventListener('submit', function(e){
+                let submitButton = crearBoton('submit', 'Guardar Cambios', function(e){
                     e.preventDefault();
                     let datosFormulario = new FormData(form);
                     fetch('LIGA A PHP', {
@@ -107,6 +99,8 @@ function editarForo(rol) {
                         })
                         .catch(error => console.error('Error:', error));
                 });
+                form.appendChild(submitButton);
+
                 modalContent.appendChild(form);
             });
             modal.appendChild(modalContent);
@@ -134,9 +128,7 @@ function salirForo(nombreUsuario) {
                 let foroDiv = document.createElement('div');
                 foroDiv.innerHTML = foro.nombreForo;
 
-                let salirBoton = document.createElement('button');
-                salirBoton.innerHTML = "Salir";
-                salirBoton.addEventListener('click', function() {
+                let salirBoton = crearBoton('button', 'Salir', function() {
                     let confirmarSalida = confirm("¿Estás seguro de que quieres salir de este foro?");
                     if(confirmarSalida) {
                         fetch('LIGA A PHP', {
@@ -184,9 +176,7 @@ function eliminarForo() {
                 let foroDiv = document.createElement('div');
                 foroDiv.innerHTML = foro.nombreForo;
 
-                let eliminarBoton = document.createElement('button');
-                eliminarBoton.innerHTML = "Eliminar";
-                eliminarBoton.addEventListener('click', function() {
+                let eliminarBoton = crearBoton('button', 'Eliminar', function() {
                     let confirmarEliminacion = confirm("¿Estás seguro de que quieres eliminar este foro?");
                     if(confirmarEliminacion) {
                         fetch('LIGA A PHP', {
@@ -237,9 +227,7 @@ function reportarForo() {
                 let foroDiv = document.createElement('div');
                 foroDiv.innerHTML = foro.nombreForo;
 
-                let reportarBoton = document.createElement('button');
-                reportarBoton.innerHTML = "Reportar";
-                reportarBoton.addEventListener('click', function() {
+                let reportarBoton = crearBoton('button', 'Reportar', function() {
                     fetch('LIGA A PHP', {
                         method: 'POST',
                         headers: {
@@ -271,5 +259,3 @@ function reportarForo() {
             alert("No se pueden recuperar los foros en este momento, inténtalo más tarde.");
         });
 }
-
-
