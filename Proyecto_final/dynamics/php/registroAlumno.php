@@ -36,7 +36,7 @@ if (!isset($rol)) {
 
         <article class="Formulario">
 
-        <form action="./desplegarGrupos.php" method="post" target="_self">
+        <form action="" method="post" target="_self" id="formRegistro">
 
             <p class="texto-m">Nombre completo:</p>
             <input class="input-datos" type="text" id="nombre" name="nombre" required>
@@ -56,6 +56,7 @@ if (!isset($rol)) {
             <p class="texto-m">Grado:</p>
             <label for="grado"></label>
             <select id="grado" name="grado">
+                <option disabled selected> Seleccione el grado</option>
                 <option class="input-datos" value="cuarto">Cuarto</option>
                 <option class="input-datos" value="quinto">Quinto</option>
                 <option class="input-datos" value="sexto">Sexto</option>

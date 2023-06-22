@@ -37,7 +37,7 @@
           </article>
           <article class="Formulario">
       
-          <form action="./.php" method="post" target="_self" id="formRegistro">
+          <form action="" method="post" target="_self" id="formRegistro">
       
               <p class="texto-m">Nombre completo:</p>
               <input class="input-datos" type="text" id="nombre" name="nombre" required>
