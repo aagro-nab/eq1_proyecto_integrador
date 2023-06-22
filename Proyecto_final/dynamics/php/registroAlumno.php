@@ -62,7 +62,7 @@ if (!isset($rol)) {
             </select>
 
             <p class="texto-m">Grupo:</p>
-            
+            <select id="grupos"></select>
             
 
 
@@ -107,7 +107,7 @@ if (!isset($rol)) {
         </article>
 
     </footer>
-    
+    <script src="../js/registro.js"></script>
     </body>
     </html>';
 }

@@ -3,7 +3,6 @@
     $con = connect();
     session_start ();
     $rol = $_SESSION["Rol"];
-    echo $rol;
 
     function asignar($input)
     {
@@ -11,39 +10,37 @@
         return $input; 
     }
 
-     function verificar ($opcion)
+    function verificar ($opcion)
     {
         if (!isset ($opcion))
         {
             //header ("location: ./seleccionRol.php");
-            //grupo
-            echo "ok<br>";
         }
         return $opcion;
     }
 
     $nombretem = asignar("nombre");
     $nombre = verificar ($nombretem);
-    var_dump ($nombre);
+    //var_dump ($nombre);
 
     $usernametem = asignar("username");
     $username = verificar ($usernametem);
-    var_dump ($username);
+    //var_dump ($username);
 
     $nCuentatem = asignar ("nCuenta");
     $ncuenta = verificar ($nCuentatem);
-    var_dump ($ncuenta);
+    //var_dump ($ncuenta);
 
     $emailtem = asignar ("email");
     $email = verificar ($emailtem);
-    var_dump ($email);
+    //var_dump ($email);
 
     $contraseñatem = asignar ("contraseña");
     $contraseña = verificar ($contraseñatem);
-    var_dump ($contraseña);
+    //var_dump ($contraseña);
 
-    // $grupotem = asignar ("grupo");
-    // $grupo = verificar ($grupotem);
+    $grupotem = asignar ("grupo");
+    $grupo = verificar ($grupotem);
     // var_dump ($grupo);
 
     
@@ -53,8 +50,6 @@
     if ($arreglo != NULL)
     {
         $respuesta = array("ok" => false, "mensaje" => "Ese nombre ya existe, no se puede guardar");
-        // echo "Ese nombre si existe, no se puede guardar<br>"
-        //Lo mejor es que se mande un alert de que esas variables ya existen, pero si no, se puede redirigir a 'header ("location: ./seleccionRol.php");'
     } 
     else 
     {
@@ -65,8 +60,6 @@
         if ($arreglo != NULL)
         {
             $respuesta = array("ok" => false, "mensaje" => "Ese usuario ya existe, no se puede guardar");
-            // echo "Ese usuario si existe, no se puede guardar<br>";
-            //header ("location: ./seleccionRol.php");
         } 
         else 
         {
@@ -77,8 +70,6 @@
             if ($arreglo != NULL)
             {
                 $respuesta = array("ok" => false, "mensaje" => "Ese numero de cuenta ya está registrado, no se puede guardar");
-                // echo "Ese numero de cuenta si existe, no se puede guardar<br>";
-                //header ("location: ./seleccionRol.php");
             }
             else 
             {
@@ -89,28 +80,16 @@
                 if ($arreglo != NULL)
                 {
                     $respuesta = array("ok" => false, "mensaje" => "Ese email ya es usado en otra cuenta, no se puede guardar");
-                    // echo "Ese email ya es usado en otra cuenta, no se puede guardar<br>";
-                    //header ("location: ./seleccionRol.php");
                 }
                 else
                 {
                     $_SESSION["email"] = $email;
                     $meterDB = "INSERT INTO usuario (nombre, nombreUsuario, numeroCuenta, email, contrasena, grupo, rol) VALUES ('$nombre', '$username', '$ncuenta', '$email', '$contraseña', '$grupo', '$rol')";
-                    var_dump ($meterDB);
-                    echo "<br><br>";
                     $query = mysqli_query ($con, $meterDB);
-                    var_dump ($query);
                     $respuesta = array("ok" => true, "mensaje" => "Se ha creado el usuario con éxito :)");
-                    echo "<br><br>";
-
                 }
-
             }          
         }
     }
-
-    echo json_encode($respuesta)
-    
-
-    
+    echo json_encode($respuesta);    
 ?>
