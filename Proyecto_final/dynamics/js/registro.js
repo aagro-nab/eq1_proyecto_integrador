@@ -1,34 +1,64 @@
 window.addEventListener("load", ()=>{
-    // alert("hola");
+    let grado = document.querySelector ('#grado');
     const selectGrupo = document.getElementById("grupos");
+    selectGrupo.innerHTML = "<option disabled selected>Selecciona tu grupo</option>";
     const formRegistro = document.getElementById("formRegistro");
 
-    //fetch: asigna los grupos almacenados en la base de datos al select del formulario de registro
-    fetch("../php/desplegarGrupos.php")
-    .then((respuesta)=>{
-        return respuesta.json();
-    }).then((datosJSON)=>{
-        console.log(datosJSON);
-        for(let grupo of datosJSON){
-            selectGrupo.innerHTML += `<option value = ${grupo.grupo_id}>${grupo.grupo_name}</option>`;
-        }
+    grado.addEventListener ("change", evento =>{
+        //console.log (evento.target.value);
+        let grado = evento.target.value;
+        //console.log (grado);
+        let form = new FormData ();
+        
+        form.append ("grado", grado);
 
-        //evento: se ejecuta al enviar el formulario, evita que se recargue la pagina
-        formRegistro.addEventListener("submit", (event) => {
-            event.preventDefault();
-            datosRegistro = new FormData(formRegistro);
+        fetch ("../php/desplegarGrupos.php",{
+            method: "POST",
+            body: form,
+        })
+        .then ((respuesta) => {
+            if (!respuesta.ok){
+                throw new Error ("Eror en la seleccion");    
+            }
+            return respuesta.json ();
+        })
+        .then ((datos) =>{
+            //console.log (datos);
+            selectGrupo.innerHTML ="<option disabled selected>Selecciona tu grupo</option>";
+            for(let grupo of datos){
+                selectGrupo.innerHTML += `<option value = ${grupo.ID_GRUPO}>${grupo.grupo}</option>`;
+            }
+          
+        })
+        .catch (error =>{
+            console.error ('Ocurrio un error'+error);
+        })
+    })
 
-            //fetch: ejecuta las funciones en revisionInsert.php con los datos del form y manda un alert con 
-            //el resultado de las funciones
-            fetch("../php/revisionInsert.php", {
-                method: "POST",
-                body: datosRegistro
-            }).then((respuesta) => {
+
+    formRegistro.addEventListener("submit", (event) => {
+        event.preventDefault();
+        datosRegistro = new FormData(formRegistro);
+            
+        fetch("../php/revisionInsert.php", {
+            method: "POST",
+            body: datosRegistro
+        })
+        .then((respuesta) => {
                 return respuesta.json();
-            }).then((datosJSON) => {
+        })
+        .then((datosJSON) => {
+                    
+            //console.log (datosJSON.ok);
+            if (datosJSON.ok == true){
                 alert(datosJSON.mensaje);
-            });
+                window.location = "./seleccionRol.php";
+            }
+            else
+            {
+                alert(datosJSON.mensaje);      
+            }
+    
         });
     });
-
 });
