@@ -1,40 +1,27 @@
 function crearForo() {
     let { modal, modalContent } = crearModal();
 
-    let form = document.createElement('form');
-    form.setAttribute('method', 'post');
+    let form = crearFormElement('post');
 
-    let nombreForo = document.createElement('input');
-    nombreForo.setAttribute('type', 'text');
-    nombreForo.setAttribute('name', 'nombreForo');
-    nombreForo.setAttribute('placeholder', 'Nombre del Foro');
+    let nombreForo = crearInputElement('text', 'nombreForo', 'Nombre del Foro');
     form.appendChild(nombreForo);
 
-    let descripcionForo = document.createElement('textarea');
-    descripcionForo.setAttribute('name', 'descripcionForo');
-    descripcionForo.setAttribute('placeholder', 'Descripción del Foro');
+    let descripcionForo = crearTextAreaElement('descripcionForo', 'Descripción del Foro');
     form.appendChild(descripcionForo);
 
-    let imagenForo = document.createElement('input');
-    imagenForo.setAttribute('type', 'file');
-    imagenForo.setAttribute('name', 'imagenForo');
+    let imagenForo = crearInputElement('file', 'imagenForo');
     form.appendChild(imagenForo);
 
-    let esPublico = document.createElement('input');
-    esPublico.setAttribute('type', 'checkbox');
-    esPublico.setAttribute('name', 'esPublico');
+    let esPublico = crearInputElement('checkbox', 'esPublico');
     form.appendChild(esPublico);
 
-    let etiquetaPublico = document.createElement('label');
-    etiquetaPublico.innerHTML = "Publico";
+    let etiquetaPublico = crearLabelElement('Publico');
     form.appendChild(etiquetaPublico);
 
-    let submitButton = document.createElement('button');
-    submitButton.setAttribute('type', 'submit');
-    submitButton.innerHTML = "Crear Foro";
+    let submitButton = crearButtonElement('submit', 'Crear Foro');
     form.appendChild(submitButton);
 
-    form.addEventListener('submit', function(e){
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
         let datosFormulario = new FormData(form);
         fetch('LIGA A PHP', {
@@ -54,12 +41,12 @@ function crearForo() {
             })
             .catch(error => console.error('Error:', error));
     });
-
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
 
     document.body.appendChild(modal);
 }
+
 
 function entrarForo(rol) {
     fetch('LIGA A PHP', {
@@ -100,11 +87,9 @@ function entrarForo(rol) {
                         })
                         .catch(error => console.error('Error:', error));
                 });
-
                 foroDiv.appendChild(unirseBoton);
                 modalContent.appendChild(foroDiv);
             });
-
             modal.appendChild(modalContent);
             document.body.appendChild(modal);
         })
@@ -169,10 +154,8 @@ function editarForo(rol) {
                         })
                         .catch(error => console.error('Error:', error));
                 });
-
                 modalContent.appendChild(form);
             });
-
             modal.appendChild(modalContent);
             document.body.appendChild(modal);
         })
@@ -181,7 +164,6 @@ function editarForo(rol) {
             alert("No se pueden recuperar los foros en este momento, inténtalo más tarde.");
         });
 }
-
 
 function salirForo(nombreUsuario) {
     fetch('LIGA A PHP', {
@@ -225,11 +207,9 @@ function salirForo(nombreUsuario) {
                             .catch(error => console.error('Error:', error));
                     }
                 });
-
                 foroDiv.appendChild(salirBoton);
                 modalContent.appendChild(foroDiv);
             });
-
             modal.appendChild(modalContent);
             document.body.appendChild(modal);
         })
@@ -238,7 +218,6 @@ function salirForo(nombreUsuario) {
             alert("No se pueden recuperar los foros en este momento, inténtalo más tarde.");
         });
 }
-
 
 function eliminarForo() {
     fetch('LIGA A PHP', {
@@ -278,11 +257,9 @@ function eliminarForo() {
                             .catch(error => console.error('Error:', error));
                     }
                 });
-
                 foroDiv.appendChild(eliminarBoton);
                 modalContent.appendChild(foroDiv);
             });
-
             modal.appendChild(modalContent);
             document.body.appendChild(modal);
         })
@@ -291,7 +268,6 @@ function eliminarForo() {
             alert("No se pueden recuperar los foros en este momento, inténtalo más tarde.");
         });
 }
-
 
 function reportarForo() {
     fetch('LIGA A PHP', {
@@ -331,11 +307,9 @@ function reportarForo() {
                         })
                         .catch(error => console.error('Error:', error));
                 });
-
                 foroDiv.appendChild(reportarBoton);
                 modalContent.appendChild(foroDiv);
             });
-
             modal.appendChild(modalContent);
             document.body.appendChild(modal);
         })
