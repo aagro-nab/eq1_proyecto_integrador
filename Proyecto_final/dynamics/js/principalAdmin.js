@@ -54,14 +54,14 @@ function changeView(view) {
         case 'Foros':
             crearNuevoButton.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Crear foro</span>";
             crearNuevoButton2.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Crear publicacion</span>";
-            crearNuevoButton3.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Editar publicacion</span>";
+            crearNuevoButton3.innerHTML = "<i class='fas fa-edit'></i><span class='button-text'> Editar publicacion</span>";
             crearNuevoButton4.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Comentar publicacion</span>";
-            crearNuevoButton5.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Entrar a un foro</span>";
-            crearNuevoButton6.innerHTML = "<i class='fas fa-edit'></i><span class='button-text'> Salir de un foro</span>";
+            crearNuevoButton5.innerHTML = "<i class='fas fa-sign-in-alt'></i><span class='button-text'> Entrar a un foro</span>";
+            crearNuevoButton6.innerHTML = "<i class='fas fa-sign-out-alt'></i><span class='button-text'> Salir de un foro</span>";
             crearNuevoButton7.innerHTML = "<i class='fas fa-edit'></i><span class='button-text'> Editar foro</span>";
-            crearNuevoButton8.innerHTML = "<i class='fas fa-sign-out-alt'></i><span class='button-text'> Eliminar foros</span>";
+            crearNuevoButton8.innerHTML = "<i class='fas fa-trash-alt'></i><span class='button-text'> Eliminar foros</span>";
             crearNuevoButton9.innerHTML = "<i class='fas fa-user-plus'></i><span class='button-text'> Asignar moderador</span>";
-            crearNuevoButton10.innerHTML = "<i class='fas fa-user-plus'></i><span class='button-text'> Modificar datos</span>";
+            crearNuevoButton10.innerHTML = "<i class='fas fa-user-edit'></i><span class='button-text'> Modificar datos</span>";
 
             crearNuevoButton.style.display = 'block';
             crearNuevoButton2.style.display = 'block';
@@ -78,7 +78,7 @@ function changeView(view) {
             crearNuevoButton2.addEventListener('click', crearPublicacion);
             crearNuevoButton3.addEventListener('click', editarPublicacion);
             crearNuevoButton4.addEventListener('click', crearComentario);
-            crearNuevoButton5.addEventListener('click', entrarForo);
+            crearNuevoButton5.addEventListener('click', () => entrarForo(2));
             crearNuevoButton6.addEventListener('click', salirForo);
             crearNuevoButton7.addEventListener('click', editarForo);
             crearNuevoButton8.addEventListener('click', eliminarForo);
@@ -93,7 +93,7 @@ function changeView(view) {
             crearNuevoButton3.addEventListener('click', crearNuevoButton3.currentHandler);
             crearNuevoButton4.currentHandler = crearComentario;
             crearNuevoButton4.addEventListener('click', crearNuevoButton4.currentHandler);
-            crearNuevoButton5.currentHandler = entrarForo;
+            crearNuevoButton5.currentHandler = () => entrarForo(2);
             crearNuevoButton5.addEventListener('click', crearNuevoButton5.currentHandler);
             crearNuevoButton6.currentHandler = salirForo;
             crearNuevoButton6.addEventListener('click', crearNuevoButton6.currentHandler);
@@ -110,11 +110,11 @@ function changeView(view) {
             crearNuevoButton.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Crear pregunta</span>";
             crearNuevoButton2.innerHTML = "<i class='fas fa-edit'></i><span class='button-text'> Editar pregunta</span>";
             crearNuevoButton3.innerHTML = "<i class='fas fa-trash-alt'></i><span class='button-text'> Eliminar pregunta</span>";
-            crearNuevoButton4.innerHTML = "<i class='fas fa-trash-alt'></i><span class='button-text'> Crear comentario</span>";
-            crearNuevoButton5.innerHTML = "<i class='fas fa-trash-alt'></i><span class='button-text'> Editar comentario</span>";
+            crearNuevoButton4.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Crear comentario</span>";
+            crearNuevoButton5.innerHTML = "<i class='fas fa-edit'></i><span class='button-text'> Editar comentario</span>";
             crearNuevoButton6.innerHTML = "<i class='fas fa-trash-alt'></i><span class='button-text'> Eliminar comentario</span>";
             crearNuevoButton7.innerHTML = "<i class='fas fa-user-plus'></i><span class='button-text'> Asignar moderador</span>";
-            crearNuevoButton8.innerHTML = "<i class='fas fa-user-plus'></i><span class='button-text'> Modificar datos</span>";
+            crearNuevoButton8.innerHTML = "<i class='fas fa-user-edit'></i><span class='button-text'> Modificar datos</span>";
 
             crearNuevoButton.style.display = 'block';
             crearNuevoButton2.style.display = 'block';
@@ -130,10 +130,10 @@ function changeView(view) {
             crearNuevoButton.addEventListener('click', crearPregunta);
             crearNuevoButton2.addEventListener('click', editarPregunta);
             crearNuevoButton3.addEventListener('click', eliminarPregunta);
-            crearNuevoButton4.addEventListener('click', asignarModerador);
-            crearNuevoButton5.addEventListener('click', crearComentario);
-            crearNuevoButton6.addEventListener('click', editarComentario);
-            crearNuevoButton7.addEventListener('click', eliminarComentario);
+            crearNuevoButton4.addEventListener('click', crearComentario);
+            crearNuevoButton5.addEventListener('click', editarComentario);
+            crearNuevoButton6.addEventListener('click', eliminarComentario);
+            crearNuevoButton7.addEventListener('click', asignarModerador);
             crearNuevoButton8.addEventListener('click', modificarDatos);
 
             crearNuevoButton.currentHandler = crearPregunta;
