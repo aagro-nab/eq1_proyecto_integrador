@@ -9,7 +9,25 @@ function crearPregunta() {
 
     let form = crearFormulario(contenidoFormulario);
 
-    realizarPeticionFetch(form, '../php/foro.php');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        let formData = new FormData(form);
+        formData.append('accion', 'crearPregunta');
+        fetch('Proyecto_final/dynamics/php/modalesPreguntas.php', {
+            method: 'POST',
+            body: formData,
+        })
+            .then(response => response.text())
+            .then(data => {
+                if (data === 'creacionExitosa') {
+                    alert('Pregunta creada correctamente.');
+                } else {
+                    console.error(data);
+                    alert('Error al crear la pregunta.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -17,18 +35,37 @@ function crearPregunta() {
     document.body.appendChild(modal);
 }
 
-function editarPregunta() {
+function editarPregunta(idPregunta) {
     let { modal, modalContent } = crearModal();
 
     let contenidoFormulario = [
         crearLabel('Nueva versión de tu pregunta:', 'textoPregunta'),
-        crearTextArea('textoPregunta', 'Nueva versión de tu pregunta'),
+        crearTextArea('textoPregunta', ''),
         crearButton('submit', 'Guardar Cambios')
     ];
 
     let form = crearFormulario(contenidoFormulario);
 
-    realizarPeticionFetch(form, '../php/foro.php');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        let formData = new FormData(form);
+        formData.append('accion', 'editarPregunta');
+        formData.append('idPregunta', idPregunta);
+        fetch('Proyecto_final/dynamics/php/modalesPreguntas.php', {
+            method: 'POST',
+            body: formData,
+        })
+            .then(response => response.text())
+            .then(data => {
+                if (data === 'edicionExitosa') {
+                    alert('Pregunta editada correctamente.');
+                } else {
+                    console.error(data);
+                    alert('Error al editar la pregunta.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -36,7 +73,8 @@ function editarPregunta() {
     document.body.appendChild(modal);
 }
 
-function eliminarPregunta() {
+
+function eliminarPregunta(idPregunta) {
     let { modal, modalContent } = crearModal();
 
     let mensajeEliminacion = document.createElement('p');
@@ -50,20 +88,18 @@ function eliminarPregunta() {
     }
 
     confirmarEliminacionButton.addEventListener('click', function(){
-        fetch('../php/foro.php', {
+        fetch('Proyecto_final/dynamics/php/modalesPreguntas.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({accion: 'eliminar'})
+            body: JSON.stringify({accion: 'eliminarPregunta', idPregunta: idPregunta})
         })
             .then(response => response.text())
             .then(resultado => {
                 if(resultado === '1') {
-                    // Operación exitosa
-                    console.log("La pregunta se ha eliminado con éxito.");
+                    alert("La pregunta se ha eliminado con éxito.");
                 } else {
-                    // Operación fallida
                     alert("No se pudo eliminar la pregunta. Inténtalo más tarde.");
                 }
                 document.body.removeChild(modal);
@@ -78,3 +114,4 @@ function eliminarPregunta() {
 
     document.body.appendChild(modal);
 }
+

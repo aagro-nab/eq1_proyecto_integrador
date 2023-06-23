@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+include ("./config.php");
+$con = connect();
+session_start();
+
+if(isset($_SESSION['rol']) && isset($_SESSION['id']) && isset($_SESSION['username'])){
+    $r = $_SESSION['rol'];
+    $id_usuario = $_SESSION['id'];
+    $nombre_usuario = $_SESSION['username'];
+} else {
+    header("Location: ./inicioSesion.php");
+    exit;
+}
+switch($r){
+    case "estudiante":
+        $rol = "principalAlumno.js";
+        break;
+    case "moderador":
+        $rol = "principalModerador.js";
+        break;
+    case "administrador":
+        $rol = "principalAdmin.js";
+        break;
+}
+echo '<!DOCTYPE html>
 <html>
 <head>
     <title>Página Principal</title>
@@ -55,8 +79,7 @@
 
     </div>
 </main>
-<script src="../js/principalAdmin.js"></script>
-<script src="../js/modalesGenerales.js"></script>
+<script src="../js/'.$rol.'"></script>
 <script src="../js/modalesForos.js"></script>
 <script src="../js/modalesPreguntas.js"></script>
 <script src="../js/modalesExtravios.js"></script>
@@ -64,4 +87,5 @@
 <script src="../js/funcionesCrear.js"></script>
 <script src="../js/modalesUsuario.js"></script>
 </body>
-</html>
+</html>'
+?>
