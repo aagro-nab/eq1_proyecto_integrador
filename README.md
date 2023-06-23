@@ -8,12 +8,13 @@
 ## División de responsabilidades para la elaboración del proyecto
 | Área  | Nombres de las personas |
 | ------------- |:-------------:|
-| HTML    | Fany |
+| HTML    | Fany y Dani |
 | CSS      | Dani, Fany y Ame |
 | JavaScript      | Dani, Karen y Ame   |
-|PHP| Karen y Jesús |
-|DATABASES |  Karen y Jesús |
+|PHP| Dani, Ame, Karen y Jesús |
+|DATABASES |  Dani, Karen y Jesús |
 |Seguridad | Fany y Ame |
+|Documentación | Fany|
 ****************
 ## Índice 
 - [Descripción del proyecto](#descripción-del-proyecto)
