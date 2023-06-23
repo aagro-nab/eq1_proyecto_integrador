@@ -49,39 +49,6 @@ function modificarUsuario(usuario) {
     document.body.appendChild(modal);
 }
 
-
-function crearComentario() {
-    let { modal, modalContent } = crearModal();
-
-    let contenidoFormulario = [
-        crearLabel('Escribe tu comentario aquí:', 'contenidoComentario'),
-        crearTextArea('contenidoComentario', 'Escribe tu comentario aquí...'),
-        crearLabel('Añade una imagen:', 'imagenComentario'),
-        crearInput('file', 'imagenComentario'),
-        crearLabel('Añade un emoji:', 'emojiComentario'),
-        crearInput('text', 'emojiComentario', 'Añade un emoji'),
-        crearButton('submit', 'Publicar Comentario')
-    ];
-
-    let form = crearFormulario(contenidoFormulario);
-
-    realizarPeticionFetch(form, '../php/foro.php');
-
-    modalContent.appendChild(form);
-    modal.appendChild(modalContent);
-
-    document.body.appendChild(modal);
-}
-
-function editarComentario() {
-    //Lógica para la edición de comentarios.
-}
-
-function eliminarComentario() {
-    //Lógica para la eliminación de comentarios.
-}
-
-
 function asignarModerador() {
     let modal = document.createElement("div");
     modal.setAttribute("id", "modal");

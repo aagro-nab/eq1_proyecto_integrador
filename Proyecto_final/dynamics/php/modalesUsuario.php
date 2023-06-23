@@ -29,6 +29,10 @@ try {
     echo 'Error: ',  $e->getMessage();
 }
 
+function asignar($campo) {
+    return isset($_POST[$campo]) ? $_POST[$campo] : '';
+}
+
 function asignarModerador($con, $nombreUsuario){
     $query = "UPDATE usuario SET rol = 'moderador' WHERE nombreUsuario = ?";
 
@@ -42,10 +46,6 @@ function asignarModerador($con, $nombreUsuario){
     } else {
         echo "Error en la preparación de la consulta: " . $con->error;
     }
-}
-
-function asignar($campo) {
-    return isset($_POST[$campo]) ? $_POST[$campo] : '';
 }
 
 function actualizarUsuario($con) {
