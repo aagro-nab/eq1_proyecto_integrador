@@ -10,7 +10,7 @@ async function crearForo() {
 
     let form = crearFormulario([nombreForo, descripcionForo, imagenForo, esPublico, etiquetaPublico, submitButton]);
 
-    realizarPeticionFetch(form, 'LIGA A PHP');
+    realizarPeticionFetch(form, '../foro.php');
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -39,7 +39,7 @@ async function entrarForo(rol) {
             datosFormularioUnirse.append('accion', 'unirse');
             datosFormularioUnirse.append('foroId', foro.foroId);
 
-            let response = await fetch('LIGA A PHP', {
+            let response = await fetch('../foro.php', {
                 method: 'POST',
                 body: datosFormularioUnirse
             });
@@ -65,7 +65,7 @@ async function editarForo(rol) {
     datosFormulario.append('accion', 'editar');
     datosFormulario.append('rol', rol);
 
-    let response = await fetch('LIGA A PHP', {
+    let response = await fetch('../foro.php', {
         method: 'POST',
         body: datosFormulario
     });
@@ -97,10 +97,30 @@ async function editarForo(rol) {
         let submitButton = crearButton('submit', 'Editar Foro');
         form.appendChild(submitButton);
 
-        realizarPeticionFetch(form, 'LIGA A PHP');
+        realizarPeticionFetch(form, '../foro.php');
 
         modalContent.appendChild(form);
     });
     modal.appendChild(modalContent);
     document.body.appendChild(modal);
+}
+
+async function realizarPeticionFetch(form, url) {
+    form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        let datosFormulario = new FormData(form);
+        let response = await fetch(url, {
+            method: 'POST',
+            body: datosFormulario
+        });
+
+        let resultado = await response.text();
+        if(resultado === '1') {
+            console.log("La operación se realizó con éxito.");
+            alert("La operación se realizó con éxito.");
+        } else {
+            alert("No se pudo realizar la operación.");
+        }
+        document.body.removeChild(modal);
+    });
 }

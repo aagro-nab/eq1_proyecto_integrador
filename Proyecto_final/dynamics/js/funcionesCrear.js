@@ -56,7 +56,7 @@ function crearTextArea(nombre, placeholder) {
     return textarea;
 }
 
-async function realizarPeticionFetch(form, url) {
+/*async function realizarPeticionFetch(form, url) {
     form.addEventListener('submit', async function(e){
         e.preventDefault();
         let datosFormulario = new FormData(form);
@@ -74,4 +74,4 @@ async function realizarPeticionFetch(form, url) {
         }
         document.body.removeChild(modal);
     });
-}
+}*/
