@@ -123,6 +123,7 @@ nav button:hover {
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
+    color: white;
 }
 
 .modal-content {

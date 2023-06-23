@@ -1,22 +1,4 @@
-<?php
-include ("./config.php");
-$con = connect();
-session_start();
-
-$r = $_SESSION['rol'];
-//revisa el valor de $rol, y cuando encuentre una coincidencia es la direccion que va a tomar para el script
-switch($r){
-    case "estudiante":
-        $rol = "principalAlumno.js?v2143";
-        break;
-    case "moderador":
-        $rol = "principalModerador.js?v7634";
-        break;
-    case "administrador":
-        $rol = "principalAdmin.js?v2395";
-        break;
-}
-echo '<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Página Principal</title>
@@ -47,24 +29,39 @@ echo '<!DOCTYPE html>
         <a href="#" class="btn"><i class="fas fa-envelope"></i><span class="button-text"> Mensajes</span></a>
         <a href="#" class="btn"><i class="fas fa-map"></i><span class="button-text"> Mapa</span></a>
         <hr id="hrButton" style="display: none;">
-        <a href="#" id="crearNuevoButton" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton2" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton3" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton4" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton5" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton6" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton7" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton8" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton9" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton10" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button1" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button2" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button3" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button4" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button5" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button6" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button7" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button8" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button9" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button10" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+    </div>
+
+    <!-- contenedor para todas las publicaciones -->
+    <div id="contenedorPublicaciones">
+        <article class="publicacion" style="display: none;">
+            <section class="contenido">
+            </section>
+            <div class="acciones">
+                <button class="comentar">Comentar</button>
+                <button class="editar">Editar</button>
+                <button class="eliminar">Eliminar</button>
+            </div>
+        </article>
+
     </div>
 </main>
-<script src="../js/'.$rol.'"></script>
+<script src="../js/principalAdmin.js"></script>
 <script src="../js/modalesGenerales.js"></script>
 <script src="../js/modalesForos.js"></script>
 <script src="../js/modalesPreguntas.js"></script>
 <script src="../js/modalesExtravios.js"></script>
 <script src="../js/modalesMarket.js"></script>
+<script src="../js/funcionesCrear.js"></script>
+<script src="../js/modalesUsuario.js"></script>
 </body>
-</html>'
-?>
+</html>

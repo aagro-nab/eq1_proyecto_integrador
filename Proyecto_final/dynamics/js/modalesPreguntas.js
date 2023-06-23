@@ -1,18 +1,15 @@
 function crearPregunta() {
     let { modal, modalContent } = crearModal();
 
-    let form = document.createElement('form');
-    form.setAttribute('method', 'post');
+    let contenidoFormulario = [
+        crearLabel('Escribe tu pregunta:', 'textoPregunta'),
+        crearTextArea('textoPregunta', 'Escribe tu pregunta'),
+        crearButton('submit', 'Crear Pregunta')
+    ];
 
-    let textoPregunta = document.createElement('textarea');
-    textoPregunta.setAttribute('name', 'textoPregunta');
-    textoPregunta.setAttribute('placeholder', 'Escribe tu pregunta');
-    form.appendChild(textoPregunta);
+    let form = crearFormulario(contenidoFormulario);
 
-    let submitButton = document.createElement('button');
-    submitButton.setAttribute('type', 'submit');
-    submitButton.innerHTML = "Crear Pregunta";
-    form.appendChild(submitButton);
+    realizarPeticionFetch(form, '../php/foro.php');
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -23,18 +20,15 @@ function crearPregunta() {
 function editarPregunta() {
     let { modal, modalContent } = crearModal();
 
-    let form = document.createElement('form');
-    form.setAttribute('method', 'post');
+    let contenidoFormulario = [
+        crearLabel('Nueva versión de tu pregunta:', 'textoPregunta'),
+        crearTextArea('textoPregunta', 'Nueva versión de tu pregunta'),
+        crearButton('submit', 'Guardar Cambios')
+    ];
 
-    let textoPregunta = document.createElement('textarea');
-    textoPregunta.setAttribute('name', 'textoPregunta');
-    textoPregunta.setAttribute('placeholder', 'Nueva versión de tu pregunta');
-    form.appendChild(textoPregunta);
+    let form = crearFormulario(contenidoFormulario);
 
-    let submitButton = document.createElement('button');
-    submitButton.setAttribute('type', 'submit');
-    submitButton.innerHTML = "Guardar Cambios";
-    form.appendChild(submitButton);
+    realizarPeticionFetch(form, '../php/foro.php');
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -49,19 +43,35 @@ function eliminarPregunta() {
     mensajeEliminacion.innerHTML = "¿Estás seguro de que quieres eliminar esta pregunta?";
     modalContent.appendChild(mensajeEliminacion);
 
-    let confirmarEliminacionButton = document.createElement('button');
-    confirmarEliminacionButton.innerHTML = "Confirmar";
-    confirmarEliminacionButton.onclick = function() {
-        // Aquí la lógica para eliminar la pregunta
-        document.body.removeChild(modal);
-    }
-    modalContent.appendChild(confirmarEliminacionButton);
-
-    let cancelarButton = document.createElement('button');
-    cancelarButton.innerHTML = "Cancelar";
+    let confirmarEliminacionButton = crearButton('button', 'Confirmar');
+    let cancelarButton = crearButton('button', 'Cancelar');
     cancelarButton.onclick = function() {
         document.body.removeChild(modal);
     }
+
+    confirmarEliminacionButton.addEventListener('click', function(){
+        fetch('../php/foro.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({accion: 'eliminar'})
+        })
+            .then(response => response.text())
+            .then(resultado => {
+                if(resultado === '1') {
+                    // Operación exitosa
+                    console.log("La pregunta se ha eliminado con éxito.");
+                } else {
+                    // Operación fallida
+                    alert("No se pudo eliminar la pregunta. Inténtalo más tarde.");
+                }
+                document.body.removeChild(modal);
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+    modalContent.appendChild(confirmarEliminacionButton);
     modalContent.appendChild(cancelarButton);
 
     modal.appendChild(modalContent);
