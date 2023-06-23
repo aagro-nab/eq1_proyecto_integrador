@@ -4,6 +4,7 @@ $con = connect();
 session_start();
 
 $r = $_SESSION['rol'];
+$usuario = $_SESSION['username'];
 //revisa el valor de $rol, y cuando encuentre una coincidencia es la direccion que va a tomar para el script
 switch($r){
     case "estudiante":
@@ -38,7 +39,7 @@ echo '<!DOCTYPE html>
 <main>
     <div class="sidebar">
         <img src="../../statics/img/Ellipse%202.png" alt="Foto de usuario">
-        <h3>Nombre de usuario</h3>
+        <h3>'.$usuario.'</h3>
         <p>Nombre completo del usuario</p>
         <a href="#" class="btn2"><i class="fas fa-sign-out-alt"></i><span class="button-text"> Cerrar sesión</span></a>
         <hr>
@@ -58,20 +59,6 @@ echo '<!DOCTYPE html>
         <a href="#" id="crearNuevoButton9" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
         <a href="#" id="crearNuevoButton10" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
     </div>
-
-    <!-- contenedor para todas las publicaciones -->
-    <div id="contenedorPublicaciones">
-        <article class="publicacion" style="display: none;">
-            <section class="contenido">
-            </section>
-            <div class="acciones">
-                <button class="comentar">Comentar</button>
-                <button class="editar">Editar</button>
-                <button class="eliminar">Eliminar</button>
-            </div>
-        </article>
-
-    </div>
 </main>
 <script src="../js/'.$rol.'"></script>
 <script src="../js/modalesGenerales.js"></script>
@@ -79,8 +66,6 @@ echo '<!DOCTYPE html>
 <script src="../js/modalesPreguntas.js"></script>
 <script src="../js/modalesExtravios.js"></script>
 <script src="../js/modalesMarket.js"></script>
-<script src="../js/funcionesCrear.js"></script>
-<script src="../js/modalesUsuario.js"></script>
 </body>
 </html>'
 ?>

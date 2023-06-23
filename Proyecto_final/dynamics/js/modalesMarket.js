@@ -40,7 +40,7 @@ function editarVenta() {
 
     let form = crearFormulario(contenidoFormulario);
 
-    realizarPeticionFetch(form, 'LIGA A PHP PARA EDITAR VENTA');
+    realizarPeticionFetch(form, './dynamics/php/market.php');
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
