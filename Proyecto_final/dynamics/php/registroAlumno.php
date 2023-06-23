@@ -38,22 +38,22 @@ if (!isset($rol)) {
 
         <article class="Formulario">
 
-        <form action="" method="post" target="_self" id="formRegistro">
+        <form action="" method="post" target="_self">
 
             <p class="texto-m">Nombre completo:</p>
-            <input class="input-datos" type="text" id="nombre" name="nombre" required>
+            <input class="input-datos" type="text" id="nombre" name="nombre" maxlength="100" required>
 
             <p class="texto-m">Nombre de usuario:</p>
-            <input class="input-datos" type="text" id="username" name="username" required>
+            <input class="input-datos" type="text" id="username" name="username" required maxlength="10">
 
             <p class="texto-m">Número de cuenta:</p>
             <input class="input-datos" type="text" id="nCuenta" name="nCuenta" minlength="9" maxlength="9" required>
 
             <p class="texto-m">Email:</p>
-            <input class="input-datos" type="email" id="email" name="email" required>
+            <input class="input-datos" type="email" id="email" name="email" required maxlenght="50">
 
             <p class="texto-m">Contraseña:</p>
-            <input class="input-datos" type="password" id="contraseña" name="contraseña" minlength="8"  maxlength="16" required>
+            <input class="input-datos" type="password" id="contraseña" name="contraseña" minlength="8"  maxlength="50" required>
 
             <p class="texto-m">Grado:</p>
             <label for="grado"></label>
@@ -66,11 +66,9 @@ if (!isset($rol)) {
 
             <p class="texto-m">Grupo:</p>
             <select id="grupos"></select>
-            
 
-
-            <!-- <input class="Botexto" type="checkbox" id="recordar" name="recordar">
-            <label for="recordar">Recordar usuario</label><br><br> -->
+            <!--<input class="Botexto" type="checkbox" id="recordar" name="recordar">
+            <label for="recordar">Recordar usuario</label><br><br>-->
 
             <div class="row-center">
             <button type="submit" class="boton-submit" value="Registrarse">Registrarse</button>

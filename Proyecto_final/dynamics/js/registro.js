@@ -33,11 +33,11 @@ window.addEventListener("load", ()=>{
         .catch (error =>{
             console.error ('Ocurrio un error'+error);
         })
-    })
+    });
 
 
-    formRegistro.addEventListener("submit", (event) => {
-        event.preventDefault();
+    function revisionBase ()
+    {
         datosRegistro = new FormData(formRegistro);
             
         fetch("../php/revisionInsert.php", {
@@ -45,14 +45,50 @@ window.addEventListener("load", ()=>{
             body: datosRegistro
         })
         .then((respuesta) => {
+                //console.log (respuesta);
                 return respuesta.json();
         })
-        .then((datosJSON) => {
-                    
+        .then((json) => {                    
+            //console.log (json.ok);
+            if (json.ok == true){
+                console.log (json.mensaje);
+                alert(json.mensaje);
+                
+                window.location = "./principal.php";
+            }
+            else
+            {
+                console.log (json.mensaje);
+                alert(json.mensaje);      
+            }
+    
+        });
+    };
+    // });
+
+
+
+    formRegistro.addEventListener("submit", (event) => {
+        event.preventDefault();
+        datosRegistro = new FormData(formRegistro);
+            
+        fetch("../php/seguridad.php", {
+            method: "POST",
+            body: datosRegistro
+        })
+        .then((respuesta) => {
+                //console.log (respuesta);
+                return respuesta.json();
+        })
+        .then((datosJSON) => 
+        {                    
             //console.log (datosJSON.ok);
-            if (datosJSON.ok == true){
+            //console.log (datosJSON.mensaje);
+            if (datosJSON.ok == true)
+            {
                 alert(datosJSON.mensaje);
-                window.location = "./seleccionRol.php";
+                revisionBase ();
+                
             }
             else
             {
@@ -61,4 +97,4 @@ window.addEventListener("load", ()=>{
     
         });
     });
-});
+})

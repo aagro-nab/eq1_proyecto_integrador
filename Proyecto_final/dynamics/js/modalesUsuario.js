@@ -1,4 +1,4 @@
-function modificarUsuario() {
+function modificarUsuario(usuario) {
     let { modal, modalContent } = crearModal();
 
     let contenidoFormulario = [
@@ -23,7 +23,9 @@ function modificarUsuario() {
     form.addEventListener('submit', function (e) {
         e.preventDefault();
         let formData = new FormData(form);
-        fetch('Proyecto_final/dynamics/php/modalesUsuario.js', {
+        // Incluir el ID_USUARIO en los datos enviados al servidor
+        formData.append('ID_USUARIO', usuario);
+        fetch('Proyecto_final/dynamics/php/modalesUsuario.php', {
             method: 'POST',
             body: formData,
         })
@@ -46,39 +48,6 @@ function modificarUsuario() {
     modal.appendChild(modalContent);
     document.body.appendChild(modal);
 }
-
-
-function crearComentario() {
-    let { modal, modalContent } = crearModal();
-
-    let contenidoFormulario = [
-        crearLabel('Escribe tu comentario aquí:', 'contenidoComentario'),
-        crearTextArea('contenidoComentario', 'Escribe tu comentario aquí...'),
-        crearLabel('Añade una imagen:', 'imagenComentario'),
-        crearInput('file', 'imagenComentario'),
-        crearLabel('Añade un emoji:', 'emojiComentario'),
-        crearInput('text', 'emojiComentario', 'Añade un emoji'),
-        crearButton('submit', 'Publicar Comentario')
-    ];
-
-    let form = crearFormulario(contenidoFormulario);
-
-    realizarPeticionFetch(form, '../php/foro.php');
-
-    modalContent.appendChild(form);
-    modal.appendChild(modalContent);
-
-    document.body.appendChild(modal);
-}
-
-function editarComentario() {
-    //Lógica para la edición de comentarios.
-}
-
-function eliminarComentario() {
-    //Lógica para la eliminación de comentarios.
-}
-
 
 function asignarModerador() {
     let modal = document.createElement("div");

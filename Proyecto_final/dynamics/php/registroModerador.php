@@ -55,7 +55,7 @@
               <input class="input-datos" type="email" id="email" name="email" required>
       
               <p class="texto-m">Contraseña:</p>
-              <input class="input-datos" type="password" id="contraseña" name="contraseña" minlength="8"  maxlength="16" required>
+              <input class="input-datos" type="password" id="contraseña" name="contraseña" minlength="8"  maxlength="50" required>
       
               <p class="texto-m">Grado:</p>
               <label for="grado"></label>

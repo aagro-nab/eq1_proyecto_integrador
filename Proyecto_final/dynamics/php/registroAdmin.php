@@ -64,24 +64,23 @@
                 <option class="input-datos" value="cuarto">Cuarto</option>
                 <option class="input-datos" value="quinto">Quinto</option>
                 <option class="input-datos" value="sexto">Sexto</option>
-              </select>
-  
-              <p class="texto-m">Grupo:</p>
-              <select id="grupos"></select>
-      
-              <!-- <div class="row">
-                <input class="remember-me" type="checkbox" id="recordar" name="recordar">
-                <p >Recordar usuario</p>
-              </div> -->
-      
-              <div class="row-center">
-                <button type="submit" class="boton-submit" value="Registrarse">Registrarse</button>
-              </div>
-      
-              <!-- <a href="#">¿Olvidaste tu contraseña?</a><br> -->
-              <a href="#">¿Tienes duda en alguno de los campos?</a><br><br>
-      
-            </form>
+            </select>
+
+            <p class="texto-m">Grupo:</p>
+            <select id="grupos"></select>
+
+            <!--<input class="Botexto" type="checkbox" id="recordar" name="recordar">
+            <label for="recordar">Recordar usuario</label><br><br>-->
+
+            <div class="row-center">
+            <button type="submit" class="boton-submit" value="Registrarse">Registrarse</button>
+            </div>
+
+            <!-- <a href="#">¿Olvidaste tu contraseña?</a><br> -->
+            <a href="#">¿Tienes duda en alguno de los campos?</a><br><br>
+
+        </form>
+
             <a href="./seleccionRol.html" class="Roles">Seleccionar Rol de Nuevo</a>
             
           </article>

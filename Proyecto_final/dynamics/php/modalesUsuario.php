@@ -29,6 +29,10 @@ try {
     echo 'Error: ',  $e->getMessage();
 }
 
+function asignar($campo) {
+    return isset($_POST[$campo]) ? $_POST[$campo] : '';
+}
+
 function asignarModerador($con, $nombreUsuario){
     $query = "UPDATE usuario SET rol = 'moderador' WHERE nombreUsuario = ?";
 
@@ -42,10 +46,6 @@ function asignarModerador($con, $nombreUsuario){
     } else {
         echo "Error en la preparación de la consulta: " . $con->error;
     }
-}
-
-function asignar($campo) {
-    return isset($_POST[$campo]) ? $_POST[$campo] : '';
 }
 
 function actualizarUsuario($con) {
@@ -62,10 +62,10 @@ function actualizarUsuario($con) {
     $idUsuario = asignar('ID_USUARIO');
 
     $query = "UPDATE usuario SET nombre = ?, nombreUsuario = ?, numeroCuenta = ?, email = ?, contrasena = ?, grupo = ?, rol = ?, fotoPerfil = ?, etiquetas = ?, ID_HORARIO = ? WHERE ID_USUARIO = ?";
-    $stmtUsuario = $con->prepare("SELECT * FROM usuario WHERE nombreUsuario = ?");
-    $stmtEmail = $con->prepare("SELECT * FROM usuario WHERE email = ?");
+    $stmtUsuario = $con->prepare("SELECT * FROM usuario WHERE nombreUsuario = ? AND ID_USUARIO != ?");
+    $stmtEmail = $con->prepare("SELECT * FROM usuario WHERE email = ? AND ID_USUARIO != ?");
 
-    $stmtUsuario->bind_param("s", $nombreUsuario);
+    $stmtUsuario->bind_param("si", $nombreUsuario, $idUsuario);
     $stmtUsuario->execute();
     $resultUsuario = $stmtUsuario->get_result();
     if($resultUsuario->num_rows > 0){
@@ -73,7 +73,7 @@ function actualizarUsuario($con) {
         exit();
     }
 
-    $stmtEmail->bind_param("s", $email);
+    $stmtEmail->bind_param("si", $email, $idUsuario);
     $stmtEmail->execute();
     $resultEmail = $stmtEmail->get_result();
     if($resultEmail->num_rows > 0){
@@ -83,11 +83,9 @@ function actualizarUsuario($con) {
 
     if ($stmt = $con->prepare($query)) {
         $stmt->bind_param("sssssssbssi", $nombre, $nombreUsuario, $numeroCuenta, $email, $contrasena, $grupo, $rol, $fotoPerfil, $etiquetas, $idHorario, $idUsuario);
-        // En este caso, 'sssssssbssi' representa las cadenas de texto (s de 'string'), blob (b) y los enteros (i de 'integer')
-        // que se espera pasar a la consulta. Deberás ajustar esto según los tipos de datos de tu tabla.
 
         if ($stmt->execute()) {
-            echo "La actualización del usuario ha sido exitosa.";
+            echo "actualizacionExitosa";
         } else {
             echo "Hubo un error al intentar actualizar los datos del usuario.";
         }
@@ -95,3 +93,4 @@ function actualizarUsuario($con) {
         echo "Error en la preparación de la consulta: " . $con->error;
     }
 }
+

@@ -1,24 +1,70 @@
 <?php
+//ESTA VERSIÓN DEL CÓDIGO FORMA PARTE DE LA OPTIMIZACIÓN FINAL v2 DE LOS ENTREGABLES
+// PARA UN MEJOR MANEJO DE ERRORES TANTO EN EL DESARROLLO FINAL DEL PROYECTO, COMO EN LA POSTERIDAD
 //conectar con la base de datos
-$include = include("./config.php");
+include("./config.php");
 $con = connect();
 session_start();
+
 $cuki = (isset($_COOKIE['usuario']) && $_COOKIE['usuario'] != "")? $_COOKIE['usuario'] : FALSE;
 $cuki_rol = (isset($_COOKIE['rol']) && $_COOKIE['rol'] != "")? $_COOKIE['rol'] : FALSE;
+
 if($cuki && $cuki_rol){
     $_SESSION['rol'] = $_COOKIE['rol'];
     header("location:./principal.php");
+    exit;
 }
-else {
-    header("location: ../../index.html");
+
+//Verificar si se ha enviado el formulario
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //Recibiendo datos de inicioDeSesion
+    $username = filter_var($_POST['login-username'] ?? '', FILTER_SANITIZE_STRING);
+    $pswrd = filter_var($_POST['login-password'] ?? '', FILTER_SANITIZE_STRING);
+    $remember = isset($_POST["remember-me"]);
+
+    //Validación de entradas
+    $user = "/([A-z]|[0-9]){5,15}/i";
+    $pass = "/([A-z]|[0-9]){6,20}/i";
+
+    if (!(preg_match($user, $username) ==1 && preg_match($pass, $pswrd) ==1)) {
+        echo("Ingresaste un username o contraseña inválida");
+    } else {
+        //Consulta de datos
+        if ($con) {
+            $stmt = $con->prepare("SELECT * FROM usuario WHERE nombreUsuario=?");
+            $stmt->bind_param("s", $username);
+
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $user = $result->fetch_assoc();
+
+            if ($user) {
+                if ($pswrd == $user['contrasena']) {
+                    $_SESSION['username'] = $username;
+                    $_SESSION['rol'] = $user['rol'];
+                    $_SESSION['id'] = $user['ID_USUARIO'];
+
+                    if ($remember) {
+                        setcookie("rol", $_SESSION['rol'], time() + 60 * 60 * 24); //dura un día
+                        setcookie("usuario", $_SESSION['username'], time() + 60 * 60 * 24); //dura un día
+                    }
+
+                    header("location:./principal.php");
+                    exit;
+                } else {
+                    echo "Nombre de usuario o contraseña incorrectos.";
+                }
+            } else {
+                echo "Nombre de usuario o contraseña incorrectos.";
+            }
+        } else {
+            echo "No se pudo conectar con la base de datos.";
+        }
+    }
 }
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+?>
 
-
-echo '
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -58,71 +104,3 @@ echo '
 </main>
 </body>
 </html>
-';
-
-//recibe los datos de inicioDeSesion
-$username = (isset($_POST["login-username"]) && $_POST["login-username"] != "")? $_POST["login-username"] : NULL;
-$pswrd = (isset($_POST["login-password"]) && $_POST["login-password"] != "")? $_POST["login-password"] : NULL;
-$remember = (isset($_POST["remember-me"]) && $_POST["remember-me"] != "")? $_POST["remember-me"] : FALSE;
-
-// para comprobar que solo sean cadenas las que nos llegen por las entradas de logIn
-$user_sano = filter_var($username, FILTER_SANITIZE_STRING);
-$username = $user_sano;
-$pswrd_sano= filter_var($pswrd, FILTER_SANITIZE_STRING);
-$pswrd = $pswrd_sano;
-// validar el username con regex
-$user = "/([A-z]|[0-9]){5,15}/i";
-$pass = "/([A-z]|[0-9]){6,}/i";
-
-if (preg_match($user, $username) ==1) {
-    echo("ingresaste un username valido");
-} else {
-    echo("ingresaste un username invalido");
-}
-if (preg_match($pass, $pswrd) ==1) {
-    echo("ingresaste una contraseña valida");
-} else {
-    echo("ingresaste una contraseña invalida");
-}
-// estaba pensando en un
-// return $al inicio de sesion tipo que ya te deje continuar normal si todo ok
-// aun asi, sin el return funciona bien
-
-// necesita del espacio para la sal en Maria DB
-// if (verificar_contra($pswrd, $correct_pass, $sal_origin)){
-//     echo "Contraseña correcta";
-// } else {
-//     echo "Contraseña incorrecta";
-// }
-
-
-
-//consultar datos
-if($include && $con){
-    $sql = "SELECT * FROM usuario WHERE nombreUsuario='$username' AND contrasena='$pswrd'";
-    $query = mysqli_query($con, $sql);//busca que el usuario exista y que la contraseña también
-    
-    $sql_rol = "SELECT rol FROM usuario WHERE nombreUsuario='$username'";    
-    $query_rol = mysqli_query($con, $sql_rol);
-
-    
-
-    $datos = mysqli_fetch_assoc($query); //recibe los datos de $query para poder procesarlos
-    $rol = mysqli_fetch_array($query_rol);
-
-    if($datos){//si $datos es TRUE redireccionar a la página principal 
-        $r = $rol[0];//
-        $_SESSION['username'] = $username;// "$_SESSION es una variable que va a guardar el username para poder iniciar sesion en la página principal 
-        $_SESSION['rol'] = $r;
-
-        if($remember){
-            setcookie("rol", $_SESSION['rol'], time() + 60 * 60 * 24);//dura un día
-            setcookie("usuario", $_SESSION['username'], time() + 60 * 60 * 24);//dura un día
-        }
-        header("location:./principal.php");
-    }
-    // }else{
-    //     //si es FALSE mandar un mensaje de error y redireccionar otra vez al inicio de sesion
-    // }
-}
-?>
