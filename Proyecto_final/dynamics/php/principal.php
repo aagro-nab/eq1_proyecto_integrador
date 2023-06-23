@@ -29,16 +29,16 @@
         <a href="#" class="btn"><i class="fas fa-envelope"></i><span class="button-text"> Mensajes</span></a>
         <a href="#" class="btn"><i class="fas fa-map"></i><span class="button-text"> Mapa</span></a>
         <hr id="hrButton" style="display: none;">
-        <a href="#" id="crearNuevoButton" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton2" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton3" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton4" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton5" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton6" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton7" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton8" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton9" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton10" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button1" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button2" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button3" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button4" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button5" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button6" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button7" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button8" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button9" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button10" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
     </div>
 
     <!-- contenedor para todas las publicaciones -->

@@ -70,24 +70,3 @@ function crearTextArea(nombre, placeholder) {
     textarea.setAttribute('placeholder', placeholder);
     return textarea;
 }
-
-async function realizarPeticionFetch(form, url) {
-    form.addEventListener('submit', async function(e){
-        e.preventDefault();
-        let datosFormulario = new FormData(form);
-        let response = await fetch(url, {
-            method: 'POST',
-            body: datosFormulario
-        });
-
-        let resultado = await response.text();
-        console.log(resultado);
-        if(resultado === '1') {
-            console.log("La operación se realizó con éxito.");
-            alert("La operación se realizó con éxito.");
-        } else {
-            
-            alert("No se pudo realizar la operación.");
-        }
-    });
-}

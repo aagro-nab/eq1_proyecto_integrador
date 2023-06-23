@@ -1,4 +1,4 @@
-async function crearForo() {
+async function crearForo(rol) {
     let { modal, modalContent } = crearModal();
 
     let nombreForo = crearInput('text', 'nombreForo', 'Nombre del Foro');
@@ -10,7 +10,34 @@ async function crearForo() {
 
     let form = crearFormulario([nombreForo, descripcionForo, imagenForo, esPublico, etiquetaPublico, submitButton]);
 
-    await realizarPeticionFetch(form, '../php/foro.php');
+    submitButton.addEventListener('click', async (event) => {
+        event.preventDefault();
+
+        let formData = new FormData(form);
+        formData.append('accion', 'crear');
+        formData.append('rol', rol);
+
+        let response = await fetch('ProyectoFinal/Proyecto_final/dynamics/php/foro.php', {
+            method: 'POST',
+            body: formData
+        });
+        
+        console.log(response);
+        
+        if(response.ok) {
+            let resultado = await response.text();
+            console.log(resultado);
+            if(resultado === '1') {
+                console.log("La operación se realizó con éxito.");
+                alert("La operación se realizó con éxito.");
+            } else {
+                alert("No se pudo realizar la operación.");
+            }
+        } else {
+            console.log("Error en la petición Fetch: ", response.status, response.statusText);
+            alert("Error en la petición Fetch.");
+        }
+    });
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -19,45 +46,58 @@ async function crearForo() {
 
 async function entrarForo(rol) {
     let datosFormulario = new FormData();
-    datosFormulario.append('accion', 'entrar');
+    datosFormulario.append('accion', 'recuperar');
     datosFormulario.append('rol', rol);
 
-    let response = await fetch('../php/foro.php', {
+    let response = await fetch('Proyecto_final/dynamics/php/foro.php', {
         method: 'POST',
         body: datosFormulario
     });
 
-    let foros = await response.json();
-    let { modal, modalContent } = crearModal();
+    if (response.ok) {
+        let foros = await response.json();
+        let { modal, modalContent } = crearModal();
 
-    foros.forEach(foro => {
-        let foroDiv = document.createElement('div');
-        foroDiv.innerHTML = foro.nombreForo;
+        foros.forEach(foro => {
+            let foroDiv = document.createElement('div');
+            foroDiv.innerHTML = foro.nombreForo;
 
-        let unirseBoton = crearButton('button', 'Unirse', async function() {
-            let datosFormularioUnirse = new FormData();
-            datosFormularioUnirse.append('accion', 'unirse');
-            datosFormularioUnirse.append('foroId', foro.foroId);
+            let unirseBoton = crearButton('button', 'Unirse');
+            unirseBoton.addEventListener('click', async function() {
+                let datosFormularioUnirse = new FormData();
+                datosFormularioUnirse.append('accion', 'unirse');
+                datosFormularioUnirse.append('foroId', foro.foroId);
 
-            let response = await fetch('../php/foro.php', {
-                method: 'POST',
-                body: datosFormularioUnirse
+                let responseUnirse = await fetch('Proyecto_final/dynamics/php/foro.php', {
+                    method: 'POST',
+                    body: datosFormularioUnirse
+                });
+
+                if (responseUnirse.ok) {
+                    let resultado = await responseUnirse.text();
+                    if (resultado === '1') {
+                        console.log("Te has unido al foro con éxito.");
+                        alert("Te has unido al foro con éxito.");
+                    } else {
+                        console.log("No se pudo unir al foro. Inténtalo más tarde.");
+                        alert("No se pudo unir al foro. Inténtalo más tarde.");
+                    }
+                    document.body.removeChild(modal);
+                } else {
+                    console.log("Error en la petición Fetch: ", responseUnirse.status, responseUnirse.statusText);
+                    alert("Error en la petición Fetch.");
+                }
             });
-
-            let resultado = await response.text();
-
-            if(resultado === '1') {
-                console.log("Te has unido al foro con éxito.");
-            } else {
-                alert("No se pudo unir al foro. Inténtalo más tarde.");
-            }
-            document.body.removeChild(modal);
+            foroDiv.appendChild(unirseBoton);
+            modalContent.appendChild(foroDiv);
         });
-        foroDiv.appendChild(unirseBoton);
-        modalContent.appendChild(foroDiv);
-    });
-    modal.appendChild(modalContent);
-    document.body.appendChild(modal);
+
+        modal.appendChild(modalContent);
+        document.body.appendChild(modal);
+    } else {
+        console.log("Error en la petición Fetch: ", response.status, response.statusText);
+        alert("Error en la petición Fetch.");
+    }
 }
 
 async function editarForo(rol) {
@@ -65,7 +105,7 @@ async function editarForo(rol) {
     datosFormulario.append('accion', 'editar');
     datosFormulario.append('rol', rol);
 
-    let response = await fetch('../php/foro.php', {
+    let response = await fetch('Proyecto_final/dynamics/php/foro.php', {
         method: 'POST',
         body: datosFormulario
     });
@@ -97,115 +137,133 @@ async function editarForo(rol) {
         let submitButton = crearButton('submit', 'Editar Foro');
         form.appendChild(submitButton);
 
-        realizarPeticionFetch(form, '../php/foro.php');
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            let datosFormulario = new FormData(form);
+
+            let response = await fetch('Proyecto_final/dynamics/php/foro.php', {
+                method: 'POST',
+                body: datosFormulario
+            });
+
+            if(response.ok) {
+                let respuesta = await response.text();
+                if(respuesta === '1') {
+                    alert("Foro editado con éxito.");
+                    location.reload();
+                } else {
+                    alert("Error al editar el foro. Por favor, inténtalo de nuevo.");
+                }
+            } else {
+                alert("Error en la petición. Por favor, inténtalo de nuevo.");
+            }
+        };
 
         modalContent.appendChild(form);
     });
     modal.appendChild(modalContent);
     document.body.appendChild(modal);
 }
+
 async function salirForo(nombreUsuario) {
-    fetch('../php/foro.php', {
+    let datosFormulario = new FormData();
+    datosFormulario.append('accion', 'recuperar');
+    datosFormulario.append('usuario', nombreUsuario);
+
+    let response = await fetch('Proyecto_final/dynamics/php/foro.php', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({usuario: nombreUsuario})
-    })
-        .then(response => response.json())
-        .then(foros => {
-            let { modal, modalContent } = crearModal();
+        body: datosFormulario
+    });
 
-            foros.forEach(foro => {
-                let foroDiv = document.createElement('div');
-                foroDiv.innerHTML = foro.nombreForo;
+    let foros = await response.json();
+    let { modal, modalContent } = crearModal();
 
-                let salirBoton = crearButton('button', 'Salir', function() {
-                    let confirmarSalida = confirm("¿Estás seguro de que quieres salir de este foro?");
-                    if(confirmarSalida) {
-                        fetch('LIGA A PHP', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({accion: 'salir', foroId: foro.foroId})
-                        })
-                            .then(response => response.text())
-                            .then(resultado => {
-                                if(resultado === '1') {
-                                    // Operación exitosa
-                                    console.log("Has salido del foro con éxito.");
-                                } else {
-                                    // Operación fallida
-                                    alert("No se pudo salir del foro. Inténtalo más tarde.");
-                                }
-                                document.body.removeChild(modal);
-                            })
-                            .catch(error => console.error('Error:', error));
-                    }
+    foros.forEach(foro => {
+        let foroDiv = document.createElement('div');
+        foroDiv.innerHTML = foro.nombreForo;
+
+        let salirBoton = crearButton('button', 'Salir', async function() {
+            let confirmarSalida = confirm("¿Estás seguro de que quieres salir de este foro?");
+            if(confirmarSalida) {
+                let datosFormularioSalida = new FormData();
+                datosFormularioSalida.append('accion', 'salir');
+                datosFormularioSalida.append('foroId', foro.foroId);
+
+                let responseSalida = await fetch('Proyecto_final/dynamics/php/foro.php', {
+                    method: 'POST',
+                    body: datosFormularioSalida
                 });
-                foroDiv.appendChild(salirBoton);
-                modalContent.appendChild(foroDiv);
-            });
-            modal.appendChild(modalContent);
-            document.body.appendChild(modal);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert("No se pueden recuperar los foros en este momento, inténtalo más tarde.");
+
+                let resultado = await responseSalida.text();
+
+                if(resultado === '1') {
+                    console.log("Has salido del foro con éxito.");
+                } else {
+                    alert("No se pudo salir del foro. Inténtalo más tarde.");
+                }
+                document.body.removeChild(modal);
+            }
         });
+        foroDiv.appendChild(salirBoton);
+        modalContent.appendChild(foroDiv);
+    });
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
 }
 
-async function eliminarForo() {
-    fetch('../php/foro.php', {
-        method: 'GET',
-    })
-        .then(response => response.json())
-        .then(foros => {
-            let { modal, modalContent } = crearModal();
+async function eliminarForo(rol) {
+    let datosFormulario = new FormData();
+    datosFormulario.append('accion', 'recuperar');
+    datosFormulario.append('rol', rol);
 
-            foros.forEach(foro => {
-                let foroDiv = document.createElement('div');
-                foroDiv.innerHTML = foro.nombreForo;
+    let response = await fetch('Proyecto_final/dynamics/php/foro.php', {
+        method: 'POST',
+        body: datosFormulario
+    });
 
-                let eliminarBoton = crearButton('button', 'Eliminar', function() {
-                    let confirmarEliminacion = confirm("¿Estás seguro de que quieres eliminar este foro?");
-                    if(confirmarEliminacion) {
-                        fetch('../php/foro.php', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({accion: 'eliminar', foroId: foro.foroId})
-                        })
-                            .then(response => response.text())
-                            .then(resultado => {
-                                if(resultado === '1') {
-                                    // Operación exitosa
-                                    console.log("El foro ha sido eliminado con éxito.");
-                                } else {
-                                    // Operación fallida
-                                    alert("No se pudo eliminar el foro. Inténtalo más tarde.");
-                                }
-                                document.body.removeChild(modal);
-                            })
-                            .catch(error => console.error('Error:', error));
-                    }
+    let foros = await response.json();
+    let { modal, modalContent } = crearModal();
+
+    foros.forEach(foro => {
+        let foroDiv = document.createElement('div');
+        foroDiv.innerHTML = foro.nombreForo;
+
+        let eliminarBoton = crearButton('button', 'Eliminar');
+        eliminarBoton.addEventListener('click', async () => {
+            let confirmarEliminacion = confirm("¿Estás seguro de que quieres eliminar este foro?");
+            if(confirmarEliminacion) {
+                let datosFormulario = new FormData();
+                datosFormulario.append('accion', 'eliminar');
+                datosFormulario.append('idForo', foro.ID_FORO);
+
+                let response = await fetch('Proyecto_final/dynamics/php/foro.php', {
+                    method: 'POST',
+                    body: datosFormulario
                 });
-                foroDiv.appendChild(eliminarBoton);
-                modalContent.appendChild(foroDiv);
-            });
-            modal.appendChild(modalContent);
-            document.body.appendChild(modal);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert("No se pueden recuperar los foros en este momento, inténtalo más tarde.");
+
+                if(response.ok) {
+                    let respuesta = await response.text();
+                    if(respuesta === '1') {
+                        alert("El foro ha sido eliminado con éxito.");
+                        location.reload();
+                    } else {
+                        alert("No se pudo eliminar el foro. Por favor, inténtalo de nuevo.");
+                    }
+                } else {
+                    alert("Error en la petición. Por favor, inténtalo de nuevo.");
+                }
+            }
         });
+        foroDiv.appendChild(eliminarBoton);
+        modalContent.appendChild(foroDiv);
+    });
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
 }
+
 
 async function reportarForo() {
-    fetch('../php/foro.php', {
+    fetch('Proyecto_final/dynamics/php/foro.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -220,12 +278,19 @@ async function reportarForo() {
                 foroDiv.innerHTML = foro.nombreForo;
 
                 let reportarBoton = crearButton('button', 'Reportar', function() {
-                    fetch('../php/foro.php', {
+                    let comentario = prompt("Por favor, introduce tu comentario para el reporte:");
+
+                    fetch('Proyecto_final/dynamics/php/foro.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify({accion: 'reportar', foroId: foro.foroId})
+                        body: JSON.stringify({
+                            accion: 'reportar',
+                            foroId: foro.foroId,
+                            usuarioId: 'usuario'/*Debe de añadirse la lógica para obtener el usuarioID*/,
+                            comentario: comentario
+                        })
                     })
                         .then(response => response.text())
                         .then(resultado => {

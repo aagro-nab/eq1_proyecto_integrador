@@ -1,26 +1,49 @@
 <?php
 include ("./config.php");
 $con = connect();
+
+if ($con->connect_errno) {
+    echo "No se pudo connectar a MySQL: " . $con->connect_error;
+    exit();
+}
+
 session_start();
 
-$accion = $_POST['accion'];
-$rol = $_POST['rol'];
-var_dump($rol);
+$accion = isset($_POST['accion']) ? $_POST['accion'] : '';
+$rol = isset($_POST['rol']) ? $_POST['rol'] : '';
+$nombreUsuario = isset($_POST['usuario']) ? $_POST['usuario'] : '';
+$foroId = isset($_POST['foroId']) ? $_POST['foroId'] : null;
 
-switch ($accion) {
-    case 'crear':
-        crearForo($con, $rol);
-        break;
-    case 'entrar':
-        entrarForo($con, $rol);
-        break;
-    case 'editar':
-        editarForo($con, $rol);
-        break;
-    case 'salir':
-        salirForo($con, $rol);
-        break;
-    // Aquí se pueden agregar más casos o seguir una estructura similar para los demás modales
+try {
+    switch ($accion) {
+        case 'crear':
+            echo crearForo($con, $rol);
+            break;
+        case 'recuperar':
+            recuperarForos($con, $rol);
+            break;
+        case 'recuperarSalida':
+        case 'salir':
+            manejarForos($con, $accion, $nombreUsuario, $foroId);
+            break;
+        case 'editar':
+            echo editarForo($con, $rol);
+            break;
+        case 'eliminar':
+            echo eliminarForo($con, $rol, $foroId);
+            break;
+        case 'reportar':
+            $usuarioId = isset($_POST['usuarioId']) ? $_POST['usuarioId'] : '';
+            $comentario = isset($_POST['comentario']) ? $_POST['comentario'] : '';
+            echo reportarForo($con, $foroId, $usuarioId, $comentario);
+            break;
+
+        // Aquí se pueden agregar más casos
+        default:
+            echo "Error: acción no reconocida.";
+    }
+} catch (Exception $e) {
+    echo 'Error: ',  $e->getMessage();
 }
 
 function asignar($campo){
@@ -28,35 +51,22 @@ function asignar($campo){
 }
 
 function crearForo($con, $rol){
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
     $resultado = '0';
     $nombre = asignar("nombreForo");
     $descripcion = asignar("descripcionForo");
-    $privacidad = asignar("esPublico");
-    $foto = asignar("imagenForo");
+    $privacidad = asignar("esPublico") === 'on' ? 1 : 0;
+    $foto = !empty(asignar("imagenForo")) ? asignar("imagenForo") : 'default.jpg';
 
-    if ($rol == 1 || $rol == 2){
-        $crearForo = "INSERT INTO foro (nombre, descripcion, privacidad, foto, rol) VALUES ('$nombre', '$descripcion', $privacidad, $foto, $rol)";
-        $query = mysqli_query ($con, $crearForo);
-        if($query == 1){
-            $resultado = '1';
-        }
-    }
-    return $resultado;
-}
+    $crearForo = "INSERT INTO foro (nombre, descripcion, privacidad, foto) VALUES ('$nombre', '$descripcion', '$privacidad', '$foto')";
+    $query = mysqli_query ($con, $crearForo);
 
-function entrarForo($con, $rol){
-    $resultado = '0';
-    $usuario = $_SESSION['username'];
-    $recuperarID = "SELECT ID_USUARIO FROM usuario WHERE nombreUsuario = '$usuario'";
-    $query_id = mysqli_query($con, $recuperarID);
-    $usuarioID = mysqli_fetch_assoc($query_id)['ID_USUARIO'];
-
-    $foroID = asignar("foroId");
-
-    if ($rol == 0 || $rol == 1 || $rol == 2){
-        $entrarForo = "INSERT INTO usuario_foro (ID_USUARIO, ID_FORO) VALUES ('$usuarioID', '$foroID')";
-        $query = mysqli_query ($con, $entrarForo);
-
+    if ($query === false) {
+        echo "Error en la consulta: " . mysqli_error($con);
+    } else {
         if($query == 1){
             $resultado = '1';
         }
@@ -66,35 +76,128 @@ function entrarForo($con, $rol){
 
 function editarForo($con, $rol){
     $resultado = '0';
-    $foroID = asignar("foroId");
-    $nuevoTitulo = asignar("nombreForo");
-    $nuevoContenido = asignar("descripcionForo");
+    $idForo = asignar("idForo");
+    $nombre = asignar("nombreForo");
+    $descripcion = asignar("descripcionForo");
+    $privacidad = asignar("esPublico") === 'on' ? 1 : 0;
+    $foto = !empty(asignar("imagenForo")) ? asignar("imagenForo") : 'default.jpg';
 
-    if ($rol == 1 || $rol == 2){
-        $editarForo = "UPDATE foro SET nombre = '$nuevoTitulo', descripcion = '$nuevoContenido' WHERE ID_FORO = $foroID";
-        $query = mysqli_query($con, $editarForo);
+    $editarForo = "UPDATE foro SET nombre = '$nombre', descripcion = '$descripcion', privacidad = '$privacidad', foto = '$foto' WHERE ID_FORO = $idForo";
+    $query = mysqli_query($con, $editarForo);
 
-        if($query == 1){
+    if ($query === false) {
+        echo "Error en la consulta: " . mysqli_error($con);
+    } else {
+        if(mysqli_affected_rows($con) > 0){
             $resultado = '1';
         }
     }
     return $resultado;
 }
 
-function salirForo($con, $rol){
+function recuperarForos($con, $rol){
+    $recuperarForos = "";
+
+    // Si el rol es 0, solo se seleccionan los foros públicos pq es alumno
+    if ($rol == 0){
+        $recuperarForos = "SELECT ID_FORO, nombre, descripcion, privacidad FROM foro WHERE privacidad = 1";
+    }
+    // Si el rol es 1 o 2, (moderador o admin) se seleccionan todos los foros
+    else if ($rol == 1 || $rol == 2){
+        $recuperarForos = "SELECT ID_FORO, nombre, descripcion, privacidad FROM foro";
+    }
+
+    $query = mysqli_query($con, $recuperarForos);
+
+    if ($query === false) {
+        echo "Error en la consulta: " . mysqli_error($con);
+    } else {
+        $foros = array();
+        while ($row = mysqli_fetch_assoc($query)) {
+            $foros[] = $row;
+        }
+        header('Content-Type: application/json');
+        echo json_encode($foros);
+    }
+}
+
+function manejarForos($db, $accion, $nombreUsuario, $foroId = null) {
+    switch ($accion) {
+        case 'recuperarSalida':
+            $usuarioQuery = "SELECT ID_USUARIO FROM usuario WHERE nombreUsuario = ?";
+            $stmtUsuario = $db->prepare($usuarioQuery);
+            $stmtUsuario->bind_param('s', $nombreUsuario);
+            $stmtUsuario->execute();
+            $resultadoUsuario = $stmtUsuario->get_result();
+            $usuario = $resultadoUsuario->fetch_assoc();
+
+            $forosQuery = "SELECT f.ID_FORO, f.nombre FROM foro f
+                INNER JOIN usuario_foro uf ON f.ID_FORO = uf.ID_FORO
+                WHERE uf.ID_USUARIO = ?";
+            $stmtForos = $db->prepare($forosQuery);
+            $stmtForos->bind_param('i', $usuario['ID_USUARIO']);
+            $stmtForos->execute();
+            $resultadoForos = $stmtForos->get_result();
+            $foros = $resultadoForos->fetch_all(MYSQLI_ASSOC);
+
+            echo json_encode($foros);
+            break;
+        case 'salir':
+            $usuarioQuery = "SELECT ID_USUARIO FROM usuario WHERE nombreUsuario = ?";
+            $stmtUsuario = $db->prepare($usuarioQuery);
+            $stmtUsuario->bind_param('s', $nombreUsuario);
+            $stmtUsuario->execute();
+            $resultadoUsuario = $stmtUsuario->get_result();
+            $usuario = $resultadoUsuario->fetch_assoc();
+
+            $salirQuery = "DELETE FROM usuario_foro WHERE ID_USUARIO = ? AND ID_FORO = ?";
+            $stmtSalir = $db->prepare($salirQuery);
+            $stmtSalir->bind_param('ii', $usuario['ID_USUARIO'], $foroId);
+            $resultadoSalir = $stmtSalir->execute();
+
+            if ($resultadoSalir) {
+                echo '1';
+            } else {
+                echo '0';
+            }
+            break;
+        default:
+            break;
+    }
+}
+
+function eliminarForo($con, $rol, $foroId){
     $resultado = '0';
-    $usuario = $_SESSION['username'];
-    $recuperarID = "SELECT ID_USUARIO FROM usuario WHERE nombreUsuario = '$usuario'";
-    $query_id = mysqli_query($con, $recuperarID);
-    $usuarioID = mysqli_fetch_assoc($query_id)['ID_USUARIO'];
 
-    $foroID = asignar("foroId");
+    if ($rol == 2){
+        $eliminarUsuarioForo = "DELETE FROM usuario_foro WHERE ID_FORO = $foroId";
+        $queryUsuarioForo = mysqli_query($con, $eliminarUsuarioForo);
 
-    if ($rol == 0 || $rol == 1 || $rol == 2){
-        $salirForo = "DELETE FROM usuario_foro WHERE ID_USUARIO = $usuarioID AND ID_FORO = $foroID";
-        $query = mysqli_query ($con, $salirForo);
+        if ($queryUsuarioForo === false) {
+            echo "Error en la consulta: " . mysqli_error($con);
+        } else {
+            $eliminarForo = "DELETE FROM foro WHERE ID_FORO = $foroId";
+            $queryForo = mysqli_query($con, $eliminarForo);
 
-        if($query == 1){
+            if ($queryForo === false) {
+                echo "Error en la consulta: " . mysqli_error($con);
+            } else {
+                $resultado = '1';
+            }
+        }
+    }
+    return $resultado;
+}
+
+function reportarForo($con, $foroId, $usuarioId, $comentario){
+    $resultado = '0';
+    $reportarForo = "INSERT INTO reportes_foro (ID_FORO, ID_USUARIO, COMENTARIO) VALUES ($foroId, $usuarioId, '$comentario')";
+    $query = mysqli_query($con, $reportarForo);
+
+    if ($query === false) {
+        echo "Error en la consulta: " . mysqli_error($con);
+    } else {
+        if(mysqli_affected_rows($con) > 0){
             $resultado = '1';
         }
     }
