@@ -40,6 +40,21 @@ function crearButton(tipo, texto) {
     return button;
 }
 
+function crearSelect(id, opciones) {
+    let select = document.createElement('select');
+    select.setAttribute('id', id);
+
+    opciones.forEach(opcion => {
+        let option = document.createElement('option');
+        option.value = opcion;
+        option.text = opcion;
+        select.appendChild(option);
+    });
+
+    return select;
+}
+
+
 function crearFormulario(contenido) {
     let form = document.createElement('form');
     form.setAttribute('method', 'post');
@@ -56,7 +71,7 @@ function crearTextArea(nombre, placeholder) {
     return textarea;
 }
 
-/*async function realizarPeticionFetch(form, url) {
+async function realizarPeticionFetch(form, url) {
     form.addEventListener('submit', async function(e){
         e.preventDefault();
         let datosFormulario = new FormData(form);
@@ -74,4 +89,4 @@ function crearTextArea(nombre, placeholder) {
         }
         document.body.removeChild(modal);
     });
-}*/
+}

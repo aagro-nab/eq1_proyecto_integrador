@@ -1,4 +1,4 @@
-function crearPublicacion() {
+async function crearPublicacion() {
     let { modal, modalContent } = crearModal();
 
     let contenidoFormulario = [
@@ -15,7 +15,7 @@ function crearPublicacion() {
 
     let form = crearFormulario(contenidoFormulario);
 
-    realizarPeticionFetch(form, 'LIGA A PHP PARA CREAR PUBLICACION');
+    realizarPeticionFetch(form, '../foro.php');
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -23,12 +23,35 @@ function crearPublicacion() {
     document.body.appendChild(modal);
 }
 
-function editarPublicacion() {
-    //Lógica para la edición de publicaciones.
+async function editarPublicacion(publicacionId, rol) {
+    let { modal, modalContent } = crearModal();
+
+    let contenidoFormulario = [
+        crearLabel('Título de la Publicación:', 'tituloPublicacion'),
+        crearInput('text', 'tituloPublicacion', 'Título de la Publicación'),
+        crearLabel('Texto de la Publicación:', 'textoPublicacion'),
+        crearTextArea('textoPublicacion', 'Texto de la Publicación'),
+        crearLabel('Imagen de la Publicación:', 'imagenPublicacion'),
+        crearInput('file', 'imagenPublicacion'),
+        crearLabel('Estilo de Texto:', 'estiloTexto'),
+        crearSelect('estiloTexto', ['Normal', 'Negrita', 'Cursiva', 'Subrayado']),
+        crearButton('submit', 'Guardar Cambios')
+    ];
+
+    let form = crearFormulario(contenidoFormulario);
+    form.appendChild(crearInput('hidden', 'publicacionId', '', publicacionId));
+    form.appendChild(crearInput('hidden', 'accion', '', 'editar'));
+
+    realizarPeticionFetch(form, '../foro.php');
+
+    modalContent.appendChild(form);
+    modal.appendChild(modalContent);
+
+    document.body.appendChild(modal);
 }
 
 function obtenerPublicaciones(view) {
-    fetch('LINK A PHP', {
+    fetch('../foro.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
