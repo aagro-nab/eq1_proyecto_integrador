@@ -56,27 +56,22 @@ function crearTextArea(nombre, placeholder) {
     return textarea;
 }
 
-function realizarPeticionFetch(form, url) {
-    form.addEventListener('submit', function(e){
+async function realizarPeticionFetch(form, url) {
+    form.addEventListener('submit', async function(e){
         e.preventDefault();
         let datosFormulario = new FormData(form);
-        fetch(url, {
+        let response = await fetch(url, {
             method: 'POST',
             body: datosFormulario
-        })
-            .then(response => response.text())
-            .then(resultado => {
-                if(resultado === '1') {
-                    console.log("La operación se realizó con éxito.");
-                    alert("La operación se realizó con éxito.");
-                } else {
-                    alert("No se pudo realizar la operación.");
-                }
-                document.body.removeChild(modal);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert("Ha ocurrido un error: ", error);
-            });
+        });
+
+        let resultado = await response.text();
+        if(resultado === '1') {
+            console.log("La operación se realizó con éxito.");
+            alert("La operación se realizó con éxito.");
+        } else {
+            alert("No se pudo realizar la operación.");
+        }
+        document.body.removeChild(modal);
     });
 }

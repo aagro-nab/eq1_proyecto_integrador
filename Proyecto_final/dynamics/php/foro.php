@@ -1,92 +1,102 @@
 <?php
-    include ("./config.php");
-    $con = connect();
+include ("./config.php");
+$con = connect();
+session_start();
 
-    require "revisionInsert.php";
+$accion = $_POST['accion'];
+$rol = $_POST['rol'];
 
-    function crearForo(){
-        $resultado = '0';
-        $nombre = asignar("nombreForo");
-        $descripcion = asignar("descripcionForo");
-        $privacidad = asignar("esPublico");
-        $foto = asignar("imagenForo");
-        
-        $crearForo = "INSERT INTO foro (nombre, descripcion, privacidad, foto) VALUES ('$nombre', '$descripcion', $privacidad, $foto)";
+switch ($accion) {
+    case 'crear':
+        crearForo($con, $rol);
+        break;
+    case 'entrar':
+        entrarForo($con, $rol);
+        break;
+    case 'editar':
+        editarForo($con, $rol);
+        break;
+    case 'salir':
+        salirForo($con, $rol);
+        break;
+    // Aquí se pueden agregar más casos o seguir una estructura similar para los demás modales
+}
+
+function asignar($campo){
+    return isset($_POST[$campo]) ? $_POST[$campo] : '';
+}
+
+function crearForo($con, $rol){
+    $resultado = '0';
+    $nombre = asignar("nombreForo");
+    $descripcion = asignar("descripcionForo");
+    $privacidad = asignar("esPublico");
+    $foto = asignar("imagenForo");
+
+    if ($rol == 1 || $rol == 2){
+        $crearForo = "INSERT INTO foro (nombre, descripcion, privacidad, foto, rol) VALUES ('$nombre', '$descripcion', $privacidad, $foto, $rol)";
         $query = mysqli_query ($con, $crearForo);
 
         if($query == 1){
             $resultado = '1';
         }
-
-        return $resultado;
     }
+    return $resultado;
+}
 
+function entrarForo($con, $rol){
+    $resultado = '0';
+    $usuario = $_SESSION['username'];
+    $recuperarID = "SELECT ID_USUARIO FROM usuario WHERE nombreUsuario = '$usuario'";
+    $query_id = mysqli_query($con, $recuperarID);
+    $usuarioID = mysqli_fetch_assoc($query_id)['ID_USUARIO'];
 
-    function entrarForo(){
-        //En el js viene el ID del foro como JSON.stringify({accion: 'unirse', foroId: foro.foroId})
-        //no se como poner que eso se vuelva variable aquí en php
+    $foroID = asignar("foroId");
 
-        $resultado = '0';
-
-        $usuario = $_SESSION['username'];
-        $recuperarId = "SELECT ID_USUARIO FROM usuario WHERE nombreUsuario = '$usuario'";
-        $query_id = mysqli_query($con, $recuperarId);
-        $usuarioID = mysqli_fetch_assoc($query_id);
-
-        $foroId = asignar("foroId");
-        
-        $entrarForo = "INSERT INTO usuario_foro (ID_USUARIO, ID_FORO) VALUES ('$usuarioId', '$foroId')";
+    if ($rol == 0 || $rol == 1 || $rol == 2){
+        $entrarForo = "INSERT INTO usuario_foro (ID_USUARIO, ID_FORO) VALUES ('$usuarioID', '$foroID')";
         $query = mysqli_query ($con, $entrarForo);
 
         if($query == 1){
             $resultado = '1';
         }
-
-        return $resultado;
-
     }
+    return $resultado;
+}
 
-    function editarForo(){
-        $resultado = '0';
+function editarForo($con, $rol){
+    $resultado = '0';
+    $foroID = asignar("foroId");
+    $nuevoTitulo = asignar("nombreForo");
+    $nuevoContenido = asignar("descripcionForo");
 
-        $nombre = asignar("nombreForo");
-        $descripcion = asignar("descripcionForo");
-        $privacidad = asignar("esPublico");
-        $foto = asignar("imagenForo");
-        
-        $editarForo = "UPDATE foro SET nombre = '$nombre', descripcion = '$descripcion', privacidad = $privacidad, foro = $foto
-        WHERE ID_FORO = '$foroid')";
-        $query = mysqli_query ($con, $editarForo);
+    if ($rol == 1 || $rol == 2){
+        $editarForo = "UPDATE foro SET nombre = '$nuevoTitulo', descripcion = '$nuevoContenido' WHERE ID_FORO = $foroID";
+        $query = mysqli_query($con, $editarForo);
 
         if($query == 1){
             $resultado = '1';
         }
-
-        return $resultado;
     }
+    return $resultado;
+}
 
-    function salirForo(){
-        //En el js viene el ID del foro como JSON.stringify({accion: 'salir', foroId: foro.foroId})
-        //no se como poner que eso se vuelva variable aquí en php
+function salirForo($con, $rol){
+    $resultado = '0';
+    $usuario = $_SESSION['username'];
+    $recuperarID = "SELECT ID_USUARIO FROM usuario WHERE nombreUsuario = '$usuario'";
+    $query_id = mysqli_query($con, $recuperarID);
+    $usuarioID = mysqli_fetch_assoc($query_id)['ID_USUARIO'];
 
-        $resultado = '0';
+    $foroID = asignar("foroId");
 
-        $usuario = $_SESSION['username'];
-        $recuperarId = "SELECT ID_USUARIO FROM usuario WHERE nombreUsuario = '$usuario'";
-        $query_id = mysqli_query($con, $recuperarId);
-        $usuarioId = mysqli_fetch_assoc($query_id);
-
-        $foroId = asignar("foroId");
-        
-        $salirForo = "DELETE FROM usuario_foro WHERE ID_USUARIO = $usuarioId AND ID_FORO = $foroId";
+    if ($rol == 0 || $rol == 1 || $rol == 2){
+        $salirForo = "DELETE FROM usuario_foro WHERE ID_USUARIO = $usuarioID AND ID_FORO = $foroID";
         $query = mysqli_query ($con, $salirForo);
 
         if($query == 1){
             $resultado = '1';
         }
-
-        return $resultado;
-
     }
-
-?>
+    return $resultado;
+}
