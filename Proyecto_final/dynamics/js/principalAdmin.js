@@ -58,7 +58,7 @@ async function changeView(view) {
             buttons[6].addEventListener('click', async () => await editarForo(2));
             buttons[7].addEventListener('click', async () => await eliminarForo(2));
             buttons[8].addEventListener('click', await asignarModerador);
-            buttons[9].addEventListener('click', await modificarDatos);
+            buttons[9].addEventListener('click', modificarUsuario('usuario')); //Añadir el ID de usuario en variable
             break;
     }
     for (let btn of buttons) {

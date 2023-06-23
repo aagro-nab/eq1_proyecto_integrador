@@ -23,7 +23,7 @@ async function crearPublicacion() {
     document.body.appendChild(modal);
 }
 
-async function editarPublicacion(publicacionId, rol) {
+async function editarPublicacion(publicacionId) {
     let { modal, modalContent } = crearModal();
 
     let contenidoFormulario = [

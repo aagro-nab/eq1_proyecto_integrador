@@ -1,4 +1,4 @@
-function modificarUsuario() {
+function modificarUsuario(usuario) {
     let { modal, modalContent } = crearModal();
 
     let contenidoFormulario = [
@@ -23,7 +23,9 @@ function modificarUsuario() {
     form.addEventListener('submit', function (e) {
         e.preventDefault();
         let formData = new FormData(form);
-        fetch('Proyecto_final/dynamics/php/modalesUsuario.js', {
+        // Incluir el ID_USUARIO en los datos enviados al servidor
+        formData.append('ID_USUARIO', usuario);
+        fetch('Proyecto_final/dynamics/php/modalesUsuario.php', {
             method: 'POST',
             body: formData,
         })
