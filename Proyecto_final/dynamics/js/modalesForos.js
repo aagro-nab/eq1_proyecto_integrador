@@ -1,16 +1,26 @@
-async function crearForo() {
+async function crearForo(rol) {
     let { modal, modalContent } = crearModal();
-
+    
     let nombreForo = crearInput('text', 'nombreForo', 'Nombre del Foro');
     let descripcionForo = crearTextArea('descripcionForo', 'Descripción del Foro');
     let imagenForo = crearInput('file', 'imagenForo');
     let esPublico = crearInput('checkbox', 'esPublico');
     let etiquetaPublico = crearLabel("Publico", 'esPublico');
+    let accionotro = crearInput('hidden', 'accion');
+    let accionrol = crearInput('hidden', 'rol');
     let submitButton = crearButton('submit', "Crear Foro");
 
-    let form = crearFormulario([nombreForo, descripcionForo, imagenForo, esPublico, etiquetaPublico, submitButton]);
+    accionotro.value = 'crear';
+    accionrol.value = rol;
 
-    await realizarPeticionFetch(form, '../php/foro.php');
+    let form = crearFormulario([nombreForo, descripcionForo, imagenForo, esPublico, etiquetaPublico, submitButton, accionrol, accionotro]);
+
+    // form.append('accion', 'entrar');
+    // form.append('rol', rol);
+
+    console.log(form);
+
+    await realizarPeticionFetch(form, 'http://localhost/php/eq1_proyecto_integrador/Proyecto_final/dynamics/php/foro.php');
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -27,7 +37,7 @@ async function entrarForo(rol) {
         body: datosFormulario
     });
 
-    let foros = await response.json();
+    // let foros = await response.json();
     let { modal, modalContent } = crearModal();
 
     foros.forEach(foro => {

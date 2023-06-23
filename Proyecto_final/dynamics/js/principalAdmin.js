@@ -123,7 +123,7 @@ async function changeView(view) {
             crearNuevoButton10.style.display = 'block';
 
 
-            crearNuevoButton.addEventListener('click', await crearForo);
+            crearNuevoButton.addEventListener('click', await crearForo(1));
             crearNuevoButton2.addEventListener('click', await crearPublicacion);
             crearNuevoButton3.addEventListener('click', await editarPublicacion);
             crearNuevoButton4.addEventListener('click', await crearComentario);

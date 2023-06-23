@@ -73,21 +73,55 @@ function crearTextArea(nombre, placeholder) {
 
 async function realizarPeticionFetch(form, url) {
     form.addEventListener('submit', async function(e){
+        console.log(form);
         e.preventDefault();
         let datosFormulario = new FormData(form);
         let response = await fetch(url, {
             method: 'POST',
-            body: datosFormulario
+            body: JSON.stringify(Object.fromEntries(datosFormulario))
         });
 
-        let resultado = await response.text();
-        console.log(resultado);
-        if(resultado === '1') {
+        let resultado = await response.json();
+        console.log(url);
+        console.log(resultado.res);
+        if(resultado.res === '1') {
             console.log("La operación se realizó con éxito.");
             alert("La operación se realizó con éxito.");
         } else {
-            
             alert("No se pudo realizar la operación.");
         }
     });
 }
+
+async function realizarPeticionFetchCrearForo(form, url) {
+    form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        let datosFormulario = new FormData(form);
+        // let response = await;
+
+        console.log(datosFormulario);
+        
+        url = "ajaja";
+
+        fetch('../php/foro.php', {
+            method: 'POST',
+            body: datosFormulario
+        }).then((respuesta) => {
+            return respuesta.json();
+        }).then((datosJSON) => {
+            console.log(datosJSON);
+            alert("ok");
+        })
+
+        // let resultado = await response.text();
+        // console.log(resultado);
+        // if(resultado === '1') {
+        //     console.log("La operación se realizó con éxito.");
+        //     alert("La operación se realizó con éxito.");
+        // } else {
+        //     alert(resultado);
+        //     // alert("ajjaajaj");
+        //     // alert("No se pudo realizar la operación.");
+        // }
+    });
+};

@@ -3,13 +3,30 @@ include ("./config.php");
 $con = connect();
 session_start();
 
-$accion = $_POST['accion'];
-$rol = $_POST['rol'];
-var_dump($rol);
+$json = trim(file_get_contents("php://input"));
+    $decode = json_decode($json, true);
+    // var_dump($json);
+    $accion = $decode["accion"];
+    $rol = $decode["rol"];
+
+// $accion = $_POST['accion'];
+// $rol = $_POST['rol'];
+
+// var_dump($accion);
+
+
+$accionrol = asignar('1');
+$accionotro = asignar('crear');
+
+// $rol = 'crear';
+$accionrol = 1;
+
+$resultado = '3';
+
 
 switch ($accion) {
     case 'crear':
-        crearForo($con, $rol);
+        echo crearForo($con, $rol);
         break;
     case 'entrar':
         entrarForo($con, $rol);
@@ -24,7 +41,15 @@ switch ($accion) {
 }
 
 function asignar($campo){
-    return isset($_POST[$campo]) ? $_POST[$campo] : '';
+    global $decode;
+    $valor = isset($decode[$campo]) ? $decode[$campo] : '';
+    // var_dump($valor);
+    if($campo == "esPublico" && $valor == "on"){
+        $valor = 1;
+    }elseif($campo == "esPublico"){
+        $valor = 0;
+    }
+    return $valor;
 }
 
 function crearForo($con, $rol){
@@ -35,13 +60,18 @@ function crearForo($con, $rol){
     $foto = asignar("imagenForo");
 
     if ($rol == 1 || $rol == 2){
-        $crearForo = "INSERT INTO foro (nombre, descripcion, privacidad, foto, rol) VALUES ('$nombre', '$descripcion', $privacidad, $foto, $rol)";
+        // TODO : AGREGA FOTO
+        $crearForo = "INSERT INTO foro (nombre, descripcion, privacidad) VALUES ('$nombre', '$descripcion', $privacidad)";
+        // var_dump($crearForo);
         $query = mysqli_query ($con, $crearForo);
         if($query == 1){
             $resultado = '1';
         }
+    }else{
+        $resultado = '3';
     }
-    return $resultado;
+    $res = array('res' => $resultado);
+    return json_encode($res);
 }
 
 function entrarForo($con, $rol){
@@ -100,3 +130,6 @@ function salirForo($con, $rol){
     }
     return $resultado;
 }
+
+
+return json_encode($resultado);
