@@ -9,7 +9,7 @@ function crearPregunta() {
 
     let form = crearFormulario(contenidoFormulario);
 
-    realizarPeticionFetch(form, 'LIGA A PHP');
+    realizarPeticionFetch(form, '../php/foro.php');
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -28,7 +28,7 @@ function editarPregunta() {
 
     let form = crearFormulario(contenidoFormulario);
 
-    realizarPeticionFetch(form, 'LIGA A PHP PARA EDITAR');
+    realizarPeticionFetch(form, '../php/foro.php');
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -50,7 +50,7 @@ function eliminarPregunta() {
     }
 
     confirmarEliminacionButton.addEventListener('click', function(){
-        fetch('LIGA A PHP PARA ELIMINAR', {
+        fetch('../php/foro.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

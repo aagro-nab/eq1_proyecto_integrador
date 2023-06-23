@@ -5,6 +5,7 @@ session_start();
 
 $accion = $_POST['accion'];
 $rol = $_POST['rol'];
+var_dump($rol);
 
 switch ($accion) {
     case 'crear':
@@ -36,7 +37,6 @@ function crearForo($con, $rol){
     if ($rol == 1 || $rol == 2){
         $crearForo = "INSERT INTO foro (nombre, descripcion, privacidad, foto, rol) VALUES ('$nombre', '$descripcion', $privacidad, $foto, $rol)";
         $query = mysqli_query ($con, $crearForo);
-
         if($query == 1){
             $resultado = '1';
         }

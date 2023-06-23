@@ -81,12 +81,13 @@ async function realizarPeticionFetch(form, url) {
         });
 
         let resultado = await response.text();
+        console.log(resultado);
         if(resultado === '1') {
             console.log("La operación se realizó con éxito.");
             alert("La operación se realizó con éxito.");
         } else {
+            
             alert("No se pudo realizar la operación.");
         }
-        document.body.removeChild(modal);
     });
 }

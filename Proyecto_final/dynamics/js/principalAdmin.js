@@ -20,6 +20,54 @@ window.onload = function() {
         changeView('Foros');
     }
 };
+function obtenerPublicaciones(view) {
+    fetch('../php/foro.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ vista: view }),
+    })
+        .then(respuesta => respuesta.json())
+        .then(publicaciones => {
+            let divPublicaciones = document.getElementById('divPublicaciones');
+            publicaciones.forEach(publicacion => {
+                let publicacionDiv = document.createElement('div');
+
+                let titulo = document.createElement('h2');
+                titulo.innerText = publicacion.titulo;
+                publicacionDiv.appendChild(titulo);
+
+                let imagen = document.createElement('img');
+                imagen.src = publicacion.imagen;
+                publicacionDiv.appendChild(imagen);
+
+                let texto = document.createElement('p');
+                texto.innerText = publicacion.texto;
+                publicacionDiv.appendChild(texto);
+
+                let autor = document.createElement('p');
+                autor.innerText = "Publicado por: " + publicacion.autor;
+                publicacionDiv.appendChild(autor);
+
+                let fotoPerfil = document.createElement('img');
+                fotoPerfil.src = publicacion.fotoPerfil;
+                publicacionDiv.appendChild(fotoPerfil);
+
+                // Agregar comentarios
+                let comentariosDiv = document.createElement('div');
+                publicacion.comentarios.forEach(comentario => {
+                    let comentarioP = document.createElement('p');
+                    comentarioP.innerText = comentario.autor + ": " + comentario.texto;
+                    comentariosDiv.appendChild(comentarioP);
+                });
+                publicacionDiv.appendChild(comentariosDiv);
+
+                divPublicaciones.appendChild(publicacionDiv);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+}
 
 // Asigna la función de cambio de vista a cada botón
 document.getElementById('forosButton').addEventListener('click', function() {
@@ -40,17 +88,17 @@ document.getElementById('marketButton').addEventListener('click', function() {
     changeView(this.dataset.text);
 });
 
-function changeView(view) {
+async function changeView(view) {
     let buttons = [crearNuevoButton, crearNuevoButton2, crearNuevoButton3, crearNuevoButton4, crearNuevoButton5, crearNuevoButton6, crearNuevoButton7, crearNuevoButton8, crearNuevoButton9, crearNuevoButton10];
 
     // Desasignar las funciones actuales de los botones
-    for(let btn of buttons) {
+    for (let btn of buttons) {
         if (btn.currentHandler) {
             btn.removeEventListener('click', btn.currentHandler);
         }
     }
 
-    switch(view) {
+    switch (view) {
         case 'Foros':
             crearNuevoButton.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Crear foro</span>";
             crearNuevoButton2.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Crear publicacion</span>";
@@ -73,18 +121,18 @@ function changeView(view) {
             crearNuevoButton8.style.display = 'block';
             crearNuevoButton9.style.display = 'block';
             crearNuevoButton10.style.display = 'block';
-            hr.style.display = 'block';
 
-            crearNuevoButton.addEventListener('click', crearForo);
-            crearNuevoButton2.addEventListener('click', crearPublicacion);
-            crearNuevoButton3.addEventListener('click', editarPublicacion);
-            crearNuevoButton4.addEventListener('click', crearComentario);
-            crearNuevoButton5.addEventListener('click', () => entrarForo(2));
-            crearNuevoButton6.addEventListener('click', () => salirForo(2));
-            crearNuevoButton7.addEventListener('click', () => salirForo(2));
-            crearNuevoButton8.addEventListener('click', eliminarForo);
-            crearNuevoButton9.addEventListener('click', asignarModerador);
-            crearNuevoButton10.addEventListener('click', modificarDatos);
+
+            crearNuevoButton.addEventListener('click', await crearForo);
+            crearNuevoButton2.addEventListener('click', await crearPublicacion);
+            crearNuevoButton3.addEventListener('click', await editarPublicacion);
+            crearNuevoButton4.addEventListener('click', await crearComentario);
+            crearNuevoButton5.addEventListener('click', async () => await entrarForo(2));
+            crearNuevoButton6.addEventListener('click', async () => await salirForo(2));
+            crearNuevoButton7.addEventListener('click', async () => await editarForo(2));
+            crearNuevoButton8.addEventListener('click', await eliminarForo);
+            crearNuevoButton9.addEventListener('click', await asignarModerador);
+            crearNuevoButton10.addEventListener('click', await modificarDatos);
 
             crearNuevoButton.currentHandler = crearForo;
             crearNuevoButton.addEventListener('click', crearNuevoButton.currentHandler);
@@ -107,7 +155,6 @@ function changeView(view) {
             crearNuevoButton10.currentHandler = modificarDatos;
             crearNuevoButton10.addEventListener('click', crearNuevoButton10.currentHandler);
 
-            obtenerPublicaciones(view);
             break;
         case 'Preguntas':
             crearNuevoButton.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Crear pregunta</span>";
@@ -129,7 +176,7 @@ function changeView(view) {
             crearNuevoButton8.style.display = 'block';
             crearNuevoButton9.style.display = 'none';
             crearNuevoButton10.style.display = 'none';
-            hr.style.display = 'block';
+
 
             crearNuevoButton.addEventListener('click', crearPregunta);
             crearNuevoButton2.addEventListener('click', editarPregunta);
@@ -175,7 +222,7 @@ function changeView(view) {
             crearNuevoButton8.style.display = 'none';
             crearNuevoButton9.style.display = 'none';
             crearNuevoButton10.style.display = 'none';
-            hr.style.display = 'block';
+
 
             crearNuevoButton.addEventListener('click', reportarExtravio);
             crearNuevoButton2.addEventListener('click', editarReporte);
@@ -209,7 +256,7 @@ function changeView(view) {
             crearNuevoButton8.style.display = 'none';
             crearNuevoButton9.style.display = 'none';
             crearNuevoButton10.style.display = 'none';
-            hr.style.display = 'block';
+
 
             crearNuevoButton.addEventListener('click', crearVenta);
             crearNuevoButton2.addEventListener('click', editarVenta);

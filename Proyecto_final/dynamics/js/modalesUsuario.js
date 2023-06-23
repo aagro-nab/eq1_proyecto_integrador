@@ -17,7 +17,7 @@ function crearComentario() {
 
     let form = crearFormulario(contenidoFormulario);
 
-    realizarPeticionFetch(form, 'LIGA A PHP PARA CREAR COMENTARIO');
+    realizarPeticionFetch(form, '../php/foro.php');
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -43,7 +43,7 @@ function asignarModerador() {
 
     let form = crearFormulario(contenidoFormulario);
 
-    realizarPeticionFetch(form, 'LIGA A PHP PARA ASIGNAR MODERADOR');
+    realizarPeticionFetch(form, '../php/foro.php');
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);

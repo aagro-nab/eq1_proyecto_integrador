@@ -1,4 +1,4 @@
-function crearVenta() {
+async function crearVenta() {
     let { modal, modalContent } = crearModal();
 
     let contenidoFormulario = [
@@ -15,7 +15,7 @@ function crearVenta() {
 
     let form = crearFormulario(contenidoFormulario);
 
-    realizarPeticionFetch(form, 'LIGA A PHP PARA CREAR VENTA');
+    realizarPeticionFetch(form, '../php/foro.php');
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -23,7 +23,7 @@ function crearVenta() {
     document.body.appendChild(modal);
 }
 
-function editarVenta() {
+async function editarVenta(ventaId, rol) {
     let { modal, modalContent } = crearModal();
 
     let contenidoFormulario = [
@@ -39,8 +39,11 @@ function editarVenta() {
     ];
 
     let form = crearFormulario(contenidoFormulario);
+    form.appendChild(crearInput('hidden', 'ventaId', '', ventaId));
+    form.appendChild(crearInput('hidden', 'accion', '', 'editar'));
+    form.appendChild(crearInput('hidden', 'rol', '', rol));
 
-    realizarPeticionFetch(form, 'LIGA A PHP PARA EDITAR VENTA');
+    realizarPeticionFetch(form, '../php/foro.php');
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -48,7 +51,7 @@ function editarVenta() {
     document.body.appendChild(modal);
 }
 
-function eliminarVenta() {
+async function eliminarVenta(ventaId, rol) {
     let { modal, modalContent } = crearModal();
 
     let mensajeEliminacion = document.createElement('p');
@@ -61,26 +64,27 @@ function eliminarVenta() {
         document.body.removeChild(modal);
     }
 
-    confirmarEliminacionButton.addEventListener('click', function(){
-        fetch('LIGA A PHP PARA ELIMINAR VENTA', {
+    confirmarEliminacionButton.addEventListener('click', async function(){
+        let datosFormulario = new FormData();
+        datosFormulario.append('ventaId', ventaId);
+        datosFormulario.append('accion', 'eliminar');
+        datosFormulario.append('rol', rol);
+
+        let response = await fetch('../php/foro.php', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({accion: 'eliminar'})
-        })
-            .then(response => response.text())
-            .then(resultado => {
-                if(resultado === '1') {
-                    // Operación exitosa
-                    console.log("La venta se ha eliminado con éxito.");
-                } else {
-                    // Operación fallida
-                    alert("No se pudo eliminar la venta. Inténtalo más tarde.");
-                }
-                document.body.removeChild(modal);
-            })
-            .catch(error => console.error('Error:', error));
+            body: datosFormulario
+        });
+
+        let resultado = await response.text();
+
+        if(resultado === '1') {
+            // Operación exitosa
+            console.log("La venta se ha eliminado con éxito.");
+        } else {
+            // Operación fallida
+            alert("No se pudo eliminar la venta. Inténtalo más tarde.");
+        }
+        document.body.removeChild(modal);
     });
 
     modalContent.appendChild(confirmarEliminacionButton);
