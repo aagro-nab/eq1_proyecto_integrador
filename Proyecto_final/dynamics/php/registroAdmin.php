@@ -40,48 +40,47 @@
           </article>
           <article class="Formulario">
       
-          <form action="./.php" method="post" target="_self" id="formRegistro">
-      
-              <p class="texto-m">Nombre completo:</p>
-              <input class="input-datos" type="text" id="nombre" name="nombre" required>
-      
-              <p class="texto-m">Nombre de usuario:</p>
-              <input class="input-datos" type="text" id="username" name="username" required>
-      
-              <p class="texto-m">Número de cuenta:</p>
-              <input class="input-datos" type="text" id="nCuenta" name="nCuenta" minlength="9" maxlength="9" required>
-      
-              <p class="texto-m">Email:</p>
-              <input class="input-datos" type="email" id="email" name="email" required>
-      
-              <p class="texto-m">Contraseña:</p>
-              <input class="input-datos" type="password" id="contraseña" name="contraseña" minlength="8"  maxlength="16" required>
-      
-              <p class="texto-m">Grado:</p>
-              <label for="grado"></label>
-              <select id="grado" name="grado">
+          <form action="./principal" method="post" target="_self" id="formRegistro">
+
+            <p class="texto-m">Nombre completo:</p>
+            <input class="input-datos" type="text" id="nombre" name="nombre" maxlength="100" required>
+
+            <p class="texto-m">Nombre de usuario:</p>
+            <input class="input-datos" type="text" id="username" name="username" required maxlength="10">
+
+            <p class="texto-m">Número de cuenta:</p>
+            <input class="input-datos" type="text" id="nCuenta" name="nCuenta" minlength="9" maxlength="9" required>
+
+            <p class="texto-m">Email:</p>
+            <input class="input-datos" type="email" id="email" name="email" required maxlenght="50">
+
+            <p class="texto-m">Contraseña:</p>
+            <input class="input-datos" type="password" id="contraseña" name="contraseña" minlength="8"  maxlength="50" required>
+
+            <p class="texto-m">Grado:</p>
+            <label for="grado"></label>
+            <select id="grado" name="grado">
                 <option disabled selected> Seleccione el grado</option>
                 <option class="input-datos" value="cuarto">Cuarto</option>
                 <option class="input-datos" value="quinto">Quinto</option>
                 <option class="input-datos" value="sexto">Sexto</option>
-              </select>
-  
-              <p class="texto-m">Grupo:</p>
-              <select id="grupos"></select>
-      
-              <!-- <div class="row">
-                <input class="remember-me" type="checkbox" id="recordar" name="recordar">
-                <p >Recordar usuario</p>
-              </div> -->
-      
-              <div class="row-center">
-                <button type="submit" class="boton-submit" value="Registrarse">Registrarse</button>
-              </div>
-      
-              <!-- <a href="#">¿Olvidaste tu contraseña?</a><br> -->
-              <a href="#">¿Tienes duda en alguno de los campos?</a><br><br>
-      
-            </form>
+            </select>
+
+            <p class="texto-m">Grupo:</p>
+            <select id="grupos"></select>
+
+            <!--<input class="Botexto" type="checkbox" id="recordar" name="recordar">
+            <label for="recordar">Recordar usuario</label><br><br>-->
+
+            <div class="row-center">
+            <button type="submit" class="boton-submit" value="Registrarse">Registrarse</button>
+            </div>
+
+            <!-- <a href="#">¿Olvidaste tu contraseña?</a><br> -->
+            <a href="#">¿Tienes duda en alguno de los campos?</a><br><br>
+
+        </form>
+
             <a href="./seleccionRol.html" class="Roles">Seleccionar Rol de Nuevo</a>
             
           </article>
