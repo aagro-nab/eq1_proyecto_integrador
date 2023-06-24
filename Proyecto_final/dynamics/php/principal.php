@@ -38,6 +38,7 @@ echo '<!DOCTYPE html>
     <title>Página Principal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../../statics/styles/principal.css">
+    <link rel="stylesheet" type="text/css" href="../../statics/styles/mapa.css">
 </head>
 <body>
 <header>
@@ -61,7 +62,7 @@ echo '<!DOCTYPE html>
         <a href="#" id="Notificaciones" class="btn"><i class="fas fa-bell"></i><span class="button-text"> Notificaciones</span></a>
         <a href="#" id="Calendario" class="btn"><i class="fas fa-calendar-alt"></i><span class="button-text"> Calendario</span></a>
         <a href="#" id="Mensajes" class="btn"><i class="fas fa-envelope"></i><span class="button-text"> Mensajes</span></a>
-        <a href="#" id="Mapa" class="btn"><i class="fas fa-map"></i><span class="button-text"> Mapa</span></a>
+        <a href="#" id="Mapas" class="btn"><i class="fas fa-map"></i><span class="button-text"> Mapa</span></a>
         <a href="#" id="Datos" class="btn"><i class="fas fa-user-edit"></i><span class="button-text"> Modificar datos</span></a>
         <a href="#" id="AsignarModerador" class="btn" style="display: block"><i class="fas fa-user-plus"></i><span class="button-text"> Asignar moderador</span></a>
         <hr id="hr" style="display: none;">

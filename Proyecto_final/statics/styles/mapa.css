@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-.pin {
-    /* background-color: aqua; */
-    fill: rgb(0, 0, 0);
-=======
 /*---------------MAPA--------------*/
 
 #mapa{
-    height: 400px;
-    width: 500px;
+    height: 250px;
+    width: 372.75px;
 }
 
 #mapaImg{
@@ -29,52 +24,51 @@
 }
 
 #pulpo{
-    top: 18%; 
-    left: 16%;
+    bottom: 97%; 
+    left: 12%;
 }
 
 #p-quintos{
-    top: 28%; 
-    left: 16%;
+    bottom: 90%; 
+    left: 10%;
 }
 
 #p-cuartos{
-    top: 43%; 
-    left: 16%;
+    bottom: 75%; 
+    left: 4%;
 }
 
 #p-sextos{
-    top: 56%; 
-    left: 15%;
+    bottom: 60%; 
+    right: 1%;
 }
 
 #canchas{
-    top: 20%; 
-    left: 11%;
+    bottom: 95%; 
+    right: 9%;
 }
 
 #multicanchas{
-    top: 27%; 
-    left: 28%;
+    bottom: 90%; 
+    left: 1%;
 }
 
 #pimpos{
-    top: 48%; 
-    left: 18%;
+    bottom: 70%; 
+    right: 14%;
 }
 
 #hs{
-    top: 52%; 
-    left: 15%;
+    bottom: 63%; 
+    right: 18%;
 }
 
 #auditorio{
-    top: 70%; 
-    right: 20%;
+    bottom: 45%; 
+    right: 53%;
 }
 
 #biblioteca{
-    top: 38%; 
-    right: 16%;
->>>>>>> f176a52cab25c331222fa1ebb9460fa7c5106121
+    bottom : 92%; 
+    left : 45%;
 }
