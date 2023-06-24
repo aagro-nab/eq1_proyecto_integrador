@@ -67,7 +67,7 @@
     }
 
     // verificar con regex
-    $name = "/([A-z]+\s|[A-z]){2,}/i";// REVISAR 
+    $name = "/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+(?:\s+[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+){1,5}(?<!\s)$/m";// REVISAR 
     $user = "/([A-z]|[0-9]){5,10}/i";
     $no_cuenta = "/[3](20|21|22|23)\d{6}/i";
     $mail_all = "/([3](20|21|22|23)\d{6}?|\w+)@(alumno.enp.unam.mx|comunidad.unam.mx)/i";

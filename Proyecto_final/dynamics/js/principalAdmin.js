@@ -58,6 +58,22 @@ document.getElementById('marketButton').addEventListener('click', function() {
     changeView(this.dataset.text);
 });
 
+notificaciones.addEventListener('click', async() => {
+    await notiReportes();
+});
+
+calendario.addEventListener('click', async() => {
+    await mostrarCalendario();
+});
+
+mensajes.addEventListener('click', async() => {
+    await mostrarMensajes();
+});
+
+mapa.addEventListener('click', async() => {
+    await mostrarMapas();
+});
+
 async function changeView(view) {
 
     switch (view) {
