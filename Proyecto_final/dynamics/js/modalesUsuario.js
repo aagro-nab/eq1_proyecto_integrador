@@ -132,10 +132,6 @@ async function notiReportes() {
     }
 }
 
-async function mostrarMensajes (){
-    alert("La función no está disponible en este momento. Inténtalo más tarde.");
-}
-
 async function mostrarMapas (){
 
     let { modal, modalContent } = crearModal();
@@ -149,7 +145,7 @@ async function mostrarMapas (){
     
     <div id="mapa">
 
-        <img id="mapaImg" src="../../statics/img/mapa(leyendas).png" alt="Mapa de la Prepa6">
+        <img id="mapaImg" src="/ProyectoFinal/Proyecto_final/statics/img/mapa(leyendas).png" alt="Mapa de la Prepa6">
 
         <svg class="pin" id="pulpo" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             viewBox="-41.31 -41.31 495.72 495.72" 
@@ -315,7 +311,4 @@ async function mostrarMapas (){
             element.style.opacity = '80%';
         });
     }
-}
-async function mostrarCalendario (){
-    alert("La función no está disponible en este momento. Inténtalo más tarde.");
 }
