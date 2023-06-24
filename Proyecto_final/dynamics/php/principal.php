@@ -3,18 +3,24 @@ include ("./config.php");
 $con = connect();
 session_start();
 
-$r = $_SESSION['rol'];
-$usuario = $_SESSION['username'];
-//revisa el valor de $rol, y cuando encuentre una coincidencia es la direccion que va a tomar para el script
+
+if(isset($_SESSION['rol']) && isset($_SESSION['id']) && isset($_SESSION['username'])){
+    $r = $_SESSION['rol'];
+    $id_usuario = $_SESSION['id'];
+    $nombre_usuario = $_SESSION['username'];
+} else {
+    header("Location: ./inicioSesion.php");
+    exit;
+}
 switch($r){
     case "estudiante":
-        $rol = "principalAlumno.js?v2143";
+        $rol = "principalAlumno.js";
         break;
     case "moderador":
-        $rol = "principalModerador.js?v7634";
+        $rol = "principalModerador.js";
         break;
     case "administrador":
-        $rol = "principalAdmin.js?v2395";
+        $rol = "principalAdmin.js";
         break;
 }
 echo '<!DOCTYPE html>
@@ -43,25 +49,25 @@ echo '<!DOCTYPE html>
         <p>Nombre completo del usuario</p>
         <a href="#" class="btn2"><i class="fas fa-sign-out-alt"></i><span class="button-text"> Cerrar sesión</span></a>
         <hr>
-        <a href="#" class="btn"><i class="fas fa-bell"></i><span class="button-text"> Notificaciones</span></a>
-        <a href="#" class="btn"><i class="fas fa-calendar-alt"></i><span class="button-text"> Calendario</span></a>
-        <a href="#" class="btn"><i class="fas fa-envelope"></i><span class="button-text"> Mensajes</span></a>
-        <a href="#" class="btn"><i class="fas fa-map"></i><span class="button-text"> Mapa</span></a>
-        <hr id="hrButton" style="display: none;">
-        <a href="#" id="crearNuevoButton" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton2" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton3" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton4" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton5" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton6" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton7" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton8" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton9" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
-        <a href="#" id="crearNuevoButton10" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="Notificaciones" class="btn"><i class="fas fa-bell"></i><span class="button-text"> Notificaciones</span></a>
+        <a href="#" id="Calendario" class="btn"><i class="fas fa-calendar-alt"></i><span class="button-text"> Calendario</span></a>
+        <a href="#" id="Mensajes" class="btn"><i class="fas fa-envelope"></i><span class="button-text"> Mensajes</span></a>
+        <a href="#" id="Mapa" class="btn"><i class="fas fa-map"></i><span class="button-text"> Mapa</span></a>
+        <hr id="hr" style="display: none;">
+        <a href="#" id="button1" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button2" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button3" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button4" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button5" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button6" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button7" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button8" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button9" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="button10" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
     </div>
 </main>
 <script src="../js/'.$rol.'"></script>
-<script src="../js/modalesGenerales.js"></script>
+<script src="../js/modalesPublicaciones.js"></script>
 <script src="../js/modalesForos.js"></script>
 <script src="../js/modalesPreguntas.js"></script>
 <script src="../js/modalesExtravios.js"></script>

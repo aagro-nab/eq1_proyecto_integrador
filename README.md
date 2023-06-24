@@ -8,18 +8,20 @@
 ## División de responsabilidades para la elaboración del proyecto
 | Área  | Nombres de las personas |
 | ------------- |:-------------:|
-| HTML    | Fany |
+| HTML    | Fany y Dani |
 | CSS      | Dani, Fany y Ame |
 | JavaScript      | Dani, Karen y Ame   |
-|PHP| Karen y Jesús |
-|DATABASES |  Karen y Jesús |
+|PHP| Dani, Ame, Karen y Jesús |
+|DATABASES |  Dani, Karen y Jesús |
 |Seguridad | Fany y Ame |
+|Documentación | Fany|
 ****************
 ## Índice 
 - [Descripción del proyecto](#descripción-del-proyecto)
 - [Para comenzar](#para-comenzar)
     - [Registro](#registro)
         - [Registro para Alumnos](#registro-para-alumnos)
+        - [Registro para Moderadores](#registro-para-moderadores)
         - [Registro para Administradores](#registro-para-administradores)
     - [Iniciar sesión](#iniciar-sesión)
 - [Instalación del proyecto y la DATABASE](#instalación-del-proyecto-y-la-database)
@@ -32,31 +34,66 @@
 - [back to top](#proyecto-integrador-curso-web)
 ## Para comenzar...
 - El proyecto se encuentra en la carpeta [Proyecto_final](Proyecto_final)
-- Para su comodidad como usuario abre nuestro landing page uqe se encuentra en el archivo `index.html` y comienza a navegar
+- Para su comodidad como usuario abre nuestro landing page, que se encuentra en el archivo `index.html` y comienza a navegar.
 ### Registro
-- Encuentra tú forma de registro correcto sí es la primera vez que nos visitas, si no es el caso ve a la sección _Iniciar Sesión_.
+- Encuentra tú forma de registro correcto sí es la primera vez que nos visitas, si no es el caso ve a la sección _[Iniciar sesión](#iniciar-sesión)_.
 - Se te pediran los siguientes datos en ambos casos, por favor tenlos a la mano.
-    1. **Nombre completo**: comenzando por apellidos preferentemente
-    2. **Nombre de usuario**: crea un nombre de usario que utlizaras para iniciar sesión más adelante.
-    3. **Número de cuenta**:siendo parte de las generaciones ingresadas en el año 2021,2022 o 2023.
-    4. **Email**: solo correos institucionales ya sea @alumno.enp.unam.mx o @comunidad.unam.mx
-    5. **Contraseña**: con un maximo de 8 caracteres.
-    6. **Grupo**: del año en curso ya sea que seas de 4to, 5to o 6to año.
+    1. **Nombre completo**: comenzando por apellidos preferentemente.
+    2. **Nombre de usuario**: crea un nombre de usario que utlizaras para iniciar sesión más adelante, puede contener números del 0 al 9 y letras mayúsculas o minúsculas y tiene un mínimo de 5 caracteres y un máximo de 15.
+    3. **Número de cuenta**: recuerda que consta de 9 digitos y debes ser parte de las generaciones ingresadas en el año 2020, 2021, 2022 o 2023.
+    4. **Email**: solo correos institucionales, ya sea @alumno.enp.unam.mx o @comunidad.unam.mx
+    5. **Contraseña**: deberá tener un mínimo de 6 caracteres, los cuales pueden ser números del 0 al 9 y letras mayúsculas o minúsculas. 
+    6. **Grupo**: del año en curso, ya sea que seas de 4to, 5to o 6to año.
     - ### Registro para Alumnos
     Si cumples con las siguientes características esté registro es el ideal para ti (^_^)
   -  Número de cuenta debe de estar vigente, por lo que si eres de generaciones pasadas, no podrás entrar.
   -  No tener algun tipo de suspensión escolar, en el caso de tener una por plagio quedaras banneado de nuestra plataforma.
+- Como alumno podras realizar las siguientes acciones:
+    - Publicar preguntas.
+    - Responder preguntas.
+    - Crear foros.
+    - Salirte de los foros.
+    - Eliminar foros.
+- [back to top](#proyecto-integrador-curso-web)
+    - ### Registro para Moderadores
+    Si cumples con las siguientes características esté registro es el ideal para ti (oﾟvﾟ)ノ
+  - Tu número de cuenta debió de haber sido dado de alta previamente para que la plataforma te permita el acceso, de lo contrario, no podrás entrar.
+- Como moderador podras realizar las siguientes acciones:
+    - Publicar preguntas.
+    - Responder preguntas.
+    - Crear foros.
+    - Salirte de los foros.
+    - Eliminar foros.
+    - Podrá modificar las preguntas.
+    - Podrán reportar foros con los administradores y este se encargará de evaluar la situación.
+- [back to top](#proyecto-integrador-curso-web)
     - ### Registro para Administradores
     Si cumples con las siguientes características esté registro es el ideal para ti  ╰(*°▽°*)╯
   - Recuerda que en contraseña debes poner la clave proporcionada por tu organización.
   - Ser autoridad vigente en la institución.
   - Ser instructor del curso web.
+- Como administrador podras realizar las siguientes acciones:
+    - Publicar preguntas.
+    - Responder preguntas.
+    - Crear foros.
+    - Salirte de los foros.
+    - Eliminar foros.
+    - Podrá modificar las preguntas.
+    - Podrá modificar las respuestas.
+    - Podrán evaluar los reportes de los foros por parte de los moderadores.
 - [back to top](#proyecto-integrador-curso-web)
 ### Iniciar sesión 
 - Querido usuario, una vez registrado se te pedira que ingreses los siguientes datos para iniciar sesión:
-    1. Nombre de usuario / Email.
-    2. Contraseña: con un maximo de 8 caracteres.
+    1. Nombre de usuario: creado en el _[Registro](#registro)_.
+    2. Contraseña: recuerda que tiene un minimo de 6 caracteres y fue creada en el _[Registro](#registro)_.
 ## Instalación del proyecto y la DATABASE
+- Por favor verifica que en el archivo `config.php` aparezcan así los siguientes espacios para una correcta ejecución:
+```PHP
+const HOST = "localhost";
+const USER=" ";
+const PASS=" ";
+const DB="proyectoFinal";
+```
 1.   Clonar el repositorio de Github 
 ```Powershell 
 <# en tu ruta te tienes que encontrar en una carpeta vacia, en la que no tengas 
@@ -79,10 +116,10 @@ mysql -u root --default-character-set=utf8
 //ya en Maria DB ejecutamos los siguientes comandos
 
 SET names 'utf8';
-CREATE DATABASE PROYECTO CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE proyectoFinal CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 SHOW DATABASES;
 USE PROYECTO; //esta es la DB vacía 
-SOURCE PROYECTO.sql; //ponemos el respaldo de nuestra DB
+SOURCE resp_db.sql; //ponemos el respaldo de nuestra DB
 ```
 - [back to top](#proyecto-integrador-curso-web)
 ### Seguimiento semanal:

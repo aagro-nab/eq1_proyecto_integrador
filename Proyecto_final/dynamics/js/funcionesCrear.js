@@ -40,6 +40,21 @@ function crearButton(tipo, texto) {
     return button;
 }
 
+function crearSelect(id, opciones) {
+    let select = document.createElement('select');
+    select.setAttribute('id', id);
+
+    opciones.forEach(opcion => {
+        let option = document.createElement('option');
+        option.value = opcion;
+        option.text = opcion;
+        select.appendChild(option);
+    });
+
+    return select;
+}
+
+
 function crearFormulario(contenido) {
     let form = document.createElement('form');
     form.setAttribute('method', 'post');
@@ -54,29 +69,4 @@ function crearTextArea(nombre, placeholder) {
     textarea.setAttribute('name', nombre);
     textarea.setAttribute('placeholder', placeholder);
     return textarea;
-}
-
-function realizarPeticionFetch(form, url) {
-    form.addEventListener('submit', function(e){
-        e.preventDefault();
-        let datosFormulario = new FormData(form);
-        fetch(url, {
-            method: 'POST',
-            body: datosFormulario
-        })
-            .then(response => response.text())
-            .then(resultado => {
-                if(resultado === '1') {
-                    console.log("La operación se realizó con éxito.");
-                    alert("La operación se realizó con éxito.");
-                } else {
-                    alert("No se pudo realizar la operación.");
-                }
-                document.body.removeChild(modal);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert("Ha ocurrido un error: ", error);
-            });
-    });
 }
