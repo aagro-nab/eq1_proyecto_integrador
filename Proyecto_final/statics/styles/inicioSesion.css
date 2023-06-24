@@ -4,21 +4,25 @@
     font-weight: 400;
     src: url("../fonts/Inter-Regular.ttf");
 }
+
 @font-face {
     font-family: "Inter";
     font-weight: 500;
     src: url("../fonts/Inter-Medium.ttf");
 }
+
 @font-face {
     font-family: "Tommy";
     font-weight: 400;
     src: url("../fonts/Tommy-Soft-Regular.ttf");
 }
+
 @font-face {
     font-family: "Tommy";
     font-weight: 500;
     src: url("../fonts/Tommy-Soft-Medium.ttf");
 }
+
 @font-face {
     font-family: "Tommy";
     font-weight: 700;
@@ -61,6 +65,7 @@ article.iniciosesion {
     width: 400px;
     transition: transform 0.3s ease;
 }
+
 article.iniciosesion:hover {
     transform: scale(1.05);
 }
@@ -73,7 +78,9 @@ article.iniciosesion:hover {
     color: #ffffff;
     text-align: center;
 }
-.titulo-s, .texto-m {
+
+.titulo-s,
+.texto-m {
     font-family: "Tommy", sans-serif;
     font-weight: 400;
     font-size: 25px;
@@ -91,12 +98,14 @@ article.iniciosesion:hover {
     font-size: 15px;
     background-color: #f0f0f0;
     transition: background-color 0.3s ease;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
+
 .input-datos:focus {
     background-color: #e0e0f0;
     outline: none;
 }
+
 #remember-me {
     width: 25px;
     height: 25px;
@@ -107,6 +116,7 @@ article.iniciosesion:hover {
     display: flex;
     align-items: center;
 }
+
 .boton-submit {
     display: block;
     width: 100%;
@@ -121,6 +131,7 @@ article.iniciosesion:hover {
     font-size: 1.5rem;
     box-sizing: border-box;
 }
+
 .boton-submit:hover {
     background-color: #5a6198;
 }
@@ -128,11 +139,11 @@ article.iniciosesion:hover {
 /* -------------------- Footer -------------------- */
 footer {
     display: flex;
-    justify-content: space-around; 
+    justify-content: space-around;
     background-color: rgba(255, 255, 255, 0.1);
     color: #D9D9D9;
     padding: 1rem;
-    gap: 2rem; 
+    gap: 2rem;
 }
 
 /* ---------- Link de olvidaste tu contraseña ---------- */
@@ -145,21 +156,26 @@ article.iniciosesion a {
 
 /*==========RESPONSIVE=======================================================================================*/
 @media screen and (min-width: 721px) {
+
     article.iniciosesion,
     article.Recordatorio,
     article.Formulario {
-        font-size: 1.5rem; /* Aumenta el tamaño de fuente para resoluciones más grandes*/
+        font-size: 1.5rem;
+        /* Aumenta el tamaño de fuente para resoluciones más grandes*/
     }
 }
 
 @media screen and (max-width: 720px) {
     body {
-        font-size: 1rem; /* Tamaño de letra más pequeño si el ancho de la pantalla es menor a 720px */
+        font-size: 1rem;
+        /* Tamaño de letra más pequeño si el ancho de la pantalla es menor a 720px */
     }
+
     footer {
-        flex-direction: column; /* Se muestra en columna en pantallas pequeñas */
-        align-items: center; 
-        text-align: justify; 
-        gap: 1rem; 
+        flex-direction: column;
+        /* Se muestra en columna en pantallas pequeñas */
+        align-items: center;
+        text-align: justify;
+        gap: 1rem;
     }
 }
