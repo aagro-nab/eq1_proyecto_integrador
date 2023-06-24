@@ -48,7 +48,7 @@
     $grupo = verificar ($grupotem);
     //var_dump ($grupo);
 
-    
+
     $buscarNombre = "SELECT * FROM usuario WHERE nombre='$nombre'";
     $query = mysqli_query ($con, $buscarNombre);
     $arreglo = mysqli_fetch_array ($query);
