@@ -1,4 +1,4 @@
-/* Estilos generales */
+/* --------------------Estilos generales --------------------*/
 body {
     background-image: url(../img/background2.jpg);
     background-position: center;
@@ -14,7 +14,7 @@ body {
     min-height: 100vh;
 }
 
-/* Estilos de la barra lateral */
+/* --------------------Estilos de la barra lateral-------------------- */
 .sidebar {
     width: 250px;
     background-color: rgba(255, 255, 255, 0.2);
@@ -39,7 +39,8 @@ body {
     color: #333;
     display: flex;
     align-items: center;
-    justify-content: center; /* Centrar texto en botones */
+    justify-content: center;
+    /* Centrar texto en botones */
 }
 
 .sidebar a i {
@@ -51,7 +52,8 @@ body {
     margin: 20px 0;
 }
 
-.sidebar .btn, .btn2{
+.sidebar .btn,
+.btn2 {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -65,9 +67,6 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-/* .sidebar .btn{
-
-} */
 
 .sidebar .btn:hover .btn2:hover {
     background-color: #aaa;
@@ -110,7 +109,7 @@ nav button:hover {
     background-color: #5a6198;
 }
 
-/*Diseño pop-up*/
+/*--------------------Diseño pop-up--------------------*/
 .main-modal {
     display: flex;
     align-items: center;
@@ -204,35 +203,42 @@ nav button:hover {
     color: #aaa;
     float: right;
     font-size: 28px;
-    font-weight: 'bold';
+    font-weight: bold;
     cursor: pointer;
 }
 
 
-/* Responsividad */
+/*==========RESPONSIVE=======================================================================================*/
 @media (max-width: 720px) {
     .sidebar {
         width: 70px;
         padding: 10px;
     }
+
     .sidebar img {
         width: 90%;
         height: 90%;
     }
 
-    .sidebar h3, .sidebar p, .sidebar hr, .sidebar a span {
+    .sidebar h3,
+    .sidebar p,
+    .sidebar hr,
+    .sidebar a span {
         display: none;
     }
 
     .sidebar .btn {
-        justify-content: center; /* Ícono centrado cuando el texto está oculto */
+        justify-content: center;
+        /* Ícono centrado cuando el texto está oculto */
     }
+
     nav {
         flex-direction: row;
         align-items: center;
         flex-wrap: wrap;
         justify-content: center;
     }
+
     nav div {
         display: flex;
         flex-wrap: wrap;

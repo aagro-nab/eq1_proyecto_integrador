@@ -1,40 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inicia sesión</title>
   <link rel="stylesheet" href="../../statics/styles/inicioSesion.css">
-  <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Escudo_enp_6.svg/927px-Escudo_enp_6.svg.png" type="image/x-icon">
+  <link rel="shortcut icon"
+    href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Escudo_enp_6.svg/927px-Escudo_enp_6.svg.png"
+    type="image/x-icon">
 </head>
+
 <body>
-<main class="Registros">
-  <article class="iniciosesion">
-    <form method="post" action="./inicioSesion.php" target="_self">
-      <p class="titulo-s" id="titulo-iniciosesion" tabindex="1">Iniciar sesión</p>
+  <main class="Registros">
+    <article class="iniciosesion">
+      <form method="post" action="./inicioSesion.php" target="_self">
+        <p class="titulo-s" id="titulo-iniciosesion" tabindex="1">Iniciar sesión</p>
 
-      <p class="texto-m">Nombre de usuario / Email :</p>
-      <input tabindex="2" type="text" class="input-datos" id="login-username" name="login-username">
+        <p class="texto-m">Nombre de usuario / Email :</p>
+        <input tabindex="2" type="text" class="input-datos" id="login-username" name="login-username">
 
-      <p class="texto-m" for="login-password">Contraseña:</p>
-      <input tabindex="3" type="password" class="input-datos" id="login-password" name="login-password">
+        <p class="texto-m" for="login-password">Contraseña:</p>
+        <input tabindex="3" type="password" class="input-datos" id="login-password" name="login-password">
 
-      <div class="row">
-        <input type="checkbox" id="remember-me" name="remember-me" tabindex="4">
-        <label for="remember-me" class="texto-m">Recordar usuario</label>
-      </div><br>
+        <div class="row">
+          <input type="checkbox" id="remember-me" name="remember-me" tabindex="4">
+          <label for="remember-me" class="texto-m">Recordar usuario</label>
+        </div><br>
 
-      <div class="row-center">
-        <button type="submit" class="boton-submit" value="Iniciar sesión" tabindex="5">¡Vamos!</button>
-      </div>
+        <div class="row-center">
+          <button type="submit" class="boton-submit" value="Iniciar sesión" tabindex="5">¡Vamos!</button>
+        </div>
 
-      <div class="row-center">
-        <a href="seleccionRol.php" class="boton-submit register-link" tabindex="6">Regístrate</a>
-      </div>
+        <div class="row-center">
+          <a href="seleccionRol.php" class="boton-submit register-link" tabindex="6">Regístrate</a>
+        </div>
 
-      <a href="#" tabindex="6">¿Olvidaste tu contraseña?</a>
-    </form>
-  </article>
-</main>
+        <a href="#" tabindex="6">¿Olvidaste tu contraseña?</a>
+      </form>
+    </article>
+  </main>
 </body>
+
 </html>

@@ -24,7 +24,7 @@ $foroId = isset($_POST['foroId']) ? $_POST['foroId'] : null;
 try {
     switch ($accion) {
         case 'crear':
-            echo crearForo($con, $rol);
+            echo crearForo($con);
             break;
         case 'recuperar':
             recuperarForos($con);
@@ -48,6 +48,9 @@ try {
             $comentario = isset($_POST['comentario']) ? $_POST['comentario'] : '';
             echo reportarForo($con, $foroId, $comentario);
             break;
+        case 'recuperarReportes':
+            echo recuperarReportes($con);
+            break;
         default:
             echo "Error: acción no reconocida.";
     }
@@ -60,7 +63,7 @@ function asignar($campo){
     return isset($_POST[$campo]) ? $_POST[$campo] : '';
 }
 
-function crearForo($con, $rol){
+function crearForo($con){
     global $idUsuario;
     $resultado = '0';
     $nombre = asignar("nombreForo");
@@ -209,4 +212,30 @@ function reportarForo($con, $foroId, $comentario) {
     }
 
     return $resultado;
+}
+
+function recuperarReportes($con) {
+    $rol = $_SESSION['rol'];
+    if ($rol == 'moderador' || $rol == 'administrador') {
+        $recuperarReportes = "SELECT f.nombre AS nombreForo, u.nombre AS nombreUsuario, r.COMENTARIO, r.FECHA_REPORTE
+            FROM reportes_foro r
+            INNER JOIN foro f ON r.ID_FORO = f.ID_FORO
+            INNER JOIN usuario u ON r.ID_USUARIO = u.ID_USUARIO
+            ORDER BY r.FECHA_REPORTE DESC";
+
+        $query = mysqli_query($con, $recuperarReportes);
+
+        if ($query === false) {
+            echo "Error en la consulta: " . mysqli_error($con);
+        } else {
+            $reportes = array();
+            while ($row = mysqli_fetch_assoc($query)) {
+                $reportes[] = $row;
+            }
+            header('Content-Type: application/json');
+            echo json_encode($reportes);
+        }
+    } else {
+        echo "Error: Solo los moderadores o administradores pueden ver los reportes.";
+    }
 }

@@ -1,90 +1,38 @@
-//ESTE JAVASCRIPT CONTIENE LAS FUNCIONES PARA CREAR LOS MODALES DE EXTRAVIOS
-function reportarExtravio() {
+async function reportarExtravio() {
     let { modal, modalContent } = crearModal();
 
-    let contenidoFormulario = [
-        crearLabel('Título del extravío:', 'tituloExtravio'),
-        crearInput('text', 'tituloExtravio', 'Título del extravío'),
-        crearLabel('Descripción del extravío:', 'descripcionExtravio'),
-        crearTextArea('descripcionExtravio', 'Descripción del extravío'),
-        crearLabel('Imagen del Extravío:', 'imagenExtravio'),
-        crearInput('file', 'imagenExtravio', ''),
-        crearLabel('Lugar del extravío:', 'lugarExtravio'),
-        crearInput('text', 'lugarExtravio', 'Lugar del extravío'),
-        crearButton('submit', 'Reportar Extravío')
-    ];
+    let tituloExtravio = crearInput('text', 'tituloExtravio', 'Título de Extravío');
+    let lugarExtravio = crearInput('text', 'lugarExtravio', 'Lugar de Extravío');
+    let descripcionObjeto = crearTextArea('descripcionObjeto', 'Descripción del Objeto');
+    let fotoObjeto = crearInput('file', 'fotoObjeto');
+    let enviarButton = crearButton('submit', "Reportar Extravío");
 
-    let form = crearFormulario(contenidoFormulario);
+    let form = crearFormulario([tituloExtravio, lugarExtravio, descripcionObjeto, fotoObjeto, enviarButton]);
 
-    realizarPeticionFetch(form, '../php/foro.php');
+    enviarButton.addEventListener('click', async (event) => {
+        event.preventDefault();
 
-    modalContent.appendChild(form);
-    modal.appendChild(modalContent);
+        let formData = new FormData(form);
+        formData.append('accion', 'crear');
 
-    document.body.appendChild(modal);
-}
-
-function editarReporte() {
-    let { modal, modalContent } = crearModal();
-
-    let contenidoFormulario = [
-        crearLabel('Nuevo título de la publicación:', 'nuevoTituloPublicacion'),
-        crearInput('text', 'nuevoTituloPublicacion', 'Nuevo título de la publicación'),
-        crearLabel('Nuevo texto de la publicación:', 'nuevoTextoPublicacion'),
-        crearTextArea('nuevoTextoPublicacion', 'Nuevo texto de la publicación'),
-        crearLabel('Nueva Imagen:', 'nuevoImagenPublicacion'),
-        crearInput('file', 'nuevoImagenPublicacion', ''),
-        crearButton('submit', 'Guardar Cambios')
-    ];
-
-    let form = crearFormulario(contenidoFormulario);
-
-    realizarPeticionFetch(form, '../php/foro.php');
-
-    modalContent.appendChild(form);
-    modal.appendChild(modalContent);
-
-    document.body.appendChild(modal);
-}
-
-function eliminarReporte() {
-    let { modal, modalContent } = crearModal();
-
-    let mensajeEliminacion = document.createElement('p');
-    mensajeEliminacion.innerHTML = "¿Estás seguro de que quieres eliminar esta publicación?";
-    modalContent.appendChild(mensajeEliminacion);
-
-    let confirmarEliminacionButton = crearButton('button', 'Confirmar');
-    let cancelarButton = crearButton('button', 'Cancelar');
-    cancelarButton.onclick = function() {
-        document.body.removeChild(modal);
-    }
-
-    confirmarEliminacionButton.addEventListener('click', function(){
-        fetch('../php/foro.php', {
+        let response = await fetch('/ProyectoFinal/Proyecto_final/dynamics/php/modalesExtravios.php', {
             method: 'POST',
-            body: JSON.stringify({accion: 'eliminar'})
-        })
-            .then(response => response.text())
-            .then(resultado => {
-                if(resultado === '1') {
-                    console.log("La operación se realizó con éxito.");
-                    alert("La operación se realizó con éxito.");
-                } else {
-                    alert("No se pudo realizar la operación.");
-                }
-                document.body.removeChild(modal);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert("Ha ocurrido un error: ", error);
-            });
+            body: formData
+        });
+
+        if(response.ok) {
+            let resultado = await response.text();
+            if(resultado === '1') {
+                alert("La operación se realizó con éxito.");
+            } else {
+                alert("No se pudo realizar la operación. Verifica que los datos sean correctos.");
+            }
+        } else {
+            alert("Error en la petición Fetch.");
+        }
     });
 
-    modalContent.appendChild(confirmarEliminacionButton);
-    modalContent.appendChild(cancelarButton);
-
+    modalContent.appendChild(form);
     modal.appendChild(modalContent);
-
     document.body.appendChild(modal);
 }
