@@ -1,4 +1,4 @@
-async function crearProducto() {
+async function crearVenta() {
     let { modal, modalContent } = crearModal();
 
     let contenidoFormulario = [
@@ -15,7 +15,7 @@ async function crearProducto() {
 
     let form = crearFormulario(contenidoFormulario);
 
-    realizarPeticionFetch(form, '../php/modalesForos.php');
+    realizarPeticionFetch(form, '../php/foro.php');
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -23,7 +23,7 @@ async function crearProducto() {
     document.body.appendChild(modal);
 }
 
-async function editarProducto() {
+async function editarVenta(ventaId, rol) {
     let { modal, modalContent } = crearModal();
 
     let contenidoFormulario = [
@@ -43,7 +43,8 @@ async function editarProducto() {
     form.appendChild(crearInput('hidden', 'accion', '', 'editar'));
     form.appendChild(crearInput('hidden', 'rol', '', rol));
 
-    realizarPeticionFetch(form, '../php/modalesForos.php');
+    realizarPeticionFetch(form, '../php/market.php');
+
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -51,7 +52,7 @@ async function editarProducto() {
     document.body.appendChild(modal);
 }
 
-async function eliminarProducto() {
+async function eliminarVenta(ventaId, rol) {
     let { modal, modalContent } = crearModal();
 
     let mensajeEliminacion = document.createElement('p');
