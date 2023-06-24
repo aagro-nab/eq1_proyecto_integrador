@@ -44,7 +44,7 @@
     $contraseña = verificar ($contraseñatem);
     //var_dump ($contraseña);
 
-    $grupotem = asignar ("grupo");
+    $grupotem = asignar ("grupos");
     $grupo = verificar ($grupotem);
     //var_dump ($grupo);
 

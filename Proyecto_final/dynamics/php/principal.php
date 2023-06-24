@@ -3,10 +3,15 @@ include ("./config.php");
 $con = connect();
 session_start();
 
+
 if(isset($_SESSION['rol']) && isset($_SESSION['id']) && isset($_SESSION['username'])){
     $r = $_SESSION['rol'];
     $id_usuario = $_SESSION['id'];
     $nombre_usuario = $_SESSION['username'];
+    $buscarNombre = "SELECT nombre FROM usuario WHERE ID_USUARIO='$id_usuario'";
+    $query = mysqli_query ($con, $buscarNombre);
+    $arreglo = mysqli_fetch_assoc ($query);
+    $nombre_completo = $arreglo['nombre'];
 } else {
     header("Location: ./inicioSesion.php");
     exit;
@@ -44,8 +49,12 @@ echo '<!DOCTYPE html>
 <main>
     <div class="sidebar">
         <img src="../../statics/img/Ellipse%202.png" alt="Foto de usuario">
-        <h3>Nombre de usuario</h3>
-        <p>Nombre completo del usuario</p>
+        <h3>';
+        echo $nombre_usuario;
+        echo '</h3>
+        <p>';
+        echo $nombre_completo;
+        echo '</p>
         <a href="#" class="btn2"><i class="fas fa-sign-out-alt"></i><span class="button-text"> Cerrar sesión</span></a>
         <hr>
         <a href="#" class="btn"><i class="fas fa-bell"></i><span class="button-text"> Notificaciones</span></a>
@@ -87,5 +96,5 @@ echo '<!DOCTYPE html>
 <script src="../js/funcionesCrear.js"></script>
 <script src="../js/modalesUsuario.js"></script>
 </body>
-</html>'
+</html>';
 ?>
