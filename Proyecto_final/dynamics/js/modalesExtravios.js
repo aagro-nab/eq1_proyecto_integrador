@@ -16,7 +16,7 @@ function reportarExtravio() {
 
     let form = crearFormulario(contenidoFormulario);
 
-    realizarPeticionFetch(form, '../php/foro.php');
+    realizarPeticionFetch(form, '../php/modalesForos.php');
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -39,7 +39,7 @@ function editarReporte() {
 
     let form = crearFormulario(contenidoFormulario);
 
-    realizarPeticionFetch(form, '../php/foro.php');
+    realizarPeticionFetch(form, '../php/modalesForos.php');
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);

@@ -1,13 +1,13 @@
--- MariaDB dump 10.19  Distrib 10.4.28-MariaDB, for Win64 (AMD64)
+-- MySQL dump 10.13  Distrib 8.0.33, for macos13.3 (x86_64)
 --
 -- Host: localhost    Database: proyectoFinal
 -- ------------------------------------------------------
--- Server version	10.4.28-MariaDB
+-- Server version	8.0.33
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,19 +21,19 @@
 
 DROP TABLE IF EXISTS `foro`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `foro` (
-  `ID_FORO` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) DEFAULT NULL,
-  `descripcion` varchar(500) DEFAULT NULL,
+  `ID_FORO` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `descripcion` varchar(500) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `privacidad` tinyint(1) NOT NULL,
-  `foto` mediumblob DEFAULT NULL,
-  `ID_USUARIO` int(11) DEFAULT NULL,
+  `foto` mediumblob,
+  `ID_USUARIO` int DEFAULT NULL,
   PRIMARY KEY (`ID_FORO`),
   UNIQUE KEY `nombre` (`nombre`),
   KEY `ID_USUARIO` (`ID_USUARIO`),
   CONSTRAINT `foro_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuario` (`ID_USUARIO`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +42,7 @@ CREATE TABLE `foro` (
 
 LOCK TABLES `foro` WRITE;
 /*!40000 ALTER TABLE `foro` DISABLE KEYS */;
+INSERT INTO `foro` VALUES (3,'wdeqas','fsdf',1,_binary 'default.jpg',NULL),(4,'PruebaForo','Esto es una prueba del foro creada por danibutnotdani, sisis',1,_binary 'default.jpg',NULL),(5,'Forov2','forov2',1,_binary 'default.jpg',NULL),(6,'Danielsd','asdsa',1,_binary 'default.jpg',23),(7,'s','',0,_binary 'default.jpg',23),(8,'sdas','sadsadasdasdsd',0,_binary 'default.jpg',23),(9,'a','a',0,_binary 'default.jpg',23),(12,'fdfda','bsads',0,_binary 'default.jpg',23);
 /*!40000 ALTER TABLE `foro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51,10 +52,10 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `grado`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `grado` (
-  `ID_GRADO` int(11) NOT NULL AUTO_INCREMENT,
-  `grado` varchar(30) NOT NULL,
+  `ID_GRADO` int NOT NULL AUTO_INCREMENT,
+  `grado` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`ID_GRADO`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -75,12 +76,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `grupo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `grupo` (
-  `ID_GRUPO` int(11) NOT NULL AUTO_INCREMENT,
-  `grupo` int(11) NOT NULL,
-  `ID_GRADO` int(11) DEFAULT NULL,
-  `ID_TURNO` int(11) DEFAULT NULL,
+  `ID_GRUPO` int NOT NULL AUTO_INCREMENT,
+  `grupo` int NOT NULL,
+  `ID_GRADO` int DEFAULT NULL,
+  `ID_TURNO` int DEFAULT NULL,
   PRIMARY KEY (`ID_GRUPO`),
   KEY `ID_GRADO` (`ID_GRADO`),
   KEY `ID_TURNO` (`ID_TURNO`),
@@ -105,9 +106,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `horario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `horario` (
-  `ID_HORARIO` int(11) NOT NULL AUTO_INCREMENT,
+  `ID_HORARIO` int NOT NULL AUTO_INCREMENT,
   `7_00` tinyint(1) DEFAULT NULL,
   `7_50` tinyint(1) DEFAULT NULL,
   `8_40` tinyint(1) DEFAULT NULL,
@@ -145,14 +146,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `objeto_perdido`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `objeto_perdido` (
-  `ID_OBJETOPERDIDO` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcionObjeto` text NOT NULL,
-  `fechaObjetoPerdido` timestamp NOT NULL DEFAULT current_timestamp(),
-  `fotoObjeto` mediumblob DEFAULT NULL,
-  `ID_USUARIO` int(11) DEFAULT NULL,
-  `ID_FORO` int(11) DEFAULT NULL,
+  `ID_OBJETOPERDIDO` int NOT NULL AUTO_INCREMENT,
+  `descripcionObjeto` text COLLATE utf8mb4_general_ci NOT NULL,
+  `fechaObjetoPerdido` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fotoObjeto` mediumblob,
+  `ID_USUARIO` int DEFAULT NULL,
+  `ID_FORO` int DEFAULT NULL,
   PRIMARY KEY (`ID_OBJETOPERDIDO`),
   KEY `ID_USUARIO` (`ID_USUARIO`),
   KEY `ID_FORO` (`ID_FORO`),
@@ -176,14 +177,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `pedido`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pedido` (
-  `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT,
-  `cantidadPedido` int(11) NOT NULL,
-  `mensajePedido` text DEFAULT NULL,
-  `fechaPedido` timestamp NOT NULL DEFAULT current_timestamp(),
-  `ID_USUARIO` int(11) DEFAULT NULL,
-  `ID_PRODUCTO` int(11) DEFAULT NULL,
+  `ID_PEDIDO` int NOT NULL AUTO_INCREMENT,
+  `cantidadPedido` int NOT NULL,
+  `mensajePedido` text COLLATE utf8mb4_general_ci,
+  `fechaPedido` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ID_USUARIO` int DEFAULT NULL,
+  `ID_PRODUCTO` int DEFAULT NULL,
   PRIMARY KEY (`ID_PEDIDO`),
   KEY `ID_USUARIO` (`ID_USUARIO`),
   KEY `ID_PRODUCTO` (`ID_PRODUCTO`),
@@ -202,19 +203,48 @@ LOCK TABLES `pedido` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `preguntas`
+--
+
+DROP TABLE IF EXISTS `preguntas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `preguntas` (
+  `ID_PREGUNTA` int NOT NULL AUTO_INCREMENT,
+  `textoPregunta` text COLLATE utf8mb4_general_ci NOT NULL,
+  `fechaCreacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `ID_USUARIO` int DEFAULT NULL,
+  PRIMARY KEY (`ID_PREGUNTA`),
+  KEY `ID_USUARIO` (`ID_USUARIO`),
+  CONSTRAINT `preguntas_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuario` (`ID_USUARIO`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `preguntas`
+--
+
+LOCK TABLES `preguntas` WRITE;
+/*!40000 ALTER TABLE `preguntas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `preguntas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `producto`
 --
 
 DROP TABLE IF EXISTS `producto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `producto` (
-  `ID_PRODUCTO` int(11) NOT NULL AUTO_INCREMENT,
-  `nombreProducto` varchar(25) NOT NULL,
-  `descripcionProducto` text NOT NULL,
+  `ID_PRODUCTO` int NOT NULL AUTO_INCREMENT,
+  `nombreProducto` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
+  `descripcionProducto` text COLLATE utf8mb4_general_ci NOT NULL,
   `existencia` tinyint(1) DEFAULT NULL,
-  `ID_USUARIO` int(11) DEFAULT NULL,
-  `ID_UBICACION` int(11) DEFAULT NULL,
+  `ID_USUARIO` int DEFAULT NULL,
+  `ID_UBICACION` int DEFAULT NULL,
+  `precio` varchar(7) COLLATE utf8mb4_general_ci NOT NULL,
+  `imagenProducto` mediumblob,
   PRIMARY KEY (`ID_PRODUCTO`),
   KEY `ID_USUARIO` (`ID_USUARIO`),
   KEY `ID_UBICACION` (`ID_UBICACION`),
@@ -238,14 +268,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `publicacion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `publicacion` (
-  `ID_PUBLICACION` int(11) NOT NULL AUTO_INCREMENT,
-  `contenidoPublicacion` text NOT NULL,
-  `fechaPublicacion` timestamp NOT NULL DEFAULT current_timestamp(),
-  `ID_USUARIO` int(11) DEFAULT NULL,
-  `ID_RESPUESTA` int(11) DEFAULT NULL,
-  `ID_FORO` int(11) DEFAULT NULL,
+  `ID_PUBLICACION` int NOT NULL AUTO_INCREMENT,
+  `tituloPublicacion` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `contenidoPublicacion` text COLLATE utf8mb4_general_ci NOT NULL,
+  `imagenPublicacion` mediumblob,
+  `estiloTexto` enum('Normal','Negrita','Cursiva','Subrayado') COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `fechaPublicacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ID_USUARIO` int DEFAULT NULL,
+  `ID_RESPUESTA` int DEFAULT NULL,
+  `ID_FORO` int DEFAULT NULL,
   PRIMARY KEY (`ID_PUBLICACION`),
   KEY `ID_USUARIO` (`ID_USUARIO`),
   KEY `ID_RESPUESTA` (`ID_RESPUESTA`),
@@ -266,18 +299,50 @@ LOCK TABLES `publicacion` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `reportes_foro`
+--
+
+DROP TABLE IF EXISTS `reportes_foro`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `reportes_foro` (
+  `ID_REPORTE` int NOT NULL AUTO_INCREMENT,
+  `ID_FORO` int DEFAULT NULL,
+  `ID_USUARIO` int DEFAULT NULL,
+  `COMENTARIO` varchar(500) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `FECHA_REPORTE` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID_REPORTE`),
+  KEY `ID_FORO` (`ID_FORO`),
+  KEY `ID_USUARIO` (`ID_USUARIO`),
+  CONSTRAINT `reportes_foro_ibfk_1` FOREIGN KEY (`ID_FORO`) REFERENCES `foro` (`ID_FORO`),
+  CONSTRAINT `reportes_foro_ibfk_2` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuario` (`ID_USUARIO`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reportes_foro`
+--
+
+LOCK TABLES `reportes_foro` WRITE;
+/*!40000 ALTER TABLE `reportes_foro` DISABLE KEYS */;
+INSERT INTO `reportes_foro` VALUES (1,NULL,23,'23','2023-06-24 01:30:34'),(2,NULL,23,'23','2023-06-24 01:35:32'),(3,NULL,23,'23','2023-06-24 01:36:26'),(4,NULL,23,'23','2023-06-24 01:37:44'),(5,NULL,23,'asasa','2023-06-24 01:40:14'),(6,NULL,23,'reporteee?','2023-06-24 01:40:49'),(7,6,23,'saasa','2023-06-24 01:46:46'),(8,3,23,'ffff','2023-06-24 01:47:01'),(9,4,23,'asas','2023-06-24 01:48:17'),(10,6,23,'asas','2023-06-24 01:53:41'),(11,8,23,'asas','2023-06-24 01:54:52'),(12,3,23,'asssa','2023-06-24 01:55:59'),(13,4,23,'aa','2023-06-24 01:56:40'),(14,9,23,'sdsfrth','2023-06-24 01:57:35');
+/*!40000 ALTER TABLE `reportes_foro` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `respuesta`
 --
 
 DROP TABLE IF EXISTS `respuesta`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `respuesta` (
-  `ID_RESPUESTA` int(11) NOT NULL AUTO_INCREMENT,
-  `contenidoRespuesta` text NOT NULL,
-  `fechaPublicacion` timestamp NOT NULL DEFAULT current_timestamp(),
-  `ID_USUARIO` int(11) DEFAULT NULL,
-  `ID_PUBLICACION` int(11) DEFAULT NULL,
+  `ID_RESPUESTA` int NOT NULL AUTO_INCREMENT,
+  `contenidoRespuesta` text COLLATE utf8mb4_general_ci NOT NULL,
+  `fechaPublicacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ID_USUARIO` int DEFAULT NULL,
+  `ID_PUBLICACION` int DEFAULT NULL,
+  `editado` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`ID_RESPUESTA`),
   KEY `ID_USUARIO` (`ID_USUARIO`),
   KEY `ID_PUBLICACION` (`ID_PUBLICACION`),
@@ -301,10 +366,10 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `turno`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `turno` (
-  `ID_TURNO` int(11) NOT NULL AUTO_INCREMENT,
-  `turno` varchar(30) NOT NULL,
+  `ID_TURNO` int NOT NULL AUTO_INCREMENT,
+  `turno` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`ID_TURNO`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -325,12 +390,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ubicacion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ubicacion` (
-  `ID_UBICACION` int(11) NOT NULL AUTO_INCREMENT,
-  `nombreUbicacion` varchar(25) NOT NULL,
-  `descrpicionUbicacion` text NOT NULL,
-  `ubicacionFoto` mediumblob DEFAULT NULL,
+  `ID_UBICACION` int NOT NULL AUTO_INCREMENT,
+  `nombreUbicacion` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
+  `descrpicionUbicacion` text COLLATE utf8mb4_general_ci NOT NULL,
+  `ubicacionFoto` mediumblob,
   PRIMARY KEY (`ID_UBICACION`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -350,19 +415,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuario` (
-  `ID_USUARIO` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) DEFAULT NULL,
-  `nombreUsuario` varchar(10) NOT NULL,
-  `numeroCuenta` varchar(10) NOT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `contrasena` varchar(50) DEFAULT NULL,
-  `grupo` varchar(10) DEFAULT NULL,
-  `rol` enum('estudiante','moderador','administrador') NOT NULL,
-  `fotoPerfil` mediumblob DEFAULT NULL,
-  `etiquetas` text DEFAULT NULL,
-  `ID_HORARIO` int(11) DEFAULT NULL,
+  `ID_USUARIO` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nombreUsuario` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `numeroCuenta` varchar(9) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `contrasena` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `grupo` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `rol` enum('estudiante','moderador','administrador') COLLATE utf8mb4_general_ci NOT NULL,
+  `fotoPerfil` mediumblob,
+  `etiquetas` text COLLATE utf8mb4_general_ci,
+  `ID_HORARIO` int DEFAULT NULL,
   PRIMARY KEY (`ID_USUARIO`),
   UNIQUE KEY `nombreUsuario` (`nombreUsuario`),
   UNIQUE KEY `numeroCuenta` (`numeroCuenta`),
@@ -371,7 +436,7 @@ CREATE TABLE `usuario` (
   UNIQUE KEY `email` (`email`),
   KEY `ID_HORARIO` (`ID_HORARIO`),
   CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`ID_HORARIO`) REFERENCES `horario` (`ID_HORARIO`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -380,7 +445,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (20,'a','a','aaaaaaaaa','aaaaaaaa@a','aaaaaaaaaaaa','','administrador',NULL,NULL,NULL),(21,'','','','','','','administrador',NULL,NULL,NULL),(22,'11111111111111111','1111111111','111111111','111@111','11111111111111','','administrador',NULL,NULL,NULL);
+INSERT INTO `usuario` VALUES (20,'a','a','aaaaaaaaa','aaaaaaaa@a','aaaaaaaaaaaa','','administrador',NULL,NULL,NULL),(21,'','','','','','','administrador',NULL,NULL,NULL),(22,'11111111111111111','1111111111','111111111','111@111','11111111111111','','administrador',NULL,NULL,NULL),(23,'Daniel','danielrdz','321056900','hola@gmail.com','dzb7Wz538C','603','administrador',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -390,17 +455,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `usuario_foro`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuario_foro` (
-  `ID_USUARIOFORO` int(11) NOT NULL AUTO_INCREMENT,
-  `ID_USUARIO` int(11) DEFAULT NULL,
-  `ID_FORO` int(11) DEFAULT NULL,
+  `ID_USUARIOFORO` int NOT NULL AUTO_INCREMENT,
+  `ID_USUARIO` int DEFAULT NULL,
+  `ID_FORO` int DEFAULT NULL,
   PRIMARY KEY (`ID_USUARIOFORO`),
   KEY `ID_USUARIO` (`ID_USUARIO`),
   KEY `ID_FORO` (`ID_FORO`),
   CONSTRAINT `usuario_foro_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuario` (`ID_USUARIO`),
   CONSTRAINT `usuario_foro_ibfk_2` FOREIGN KEY (`ID_FORO`) REFERENCES `foro` (`ID_FORO`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -409,6 +474,7 @@ CREATE TABLE `usuario_foro` (
 
 LOCK TABLES `usuario_foro` WRITE;
 /*!40000 ALTER TABLE `usuario_foro` DISABLE KEYS */;
+INSERT INTO `usuario_foro` VALUES (7,23,5);
 /*!40000 ALTER TABLE `usuario_foro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -418,12 +484,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `venta`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `venta` (
-  `ID_VENTA` int(11) NOT NULL AUTO_INCREMENT,
-  `ID_USUARIO` int(11) DEFAULT NULL,
-  `ID_PRODUCTO` int(11) DEFAULT NULL,
-  `ID_FORO` int(11) DEFAULT NULL,
+  `ID_VENTA` int NOT NULL AUTO_INCREMENT,
+  `ID_USUARIO` int DEFAULT NULL,
+  `ID_PRODUCTO` int DEFAULT NULL,
+  `ID_FORO` int DEFAULT NULL,
   PRIMARY KEY (`ID_VENTA`),
   KEY `ID_USUARIO` (`ID_USUARIO`),
   KEY `ID_PRODUCTO` (`ID_PRODUCTO`),
@@ -452,4 +518,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-21 15:21:24
+-- Dump completed on 2023-06-23 21:54:44
