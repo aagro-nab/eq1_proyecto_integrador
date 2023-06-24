@@ -11,6 +11,16 @@ if(isset($_SESSION['rol']) && isset($_SESSION['id']) && isset($_SESSION['usernam
     header("Location: ./inicioSesion.php");
     exit;
 }
+
+$getUserInfo = "SELECT nombre, nombreUsuario FROM usuario WHERE ID_USUARIO = ?";
+$stmt = mysqli_prepare($con, $getUserInfo);
+mysqli_stmt_bind_param($stmt, 'i', $id_usuario);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$user_info = mysqli_fetch_assoc($result);
+$nombre_completo = $user_info['nombre'];
+$nombre_de_usuario = $user_info['nombreUsuario'];
+
 switch($r){
     case "estudiante":
         $rol = "principalAlumno.js";
@@ -44,14 +54,16 @@ echo '<!DOCTYPE html>
 <main>
     <div class="sidebar">
         <img src="../../statics/img/Ellipse%202.png" alt="Foto de usuario">
-        <h3>Nombre de usuario</h3>
-        <p>Nombre completo del usuario</p>
-        <a href="#" class="btn2"><i class="fas fa-sign-out-alt"></i><span class="button-text"> Cerrar sesión</span></a>
+        <h3>'.$nombre_de_usuario.'</h3>
+        <p>'.$nombre_completo.'</p>
+        <a href="/ProyectoFinal/Proyecto_final/dynamics/php/cerrarSesion.php" class="btn2"><i class="fas fa-sign-out-alt"></i><span class="button-text"> Cerrar sesión</span></a>
         <hr>
         <a href="#" id="Notificaciones" class="btn"><i class="fas fa-bell"></i><span class="button-text"> Notificaciones</span></a>
         <a href="#" id="Calendario" class="btn"><i class="fas fa-calendar-alt"></i><span class="button-text"> Calendario</span></a>
         <a href="#" id="Mensajes" class="btn"><i class="fas fa-envelope"></i><span class="button-text"> Mensajes</span></a>
         <a href="#" id="Mapa" class="btn"><i class="fas fa-map"></i><span class="button-text"> Mapa</span></a>
+        <a href="#" id="Datos" class="btn"><i class="fas fa-user-edit"></i><span class="button-text"> Modificar datos</span></a>
+        <a href="#" id="AsignarModerador" class="btn" style="display: block"><i class="fas fa-user-plus"></i><span class="button-text"> Asignar moderador</span></a>
         <hr id="hr" style="display: none;">
         <a href="#" id="button1" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
         <a href="#" id="button2" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
@@ -88,5 +100,5 @@ echo '<!DOCTYPE html>
 <script src="../js/funcionesCrear.js"></script>
 <script src="../js/modalesUsuario.js"></script>
 </body>
-</html>'
+</html>';
 ?>
