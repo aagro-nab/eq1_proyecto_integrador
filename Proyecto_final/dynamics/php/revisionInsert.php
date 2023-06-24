@@ -44,8 +44,7 @@
     $contraseña = verificar ($contraseñatem);
     //var_dump ($contraseña);
 
-    $grupotem = asignar ("grupo");
-    $grupo = verificar ($grupotem);
+    $grupo = (isset($_POST["grado"]) && $_POST["grado"] != "")? $_POST ["grado"] : NULL;
     //var_dump ($grupo);
 
     
@@ -96,5 +95,5 @@
             }          
         }
     }
-    echo json_encode($respuesta);    
+    echo json_encode($grupo);    
 ?>
