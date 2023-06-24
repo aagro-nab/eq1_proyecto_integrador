@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 <?php
-const HOST = "localhost";
+const HOST = "127.0.0.1";
 const USER = "equipo01";
 const PASS = "equser01all";
 const DB = "proyectoFinal";
-=======
-<?php 
-const HOST="127.0.0.1";
-const USER="equipo01";
-const PASS="equser01all";
-const DB="proyectoFinal";
->>>>>>> f176a52cab25c331222fa1ebb9460fa7c5106121
 
 const nRespaldo = "proyectoFinalRespaldo";
 
