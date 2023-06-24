@@ -69,9 +69,9 @@ $con = connect();
             }elseif($query != TRUE){
                 echo "Hubo un error en la consulta";
                 mysqli_error($con);
+            }else{
+                echo "No tienes permiso para editar este Producto";
             }
-        }else{
-            echo "No tienes permiso para editar este Producto";
         }
         
     }
@@ -85,7 +85,7 @@ $con = connect();
         $revisarId = "SELECT ID_USUARIO FROM producto WHERE nombreProducto='$producto'";
 
         if($id == $revisarId ||$rol !=0){//revisa si el usuario actual es el mismo que creo la venta o si tiene permisos de mod o admin
-            $modificarVenta = "UPDATE producto WHERE ID_PRODUCTO='ventaId', SET existencia=FALSE)";
+            $modificarVenta = "UPDATE producto WHERE ID_PRODUCTO='$ventaID', SET existencia=FALSE)";
         $query = mysqli_query($con, $modificarVenta);
         
         if($query == 1){
@@ -94,9 +94,9 @@ $con = connect();
             }elseif($query != TRUE){
                 echo "Hubo un error en la consulta";
                 mysqli_error($con);
+            }else{
+                echo "No tienes permiso para cerrar esta venta";
             }
-        }else{
-            echo "No tienes permiso para cerrar esta venta";
         }
     }
     function eliminarProducto($con, $rol, $id){
@@ -104,7 +104,7 @@ $con = connect();
         $revisarId = "SELECT ID_USUARIO FROM producto WHERE nombreProducto='$producto'";
 
         if($id == $revisarId ||$rol !=0){//revisa si el usuario actual es el mismo que creo la venta o si tiene permisos de mod o admin
-            $eliminarVenta = "DELETE FROM producto WHERE ID_PRODUCTO='ventaID'";
+            $eliminarVenta = "DELETE FROM producto WHERE ID_PRODUCTO='$ventaID'";
         $query = mysqli_query($con, $eliminarVenta);
         
         if($query == 1){
@@ -113,10 +113,10 @@ $con = connect();
             }elseif($query != TRUE){
                 echo "Hubo un error en la consulta";
                 mysqli_error($con);
-            }
-        }else{
+            }else{
             echo "No tienes permiso para borrar este Producto";
+            }
         }
-    }
+    }   
 
 ?>
