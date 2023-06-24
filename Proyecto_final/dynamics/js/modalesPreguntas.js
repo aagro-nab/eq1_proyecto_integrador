@@ -1,18 +1,33 @@
 function crearPregunta() {
     let { modal, modalContent } = crearModal();
 
-    let form = document.createElement('form');
-    form.setAttribute('method', 'post');
+    let contenidoFormulario = [
+        crearLabel('Escribe tu pregunta:', 'textoPregunta'),
+        crearTextArea('textoPregunta', 'Escribe tu pregunta'),
+        crearButton('submit', 'Crear Pregunta')
+    ];
 
-    let textoPregunta = document.createElement('textarea');
-    textoPregunta.setAttribute('name', 'textoPregunta');
-    textoPregunta.setAttribute('placeholder', 'Escribe tu pregunta');
-    form.appendChild(textoPregunta);
+    let form = crearFormulario(contenidoFormulario);
 
-    let submitButton = document.createElement('button');
-    submitButton.setAttribute('type', 'submit');
-    submitButton.innerHTML = "Crear Pregunta";
-    form.appendChild(submitButton);
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        let formData = new FormData(form);
+        formData.append('accion', 'crearPregunta');
+        fetch('Proyecto_final/dynamics/php/modalesPreguntas.php', {
+            method: 'POST',
+            body: formData,
+        })
+            .then(response => response.text())
+            .then(data => {
+                if (data === 'creacionExitosa') {
+                    alert('Pregunta creada correctamente.');
+                } else {
+                    console.error(data);
+                    alert('Error al crear la pregunta.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -20,21 +35,37 @@ function crearPregunta() {
     document.body.appendChild(modal);
 }
 
-function editarPregunta() {
+function editarPregunta(idPregunta) {
     let { modal, modalContent } = crearModal();
 
-    let form = document.createElement('form');
-    form.setAttribute('method', 'post');
+    let contenidoFormulario = [
+        crearLabel('Nueva versión de tu pregunta:', 'textoPregunta'),
+        crearTextArea('textoPregunta', ''),
+        crearButton('submit', 'Guardar Cambios')
+    ];
 
-    let textoPregunta = document.createElement('textarea');
-    textoPregunta.setAttribute('name', 'textoPregunta');
-    textoPregunta.setAttribute('placeholder', 'Nueva versión de tu pregunta');
-    form.appendChild(textoPregunta);
+    let form = crearFormulario(contenidoFormulario);
 
-    let submitButton = document.createElement('button');
-    submitButton.setAttribute('type', 'submit');
-    submitButton.innerHTML = "Guardar Cambios";
-    form.appendChild(submitButton);
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        let formData = new FormData(form);
+        formData.append('accion', 'editarPregunta');
+        formData.append('idPregunta', idPregunta);
+        fetch('Proyecto_final/dynamics/php/modalesPreguntas.php', {
+            method: 'POST',
+            body: formData,
+        })
+            .then(response => response.text())
+            .then(data => {
+                if (data === 'edicionExitosa') {
+                    alert('Pregunta editada correctamente.');
+                } else {
+                    console.error(data);
+                    alert('Error al editar la pregunta.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
@@ -42,29 +73,45 @@ function editarPregunta() {
     document.body.appendChild(modal);
 }
 
-function eliminarPregunta() {
+
+function eliminarPregunta(idPregunta) {
     let { modal, modalContent } = crearModal();
 
     let mensajeEliminacion = document.createElement('p');
     mensajeEliminacion.innerHTML = "¿Estás seguro de que quieres eliminar esta pregunta?";
     modalContent.appendChild(mensajeEliminacion);
 
-    let confirmarEliminacionButton = document.createElement('button');
-    confirmarEliminacionButton.innerHTML = "Confirmar";
-    confirmarEliminacionButton.onclick = function() {
-        // Aquí la lógica para eliminar la pregunta
-        document.body.removeChild(modal);
-    }
-    modalContent.appendChild(confirmarEliminacionButton);
-
-    let cancelarButton = document.createElement('button');
-    cancelarButton.innerHTML = "Cancelar";
+    let confirmarEliminacionButton = crearButton('button', 'Confirmar');
+    let cancelarButton = crearButton('button', 'Cancelar');
     cancelarButton.onclick = function() {
         document.body.removeChild(modal);
     }
+
+    confirmarEliminacionButton.addEventListener('click', function(){
+        fetch('Proyecto_final/dynamics/php/modalesPreguntas.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({accion: 'eliminarPregunta', idPregunta: idPregunta})
+        })
+            .then(response => response.text())
+            .then(resultado => {
+                if(resultado === '1') {
+                    alert("La pregunta se ha eliminado con éxito.");
+                } else {
+                    alert("No se pudo eliminar la pregunta. Inténtalo más tarde.");
+                }
+                document.body.removeChild(modal);
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+    modalContent.appendChild(confirmarEliminacionButton);
     modalContent.appendChild(cancelarButton);
 
     modal.appendChild(modalContent);
 
     document.body.appendChild(modal);
 }
+
