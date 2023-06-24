@@ -132,16 +132,8 @@ async function notiReportes() {
     }
 }
 
-function mostrarMensajes (){
+async function mostrarMapas (){
     alert("La función no está disponible en este momento. Inténtalo más tarde.");
-}
-
-function mostrarMapas (){
-    alert("La función no está disponible en este momento. Inténtalo más tarde.");
-}
-function mostrarCalendario (){
-    alert("La función no está disponible en este momento. Inténtalo más tarde.");
-    
 }
 
 

@@ -38,6 +38,7 @@ echo '<!DOCTYPE html>
     <title>Página Principal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../../statics/styles/principal.css">
+    <link rel="stylesheet" type="text/css" href="../../statics/styles/mapa.css">
 </head>
 <body>
 <header>
@@ -92,12 +93,12 @@ echo '<!DOCTYPE html>
     </div>
 </main>
 <script src="../js/'.$rol.'"></script>
-<script src="../js/modalesPublicaciones.js"></script>
-<script src="../js/modalesForos.js"></script>
-<script src="../js/modalesPreguntas.js"></script>
-<script src="../js/modalesExtravios.js"></script>
-<script src="../js/modalesMarket.js"></script>
 <script src="../js/funcionesCrear.js"></script>
+<script src="../js/modalesExtravios.js"></script>
+<script src="../js/modalesForos.js"></script>
+<script src="../js/modalesMarket.js"></script>
+<script src="../js/modalesPreguntas.js"></script>
+<script src="../js/modalesPublicaciones.js"></script>
 <script src="../js/modalesUsuario.js"></script>
 </body>
 </html>';

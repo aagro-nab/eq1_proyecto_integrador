@@ -22,9 +22,14 @@ let moderador = document.getElementById('AsignarModerador');
 notificaciones.addEventListener('click', async () => {
     await notiReportes();
 });
-calendario.addEventListener('click', mostrarCalendario);
-mensajes.addEventListener('click', mostrarMensajes);
-mapa.addEventListener('click', mostrarMapas);
+calendario.addEventListener('click', function() {
+    alert("La función no está disponible en este momento. Inténtalo más tarde.");
+});
+
+mensajes.addEventListener('click', function() {
+    alert("La función no está disponible en este momento. Inténtalo más tarde.");
+});
+
 datos.addEventListener('click', async () => {
     await modificarDatos();
 });
