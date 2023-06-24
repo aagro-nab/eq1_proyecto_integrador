@@ -1,5 +1,6 @@
 
 <?php
+$include = include("./config.php");
 $con = connect();
     if ($con->connect_errno) {
         echo "No se pudo connectar a MySQL: " . $con->connect_error;
@@ -78,7 +79,7 @@ $con = connect();
         
     }
     function eliminarProducto($con, $rol){
-        $ventaID = asignar("ventaId")
+        $ventaID = asignar("ventaId");
         $revisarId = "SELECT ID_USUARIO FROM producto WHERE nombreProducto='$producto'";
 
         if($usuario == $revisarId ||$rol !=0){//revisa si el usuario actual es el mismo que creo la venta o si tiene permisos de mod o admin
