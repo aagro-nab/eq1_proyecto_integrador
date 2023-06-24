@@ -1,6 +1,3 @@
-//ESTA VERSIÓN DEL CÓDIGO FORMA PARTE DE LA OPTIMIZACIÓN FINAL v1 (Primera Fase)
-// PARA UN MEJOR MANEJO DE ERRORES TANTO EN EL DESARROLLO DE PROYECTO, COMO EN LA POSTERIDAD
-
 window.addEventListener("resize", checkResolution);
 
 let buttons = Array.from({length: 10}, (_, i) => document.getElementById(`button${i+1}`));
@@ -14,6 +11,25 @@ window.onload = function() {
         changeView('Foros');
     }
 };
+
+let notificaciones = document.getElementById('Notificaciones');
+let calendario = document.getElementById('Calendario');
+let mensajes = document.getElementById('Mensajes');
+let mapa = document.getElementById('Mapas');
+
+notificaciones.addEventListener('click', async () => {
+    await notiReportes();
+});
+calendario.addEventListener('click', async () => {
+    await mostrarCalendario();
+});
+mensajes.addEventListener('click', async () => {
+    await mostrarMensajes();
+});
+mapa.addEventListener('click', async () => {
+    await mostrarMapas();
+});
+
 
 // Asigna la función de cambio de vista a cada botón
 ['forosButton', 'preguntasButton', 'extraviosButton', 'marketButton'].forEach(id => {

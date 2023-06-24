@@ -26,7 +26,7 @@ async function crearForo() {
             if(resultado === '1') {
                 alert("La operación se realizó con éxito.");
             } else {
-                alert("No se pudo realizar la operación.");
+                alert("No se pudo realizar la operación. Verifica que los datos sean correctos.");
             }
         } else {
             alert("Error en la petición Fetch.");
