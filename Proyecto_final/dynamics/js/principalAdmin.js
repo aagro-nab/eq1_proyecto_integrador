@@ -23,6 +23,32 @@ window.onload = function() {
     });
 });
 
+let notificaciones = document.getElementById('Notificaciones');
+let calendario = document.getElementById('Calendario');
+let mensajes = document.getElementById('Mensajes');
+let mapa = document.getElementById('Mapas');
+
+console.log(notificaciones);
+console.log(calendario);
+console.log(mensajes);
+console.log(mapa);
+
+notificaciones.addEventListener('click', async() => {
+    await notiReportes();
+});
+
+calendario.addEventListener('click', async() => {
+    await mostrarCalendario();
+});
+
+mensajes.addEventListener('click', async() => {
+    await mostrarMensajes();
+});
+
+mapa.addEventListener('click', async() => {
+    await mostrarMapas();
+});
+
 async function changeView(view) {
 
     switch (view) {
