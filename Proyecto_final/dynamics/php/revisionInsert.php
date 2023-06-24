@@ -44,6 +44,7 @@ mysqli_stmt_execute($stmt); // Ejecutando la consulta
 $query = mysqli_stmt_get_result($stmt);
 $arreglo = mysqli_fetch_array($query);
 
+
 if ($arreglo != NULL) {
     $respuesta = array("ok" => false, "mensaje" => "Ese nombre ya existe, no se puede guardar");
 } else {
@@ -83,14 +84,13 @@ if ($arreglo != NULL) {
                 mysqli_stmt_bind_param($stmt, 'sssssss', $nombre, $username, $ncuenta, $email, $contraseña, $grupo, $rol);
                 mysqli_stmt_execute($stmt);
                 $respuesta = array("ok" => true, "mensaje" => "Se ha creado el usuario con éxito :)");
+
             }
         }
     }
-<<<<<<< HEAD
-    echo json_encode($respuesta);    
-=======
+
 }
 echo json_encode($respuesta);
 mysqli_close($con);
->>>>>>> b8ac0d239c5cfeeb84c009306aea0e8c3fd88173
+
 ?>
