@@ -52,7 +52,7 @@ echo '<!DOCTYPE html>
         <a href="#" class="btn"><i class="fas fa-calendar-alt"></i><span class="button-text"> Calendario</span></a>
         <a href="#" class="btn"><i class="fas fa-envelope"></i><span class="button-text"> Mensajes</span></a>
         <a href="#" class="btn"><i class="fas fa-map"></i><span class="button-text"> Mapa</span></a>
-        <hr id="hrButton" style="display: none;">
+        <hr id="hr" style="display: none;">
         <a href="#" id="button1" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
         <a href="#" id="button2" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
         <a href="#" id="button3" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
@@ -80,6 +80,7 @@ echo '<!DOCTYPE html>
     </div>
 </main>
 <script src="../js/'.$rol.'"></script>
+<script src="../js/modalesPublicaciones.js"></script>
 <script src="../js/modalesForos.js"></script>
 <script src="../js/modalesPreguntas.js"></script>
 <script src="../js/modalesExtravios.js"></script>
