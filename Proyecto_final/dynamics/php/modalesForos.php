@@ -24,7 +24,7 @@ $foroId = isset($_POST['foroId']) ? $_POST['foroId'] : null;
 try {
     switch ($accion) {
         case 'crear':
-            echo crearForo($con, $rol);
+            echo crearForo($con);
             break;
         case 'recuperar':
             recuperarForos($con);
@@ -63,7 +63,7 @@ function asignar($campo){
     return isset($_POST[$campo]) ? $_POST[$campo] : '';
 }
 
-function crearForo($con, $rol){
+function crearForo($con){
     global $idUsuario;
     $resultado = '0';
     $nombre = asignar("nombreForo");

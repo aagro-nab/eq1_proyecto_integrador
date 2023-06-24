@@ -93,4 +93,3 @@ function actualizarUsuario($con) {
         echo "Error en la preparación de la consulta: " . $con->error;
     }
 }
-
