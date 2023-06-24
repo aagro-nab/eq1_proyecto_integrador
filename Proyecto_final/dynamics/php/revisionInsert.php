@@ -95,5 +95,5 @@
             }          
         }
     }
-    echo json_encode($grupo);    
+    echo json_encode($respuesta);    
 ?>
