@@ -3,6 +3,7 @@ window.addEventListener("load", ()=>{
     const selectGrupo = document.getElementById("grupos");
     selectGrupo.innerHTML = "<option disabled selected>Selecciona tu grupo</option>";
     const formRegistro = document.getElementById("formRegistro");
+    let grupo = document.querySelector ('#grupos');
 
     grado.addEventListener ("change", evento =>{
         //console.log (evento.target.value);
@@ -34,7 +35,6 @@ window.addEventListener("load", ()=>{
             console.error ('Ocurrio un error'+error);
         })
     });
-
 
     function revisionBase ()
     {

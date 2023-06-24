@@ -43,7 +43,8 @@ async function editarVenta(ventaId, rol) {
     form.appendChild(crearInput('hidden', 'accion', '', 'editar'));
     form.appendChild(crearInput('hidden', 'rol', '', rol));
 
-    realizarPeticionFetch(form, '../php/foro.php');
+    realizarPeticionFetch(form, '../php/market.php');
+
 
     modalContent.appendChild(form);
     modal.appendChild(modalContent);
