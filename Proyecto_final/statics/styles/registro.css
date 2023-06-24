@@ -4,21 +4,25 @@
     font-weight: 400;
     src: url("../fonts/Inter-Regular.ttf");
 }
+
 @font-face {
     font-family: "Inter";
     font-weight: 500;
     src: url("../fonts/Inter-Medium.ttf");
 }
+
 @font-face {
     font-family: "Tommy";
     font-weight: 400;
     src: url("../fonts/Tommy-Soft-Regular.ttf");
 }
+
 @font-face {
     font-family: "Tommy";
     font-weight: 500;
     src: url("../fonts/Tommy-Soft-Medium.ttf");
 }
+
 @font-face {
     font-family: "Tommy";
     font-weight: 700;
@@ -65,12 +69,15 @@ article.Recordatorio {
     justify-content: center;
     border-radius: 20px;
     padding: 60px;
-    width: calc(50% - 45px); /* Ajuste para el nuevo margen */
-    margin-right: 30px; /* Margen para el primer article */
+    width: calc(50% - 45px);
+    /* Ajuste para el nuevo margen */
+    margin-right: 30px;
+    /* Margen para el primer article */
     transition: transform 0.3s ease;
     box-sizing: border-box;
     font-size: 25px;
 }
+
 article.Formulario {
     background-color: rgba(255, 255, 255, 0.1);
     display: flex;
@@ -79,12 +86,16 @@ article.Formulario {
     justify-content: center;
     border-radius: 20px;
     padding: 60px;
-    width: calc(50% - 45px); /* Ajuste para el nuevo margen */
-    margin-left: 30px; /* Margen para el segundo article */
+    width: calc(50% - 45px);
+    /* Ajuste para el nuevo margen */
+    margin-left: 30px;
+    /* Margen para el segundo article */
     transition: transform 0.3s ease;
     box-sizing: border-box;
 }
-article.Recordatorio:hover, article.Formulario:hover {
+
+article.Recordatorio:hover,
+article.Formulario:hover {
     transform: scale(1.05);
 }
 
@@ -109,6 +120,7 @@ article.Recordatorio:hover, article.Formulario:hover {
     transition: background-color 0.3s ease;
     box-sizing: border-box;
 }
+
 .input-datos:focus {
     background-color: #e0e0f0;
     outline: none;
@@ -117,8 +129,10 @@ article.Recordatorio:hover, article.Formulario:hover {
 /* ---------- Botones ---------- */
 .row-center {
     display: flex;
-    align-items: center; /* Esto alinea verticalmente a todos los elementos */
+    align-items: center;
+    /* Esto alinea verticalmente a todos los elementos */
 }
+
 .boton-submit {
     display: block;
     width: 100%;
@@ -133,6 +147,7 @@ article.Recordatorio:hover, article.Formulario:hover {
     font-size: 1.2em;
     box-sizing: border-box;
 }
+
 .boton-submit:hover {
     background-color: #5a6198;
 }
@@ -145,16 +160,21 @@ article.Formulario a {
     text-decoration: underline;
 }
 
-/* ============================ Responsividad ============================= */
+/*==========RESPONSIVE=======================================================================================*/
 @media screen and (max-width: 720px) {
     main.Registros {
-        flex-direction: column; /* Cambia la dirección de los elementos 'article' en 'main' a una columna cuando la pantalla es menor a 720px */
+        flex-direction: column;
     }
-    article.Recordatorio, article.Formulario {
-        font-size: 1.5rem; /* Aumenta el tamaño de fuente para resoluciones más grandes */
-        width: 90%; /* Restablece el ancho de los elementos 'article' a 100% para pantallas más pequeñas */
-        margin-right: 0; /* Restablece los márgenes para pantallas más pequeñas */
+
+    article.Recordatorio,
+    article.Formulario {
+        font-size: 1.5rem;
+        width: 90%;
+        /* Restablece el ancho de los elementos 'article' a 90% para pantallas más pequeñas */
+        margin-right: 0;
+        /* Restablece los márgenes para pantallas más pequeñas */
         margin-left: 0;
-        margin-bottom: 50px; /* Separa cunado es una columna*/
+        margin-bottom: 50px;
+        /* Separa cunado es una columna*/
     }
 }
