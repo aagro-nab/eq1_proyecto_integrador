@@ -31,7 +31,7 @@ function reportarExtravio() {
     document.body.appendChild(modal);
 }
 
-function editarPublicacion() {
+function editarReporte() {
     let { modal, modalContent } = crearModal();
 
     let form = document.createElement('form');
@@ -64,7 +64,7 @@ function editarPublicacion() {
     document.body.appendChild(modal);
 }
 
-function eliminarPublicacion() {
+function eliminarReporte() {
     let { modal, modalContent } = crearModal();
 
     let mensajeEliminacion = document.createElement('p');

@@ -40,6 +40,10 @@ function crearForo() {
     document.body.appendChild(modal);
 }
 
+function entrarForo(){
+
+}
+
 function editarForo() {
     let { modal, modalContent } = crearModal();
 
@@ -107,5 +111,9 @@ function salirForo() {
     modal.appendChild(modalContent);
 
     document.body.appendChild(modal);
+}
+
+function eliminarForo(){
+
 }
 

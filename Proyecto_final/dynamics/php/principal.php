@@ -35,6 +35,10 @@
         <a href="#" id="crearNuevoButton4" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
         <a href="#" id="crearNuevoButton5" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
         <a href="#" id="crearNuevoButton6" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="crearNuevoButton7" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="crearNuevoButton8" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="crearNuevoButton9" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
+        <a href="#" id="crearNuevoButton10" class="btn2" style="display: none;"><i class=""></i><span class="button-text"></span></a>
     </div>
 </main>
 <script src="../js/principalAdmin.js"></script>
