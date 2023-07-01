@@ -155,7 +155,7 @@ function changeView(view) {
             break;
         case 'Extravios':
             crearNuevoButton.innerHTML = "<i class='fas fa-plus'></i><span class='button-text'> Reportar extravío</span>";
-            crearNuevoButton2.innerHTML = "<i class='fas fa-edit'></i><span class='button-text'> Editar reporte>/span>";
+            crearNuevoButton2.innerHTML = "<i class='fas fa-edit'></i><span class='button-text'> Editar reporte</span>";
             crearNuevoButton3.innerHTML = "<i class='fas fa-trash-alt'></i><span class='button-text'> Eliminar reporte</span>";
             crearNuevoButton4.innerHTML = "<i class='fas fa-user-plus'></i><span class='button-text'> Asignar moderador</span>";
 
